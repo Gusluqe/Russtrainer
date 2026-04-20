@@ -157,6 +157,9 @@ export default function Footer() {
           <p className="text-white/40 text-sm">
             2026 RussTrainer. Todos los derechos reservados.
           </p>
+          <p>&copy;Si te gustó esta página 🚀 Creá la tuya hoy en 👉 
+        <a href="https://luquetech.com/" target="_blank">luquetech.com</a>
+      </p>
           <p className="text-white/40 text-sm">
             Hecho con dedicacion y disciplina
           </p>
