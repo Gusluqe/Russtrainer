@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Russ Trainer — Entrenamiento personalizado para vos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ── TOKENS ── */
+    :root {
+      --cream:        #FAF7F2;
+      --warm-white:   #FFFCF9;
+      --blush-light:  #F5E9E9;
+      --blush:        #EBCFCF;
+      --rose:         #C4727A;
+      --rose-dark:    #A85960;
+      --rose-glow:    #E8A0A6;
+      --sage-light:   #D6E4D4;
+      --sage:         #B8C9B5;
+      --sage-dark:    #8FA88B;
+      --charcoal:     #2C2424;
+      --body:         #4A3F3F;
+      --muted:        #7A6F6F;
+      --border:       #E8DADA;
+      --shadow-sm:    rgba(44,36,36,.07);
+      --shadow-md:    rgba(44,36,36,.13);
+      --ff-serif:     'Playfair Display', Georgia, serif;
+      --ff-italic:    'Cormorant Garamond', Georgia, serif;
+      --ff-sans:      'DM Sans', system-ui, sans-serif;
+      --ease:         cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ── BASE ── */
+    body {
+      font-family: var(--ff-sans);
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+    section { padding: 100px 0; }
+
+    /* ── TYPOGRAPHY ── */
+    .label {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 12px;
+      display: block;
+    }
+    h1, h2, h3 { font-family: var(--ff-serif); line-height: 1.18; }
+    .section-title {
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      margin-bottom: 18px;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--body);
+      line-height: 1.75;
+    }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-family: var(--ff-sans);
+      font-size: .97rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: background .3s var(--ease), color .3s var(--ease),
+                  border-color .3s var(--ease), transform .3s var(--ease),
+                  box-shadow .3s var(--ease);
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+    .btn-rose {
+      background: var(--rose);
+      color: #fff;
+      box-shadow: 0 6px 24px rgba(196,114,122,.35);
+    }
+    .btn-rose:hover {
+      background: var(--rose-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(196,114,122,.45);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--rose);
+      border-color: var(--rose);
+    }
+    .btn-outline:hover {
+      background: var(--rose);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ── NAVBAR ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      padding: 22px 0;
+      transition: background .4s var(--ease), box-shadow .4s var(--ease), padding .4s var(--ease);
+    }
+    .nav.stuck {
+      background: rgba(250,247,242,.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 2px 18px var(--shadow-sm);
+      padding: 14px 0;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--ff-serif);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--charcoal);
+    }
+    .nav-logo span { color: var(--rose); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-link {
+      font-size: .88rem;
+      color: var(--body);
+      transition: color .25s;
+    }
+    .nav-link:hover { color: var(--rose); }
+    .nav-cta { padding: 10px 24px; font-size: .88rem; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 910;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--charcoal);
+      border-radius: 2px;
+      transition: transform .3s, opacity .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* mobile drawer */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        position: fixed;
+        inset: 0;
+        background: var(--cream);
+        flex-direction: column;
+        justify-content: center;
+        gap: 36px;
+        font-size: 1.15rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .35s;
+        z-index: 905;
+      }
+      .nav-links.open { opacity: 1; pointer-events: all; }
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 130px 0 90px;
+      background: linear-gradient(145deg, var(--cream) 0%, #F5ECEC 55%, #EDD5D5 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -15%; right: -8%;
+      width: 560px; height: 560px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,201,181,.28) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -12%; left: -6%;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,114,122,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--blush);
+      border-radius: 50px;
+      padding: 7px 18px;
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--rose);
+      margin-bottom: 26px;
+      letter-spacing: .06em;
+    }
+    .hero-pill-dot {
+      width: 8px; height: 8px;
+      background: var(--rose);
+      border-radius: 50%;
+      animation: blink 2s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.45; transform:scale(1.35); }
+    }
+    .hero-title {
+      font-size: clamp(2.4rem, 4.8vw, 3.9rem);
+      font-weight: 700;
+      margin-bottom: 22px;
+      color: var(--charcoal);
+    }
+    .hero-title em { font-style: italic; color: var(--rose); }
+    .hero-sub {
+      font-size: 1.07rem;
+      color: var(--body);
+      line-height: 1.78;
+      max-width: 460px;
+      margin-bottom: 22px;
+    }
+    .hero-quote {
+      font-family: var(--ff-italic);
+      font-size: 1.22rem;
+      font-style: italic;
+      color: var(--rose-dark);
+      margin-bottom: 36px;
+    }
+    .hero-cta-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .hero-note {
+      font-size: .82rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-note::before { content:'✓'; color: var(--sage-dark); font-weight:700; }
+
+    /* hero visual */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-blob-wrap {
+      position: relative;
+      width: 400px;
+      height: 500px;
+    }
+    .hero-blob {
+      width: 100%; height: 100%;
+      border-radius: 180px 180px 110px 110px;
+      background: linear-gradient(160deg, var(--blush) 0%, var(--blush-light) 100%);
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+    }
+    .hero-blob img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .deco {
+      position: absolute;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .deco-1 {
+      width: 110px; height: 110px;
+      background: var(--sage-light);
+      top: -18px; right: -18px;
+    }
+    .deco-2 {
+      width: 72px; height: 72px;
+      background: var(--blush);
+      bottom: 44px; left: -26px;
+    }
+    .hero-card {
+      position: absolute;
+      bottom: -18px; right: 12px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 14px 20px;
+      box-shadow: 0 10px 36px var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 3;
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-8px); }
+    }
+    .hero-card-icon { font-size: 2rem; }
+    .hero-card strong { display:block; font-size:.92rem; font-weight:600; }
+    .hero-card span   { font-size:.76rem; color: var(--muted); }
+
+    /* ── PAIN POINTS ── */
+    #pains {
+      background: var(--warm-white);
+    }
+    .pains-head { text-align: center; margin-bottom: 56px; }
+    .pains-head .section-title { max-width: 680px; margin: 0 auto 18px; }
+    .pains-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 44px;
+    }
+    .pain-card {
+      background: var(--cream);
+      border: 1.5px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 26px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s;
+    }
+    .pain-card::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--rose);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .pain-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px var(--shadow-sm); border-color: var(--blush); }
+    .pain-card:hover::after { opacity: 1; }
+    .pain-icon { font-size: 1.75rem; margin-bottom: 14px; }
+    .pain-card p {
+      font-family: var(--ff-serif);
+      font-size: 1.07rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+    .pain-card.cta-card {
+      background: linear-gradient(135deg, var(--blush-light), #fff);
+      border-color: var(--blush);
+    }
+    .pain-card.cta-card p {
+      font-family: var(--ff-sans);
+      font-style: normal;
+      font-size: .93rem;
+      color: var(--rose-dark);
+    }
+    .insight-box {
+      background: linear-gradient(135deg, var(--blush-light) 0%, var(--sage-light) 100%);
+      border-radius: 20px;
+      padding: 38px 44px;
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .insight-box p {
+      font-family: var(--ff-italic);
+      font-size: 1.28rem;
+      font-style: italic;
+      line-height: 1.65;
+    }
+
+    /* ── METHOD ── */
+    #method { background: var(--cream); }
+    .method-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.65fr;
+      gap: 88px;
+      align-items: start;
+    }
+    .method-sticky {
+      position: sticky;
+      top: 110px;
+    }
+    .method-body {
+      font-size: 1.03rem;
+      color: var(--body);
+      line-height: 1.78;
+      margin-bottom: 30px;
+    }
+    .method-quote {
+      font-family: var(--ff-italic);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--rose-dark);
+      border-left: 3px solid var(--rose);
+      padding-left: 20px;
+    }
+    .steps { display: flex; flex-direction: column; }
+    .step {
+      display: flex;
+      gap: 22px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--border);
+      transition: padding-left .3s var(--ease);
+    }
+    .step:last-child { border-bottom: none; }
+    .step:hover { padding-left: 10px; }
+    .step-num {
+      flex-shrink: 0;
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: var(--blush-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-serif);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--rose);
+      transition: background .3s, color .3s;
+    }
+    .step:hover .step-num { background: var(--rose); color: #fff; }
+    .step-body h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 5px; }
+    .step-body p  { font-size: .9rem; color: var(--body); line-height: 1.65; }
+
+    /* ── PLANS ── */
+    #plans {
+      background: linear-gradient(180deg, #F5ECEC 0%, var(--warm-white) 100%);
+    }
+    .plans-head { text-align: center; margin-bottom: 52px; }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 22px;
+      max-width: 880px;
+      margin: 0 auto 38px;
+    }
+    .plan {
+      background: #fff;
+      border-radius: 26px;
+      padding: 38px 34px;
+      border: 2px solid transparent;
+      box-shadow: 0 6px 24px var(--shadow-sm);
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    .plan:hover { transform: translateY(-4px); box-shadow: 0 16px 40px var(--shadow-md); }
+    .plan.featured {
+      border-color: var(--rose);
+      box-shadow: 0 10px 36px rgba(196,114,122,.2);
+    }
+    .plan.featured::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--rose), var(--rose-glow));
+    }
+    .plan-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 14px;
+      border-radius: 50px;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .badge-rose    { background: var(--rose); color: #fff; }
+    .badge-sage    { background: var(--sage-light); color: var(--sage-dark); }
+    .plan-name {
+      font-family: var(--ff-serif);
+      font-size: 1.55rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .plan-dur {
+      font-size: .82rem;
+      color: var(--muted);
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .plan-dur::before { content:'📅'; font-size:.85rem; }
+    .plan-divider { height: 1px; background: var(--border); margin-bottom: 22px; }
+    .plan-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      margin-bottom: 30px;
+    }
+    .plan-items li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: .9rem;
+      color: var(--body);
+      line-height: 1.5;
+    }
+    .chk {
+      flex-shrink: 0;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .62rem;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+    .chk-rose { background: var(--rose); color: #fff; }
+    .chk-sage { background: var(--sage-light); color: var(--sage-dark); }
+    .plan-btn { width: 100%; justify-content: center; }
+    .plans-note {
+      text-align: center;
+      font-family: var(--ff-italic);
+      font-style: italic;
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--warm-white); overflow: hidden; }
+    .testi-head { text-align: center; margin-bottom: 56px; }
+    .testi-head .section-sub { margin: 14px auto 0; text-align: center; max-width: 500px; }
+    .carousel-wrap { position: relative; }
+    .carousel-track {
+      display: flex;
+      transition: transform .52s var(--ease);
+    }
+    .testi-slide {
+      min-width: 100%;
+      padding: 0 64px;
+    }
+    .testi-card {
+      background: #fff;
+      border-radius: 26px;
+      padding: 46px 46px 40px;
+      box-shadow: 0 10px 44px var(--shadow-sm);
+      max-width: 680px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .testi-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 16px; left: 36px;
+      font-family: var(--ff-serif);
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--blush);
+      user-select: none;
+    }
+    .testi-text {
+      font-family: var(--ff-italic);
+      font-size: 1.22rem;
+      font-style: italic;
+      line-height: 1.72;
+      color: var(--charcoal);
+      margin-bottom: 30px;
+      padding-top: 28px;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .testi-avatar {
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blush), var(--sage-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-serif);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--rose-dark);
+      flex-shrink: 0;
+    }
+    .testi-name   { font-weight: 600; font-size: .93rem; }
+    .testi-handle { font-size: .8rem; color: var(--rose); margin-top: 2px; }
+    .carousel-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 38px;
+    }
+    .c-btn {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      background: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--charcoal);
+      transition: border-color .25s, color .25s, background .25s;
+    }
+    .c-btn:hover { border-color: var(--rose); color: var(--rose); background: var(--blush-light); }
+    .c-dots { display: flex; gap: 8px; }
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      border: none;
+      cursor: pointer;
+      transition: background .3s, width .3s, border-radius .3s;
+    }
+    .dot.on { background: var(--rose); width: 22px; border-radius: 4px; }
+
+    /* ── FINAL CTA ── */
+    #cta-final {
+      background: linear-gradient(140deg, #2C2424 0%, #3E2828 100%);
+      padding: 120px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #cta-final::before {
+      content: '';
+      position: absolute;
+      top: -40%; left: -15%;
+      width: 560px; height: 560px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,114,122,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #cta-final::after {
+      content: '';
+      position: absolute;
+      bottom: -35%; right: -8%;
+      width: 480px; height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,201,181,.13) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-inner { position: relative; z-index: 1; }
+    .cta-inner .label { color: var(--rose-glow); }
+    .cta-title {
+      font-size: clamp(2rem, 4.4vw, 3.5rem);
+      color: #fff;
+      margin-bottom: 14px;
+    }
+    .cta-title em { color: var(--rose-glow); font-style: italic; }
+    .cta-sub {
+      font-family: var(--ff-italic);
+      font-size: 1.28rem;
+      font-style: italic;
+      color: rgba(255,255,255,.6);
+      margin-bottom: 46px;
+    }
+    .btn-cta {
+      background: var(--rose);
+      color: #fff;
+      font-size: 1.08rem;
+      padding: 17px 52px;
+      box-shadow: 0 8px 32px rgba(196,114,122,.48);
+    }
+    .btn-cta:hover {
+      background: #fff;
+      color: var(--rose);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 44px rgba(196,114,122,.38);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1C1515;
+      padding: 52px 0 30px;
+    }
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin-bottom: 36px;
+    }
+    .footer-logo {
+      font-family: var(--ff-serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .footer-logo span { color: var(--rose-glow); }
+    .footer-tag {
+      font-size: .82rem;
+      color: rgba(255,255,255,.45);
+      margin-top: 5px;
+    }
+    .socials { display: flex; gap: 12px; }
+    .social {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.65);
+      transition: background .3s, transform .3s, color .3s;
+    }
+    .social:hover { background: var(--rose); color: #fff; transform: translateY(-3px); }
+    .footer-copy {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 24px;
+      text-align: center;
+      font-size: .78rem;
+      color: rgba(255,255,255,.3);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 0; }
+      .hero-visual { display: none; }
+      .hero-content { text-align: center; }
+      .hero-sub { margin: 0 auto 22px; }
+      .hero-quote { text-align: center; }
+      .hero-cta-wrap { align-items: center; }
+
+      .pains-grid { grid-template-columns: repeat(2,1fr); }
+
+      .method-grid { grid-template-columns: 1fr; gap: 52px; }
+      .method-sticky { position: static; }
+
+      .plans-grid { grid-template-columns: 1fr; max-width: 480px; }
+    }
+    @media (max-width: 640px) {
+      section { padding: 76px 0; }
+      .pains-grid { grid-template-columns: 1fr; }
+      .testi-slide { padding: 0 16px; }
+      .testi-card { padding: 36px 22px 30px; }
+      .insight-box { padding: 28px 24px; }
+      .footer-row { flex-direction: column; align-items: center; text-align: center; }
+      .hero-title { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">Russ<span>.</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#method"       class="nav-link">Método</a>
+      <a href="#plans"        class="nav-link">Planes</a>
+      <a href="#testimonials" class="nav-link">Testimonios</a>
+      <a href="#cta-final" class="btn btn-rose nav-cta">Empezar ahora</a>
+    </div>
+    <button class="hamburger" id="ham" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-pill"><span class="hero-pill-dot"></span>Entrenamiento personalizado</div>
+        <h1 class="hero-title">
+          Un plan de entrenamiento<br><em>100% hecho para vos</em>
+        </h1>
+        <p class="hero-sub">
+          Dejá de seguir rutinas genéricas. Empezá a entrenar desde el amor, con un plan
+          personalizado que se adapta a tu cuerpo, tu tiempo y tu vida.
+        </p>
+        <p class="hero-quote">"No te adaptás al plan, el plan se adapta a vos."</p>
+        <div class="hero-cta-wrap">
+          <a href="#plans" class="btn btn-rose" style="font-size:1.05rem;padding:16px 44px;">
+            Empezar ahora &rarr;
+          </a>
+          <p class="hero-note">Planes personalizados + acompañamiento constante</p>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-blob-wrap">
+          <div class="deco deco-1"></div>
+          <div class="deco deco-2"></div>
+          <div class="hero-blob">
+            <img src="public/foto1.png" alt="Russ Trainer" />
+          </div>
+          <div class="hero-card">
+            <div class="hero-card-icon">💪</div>
+            <div>
+              <strong>+100 alumnas</strong>
+              <span>transformaron su proceso</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PAIN POINTS ══ -->
+<section id="pains">
+  <div class="container">
+    <div class="pains-head reveal">
+      <span class="label">¿Te identificás?</span>
+      <h2 class="section-title">¿Cuántas de estas preguntas<br>te generan un nudo?</h2>
+    </div>
+
+    <div class="pains-grid">
+      <div class="pain-card reveal">
+        <div class="pain-icon">😔</div>
+        <p>¿No te sentís cómoda con tu cuerpo?</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">😤</div>
+        <p>¿Te frustrás al no ver resultados?</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">🤔</div>
+        <p>¿No sabés qué hacer en el gimnasio?</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">😩</div>
+        <p>¿Te exigís demasiado y terminás abandonando?</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">🔄</div>
+        <p>¿Empezás motivada pero no lográs sostener el hábito?</p>
+      </div>
+      <div class="pain-card cta-card reveal">
+        <div class="pain-icon">✨</div>
+        <p>Si dijiste sí a alguna de estas... estás exactamente donde necesitás estar.</p>
+      </div>
+    </div>
+
+    <div class="insight-box reveal">
+      <p>"No buscan solo cambiar su cuerpo. Buscan sentirse mejor con ellas mismas
+         y dejar de vivir el entrenamiento como una obligación."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ METHOD ══ -->
+<section id="method">
+  <div class="container">
+    <div class="method-grid">
+
+      <div class="method-sticky reveal">
+        <span class="label">El método</span>
+        <h2 class="section-title">Entrenar puede ser distinto cuando el plan está hecho para vos</h2>
+        <p class="method-body">
+          No se trata de seguir una rutina más. Se trata de tener un plan pensado para tu cuerpo,
+          tu momento y tu vida. Acá no vas a estar sola.
+        </p>
+        <blockquote class="method-quote">
+          "No es solo entrenar. Es aprender a sostener un proceso que te haga bien."
+        </blockquote>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>Empezamos con vos</h3>
+            <p>Videollamada inicial + encuesta personalizada para entender quién sos, qué necesitás y cómo te movés mejor.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>Tu plan 100% personalizado</h3>
+            <p>Rutina en Notion, 4 semanas, con videos explicativos, movilidad y estiramientos adaptados a vos.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>Acompañamiento constante</h3>
+            <p>Seguimiento diario por WhatsApp. Siempre hay alguien del otro lado para escucharte y motivarte.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h3>Ajustes reales</h3>
+            <p>El plan evoluciona con vos. Si algo no funciona, tu entrenamiento cambia también.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h3>Mucho más que entrenamiento</h3>
+            <p>Guía de hábitos y enfoque integral cuerpo-mente para que el cambio sea profundo y duradero.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ PLANS ══ -->
+<section id="plans">
+  <div class="container">
+    <div class="plans-head reveal">
+      <span class="label">Servicios</span>
+      <h2 class="section-title">Elegí cómo querés empezar</h2>
+    </div>
+
+    <div class="plans-grid">
+
+      <!-- FEATURED -->
+      <div class="plan featured reveal">
+        <div class="plan-badge badge-rose">⭐ Más elegido</div>
+        <h3 class="plan-name">Plan Online</h3>
+        <p class="plan-dur">30 días de proceso personalizado</p>
+        <div class="plan-divider"></div>
+        <ul class="plan-items">
+          <li><span class="chk chk-rose">✓</span> Plan personalizado 4 semanas en Notion</li>
+          <li><span class="chk chk-rose">✓</span> Videos explicativos de cada ejercicio</li>
+          <li><span class="chk chk-rose">✓</span> Movilidad + estiramientos incluidos</li>
+          <li><span class="chk chk-rose">✓</span> Seguimiento diario por WhatsApp</li>
+          <li><span class="chk chk-rose">✓</span> Videollamada inicial (15–30 min)</li>
+          <li><span class="chk chk-rose">✓</span> Guía de hábitos</li>
+          <li><span class="chk chk-rose">✓</span> Ajustes según tu progreso</li>
+        </ul>
+        <a href="#cta-final" class="btn btn-rose plan-btn">Quiero empezar &rarr;</a>
+      </div>
+
+      <!-- SECONDARY -->
+      <div class="plan reveal">
+        <div class="plan-badge badge-sage">🌿 Cupos limitados</div>
+        <h3 class="plan-name">Plan Online + Presencial</h3>
+        <p class="plan-dur">30 días de proceso completo</p>
+        <div class="plan-divider"></div>
+        <ul class="plan-items">
+          <li><span class="chk chk-rose">✓</span> Todo lo del Plan Online</li>
+          <li><span class="chk chk-sage">+</span> 1 clase presencial por semana</li>
+          <li><span class="chk chk-sage">+</span> Correcciones en tiempo real</li>
+          <li><span class="chk chk-sage">+</span> Contacto directo y personalizado</li>
+        </ul>
+        <a href="#cta-final" class="btn btn-outline plan-btn">Consultar disponibilidad</a>
+      </div>
+
+    </div>
+
+    <p class="plans-note reveal">
+      "No importa por dónde empieces. Lo importante es que sea un proceso que puedas sostener."
+    </p>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section id="testimonials">
+  <div class="container">
+    <div class="testi-head reveal">
+      <span class="label">Testimonios</span>
+      <h2 class="section-title">Ellas ya empezaron su proceso</h2>
+      <p class="section-sub">Historias reales de mujeres que decidieron entrenar distinto</p>
+    </div>
+
+    <div class="carousel-wrap reveal">
+      <div class="carousel-track" id="track">
+
+        <div class="testi-slide">
+          <div class="testi-card">
+            <p class="testi-text">
+              Gracias por ayudarme a salir de mi lugar de confort y empezar a moverme
+              por mí... no sos solo entrenadora, eres un sostén para no caer.
+            </p>
+            <div class="testi-author">
+              <div class="testi-avatar">R</div>
+              <div>
+                <div class="testi-name">Rocío Romano</div>
+                <div class="testi-handle">@rocio.romano.581</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-slide">
+          <div class="testi-card">
+            <p class="testi-text">
+              Se nota el amor que le ponés a lo que hacés... Gracias por no ser solo
+              una coach de gimnasio, sino alguien que me escucha y me motiva.
+            </p>
+            <div class="testi-author">
+              <div class="testi-avatar">M</div>
+              <div>
+                <div class="testi-name">Martu Servin</div>
+                <div class="testi-handle">@martuservin</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-slide">
+          <div class="testi-card">
+            <p class="testi-text">
+              Lo que destaco es su energía y la forma en que te impulsa a superarte.
+              Se nota tu compromiso y dedicación.
+            </p>
+            <div class="testi-author">
+              <div class="testi-avatar">K</div>
+              <div>
+                <div class="testi-name">Kaleidoscopio Arte</div>
+                <div class="testi-handle">@kaleidoscopioarte</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="carousel-nav">
+        <button class="c-btn" id="prev" aria-label="Anterior">&#8592;</button>
+        <div class="c-dots" id="dots">
+          <button class="dot on"></button>
+          <button class="dot"></button>
+          <button class="dot"></button>
+        </div>
+        <button class="c-btn" id="next" aria-label="Siguiente">&#8594;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ══ -->
+<section id="cta-final">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <span class="label">Es tu momento</span>
+      <h2 class="cta-title">¿Lista para empezar<br><em>tu proceso?</em></h2>
+      <p class="cta-sub">Tu cuerpo, tus tiempos, tu proceso.</p>
+      <a href="#" class="btn btn-cta">Empezar ahora &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <div>
+        <div class="footer-logo">Russ<span>.</span></div>
+        <p class="footer-tag">Entrenamiento desde el amor, no desde la exigencia.</p>
+      </div>
+      <div class="socials">
+        <!-- Instagram -->
+        <a href="#" class="social" aria-label="Instagram">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <!-- TikTok -->
+        <a href="#" class="social" aria-label="TikTok">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.69a8.18 8.18 0 004.79 1.54V6.8a4.85 4.85 0 01-1.03-.11z"/>
+          </svg>
+        </a>
+        <!-- WhatsApp -->
+        <a href="#" class="social" aria-label="WhatsApp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-copy">
+      &copy; 2025 Russ Trainer &mdash; Todos los derechos reservados.
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── NAVBAR ── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('stuck', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ── HAMBURGER ── */
+  const ham      = document.getElementById('ham');
+  const navLinks = document.getElementById('navLinks');
+  ham.addEventListener('click', () => {
+    const open = ham.classList.toggle('open');
+    navLinks.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      ham.classList.remove('open');
+      navLinks.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* ── SCROLL REVEAL ── */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.1 });
+
+  /* stagger children inside grid containers */
+  document.querySelectorAll('.pains-grid, .steps, .plans-grid').forEach(parent => {
+    parent.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.08}s`;
+    });
+  });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* ── CAROUSEL ── */
+  const track   = document.getElementById('track');
+  const dots    = document.querySelectorAll('.dot');
+  const slides  = track.querySelectorAll('.testi-slide');
+  let   cur     = 0;
+  let   timer;
+
+  function go(n) {
+    cur = (n + slides.length) % slides.length;
+    track.style.transform = `translateX(-${cur * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('on', i === cur));
+  }
+
+  function startAuto() { timer = setInterval(() => go(cur + 1), 5000); }
+  function stopAuto()  { clearInterval(timer); }
+
+  document.getElementById('prev').addEventListener('click', () => { stopAuto(); go(cur - 1); startAuto(); });
+  document.getElementById('next').addEventListener('click', () => { stopAuto(); go(cur + 1); startAuto(); });
+  dots.forEach((d, i) => d.addEventListener('click', () => { stopAuto(); go(i); startAuto(); }));
+
+  track.addEventListener('mouseenter', stopAuto);
+  track.addEventListener('mouseleave', startAuto);
+
+  /* touch swipe */
+  let tx = 0;
+  track.addEventListener('touchstart', e => { tx = e.changedTouches[0].screenX; stopAuto(); }, { passive: true });
+  track.addEventListener('touchend',   e => {
+    const diff = tx - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 48) go(diff > 0 ? cur + 1 : cur - 1);
+    startAuto();
+  });
+
+  startAuto();
+</script>
+</body>
+</html>

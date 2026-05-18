@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --cream: #FCFCF7;
+    --rose: #E8A4A4;
+    --rose-dark: #D48484;
+    --rose-light: #F5D5D5;
+    --sage: #B8C9B5;
+    --charcoal: #2D2D2D;
+    --charcoal-muted: #7A7070;
+    --nude: #D4A99A;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-charcoal antialiased;
+  }
+
+  ::selection {
+    background: #F5D5D5;
+    color: #2D2D2D;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4
+           bg-rose text-white font-semibold rounded-full
+           hover:bg-rose-dark transition-all duration-300
+           transform hover:scale-105 hover:shadow-lg hover:shadow-rose/30
+           focus:outline-none focus:ring-2 focus:ring-rose focus:ring-offset-2 focus:ring-offset-cream;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4
+           bg-transparent border-2 border-rose text-rose font-semibold rounded-full
+           hover:bg-rose hover:text-white transition-all duration-300
+           transform hover:scale-105
+           focus:outline-none focus:ring-2 focus:ring-rose;
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3
+           bg-[#25D366] text-white font-semibold rounded-full
+           hover:bg-[#20bd5a] transition-all duration-300
+           transform hover:scale-105 hover:shadow-lg;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-charcoal;
+  }
+
+  .card {
+    @apply bg-white rounded-3xl shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-rose/10;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-[0_8px_32px_rgba(232,164,164,0.15)] hover:-translate-y-1;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-rose to-nude bg-clip-text text-transparent;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-rose to-nude bg-clip-text text-transparent;
+    background-size: 200% auto;
+    animation: shimmer 3s ease infinite;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(232, 164, 164, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(232, 164, 164, 0.5); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
