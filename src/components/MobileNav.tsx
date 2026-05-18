@@ -1,12 +1,12 @@
 'use client';
 
-import { Home, Dumbbell, CreditCard, MessageCircle } from 'lucide-react';
+import { Home, User, CreditCard, MessageCircle } from 'lucide-react';
 
 const links = [
-  { label: 'Inicio',    href: '#inicio',    icon: Home },
-  { label: 'Servicios', href: '#servicios', icon: Dumbbell },
-  { label: 'Planes',    href: '#planes',    icon: CreditCard },
-  { label: 'Contacto',  href: '#contacto',  icon: MessageCircle },
+  { label: 'Inicio',  href: '#inicio',                                                                             icon: Home },
+  { label: 'Sobre',   href: '#sobre',                                                                              icon: User },
+  { label: 'Planes',  href: '#planes',                                                                             icon: CreditCard },
+  { label: 'WhatsApp', href: 'https://wa.me/5491131491877?text=Hola!%20Quiero%20saber%20m%C3%A1s', icon: MessageCircle },
 ];
 
 export default function MobileNav() {
@@ -17,6 +17,8 @@ export default function MobileNav() {
           <a
             key={href}
             href={href}
+            target={href.startsWith('http') ? '_blank' : undefined}
+            rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
             className="flex flex-col items-center gap-1 px-4 py-1.5 rounded-2xl text-charcoal/50 hover:text-rose active:text-rose transition-colors"
           >
             <Icon size={20} />
