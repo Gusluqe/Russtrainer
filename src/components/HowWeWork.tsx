@@ -64,9 +64,38 @@ export default function HowWeWork() {
           </p>
         </motion.div>
 
-        <div className="relative mt-16 space-y-5">
+        {/* Mobile: lista compacta — solo ícono + número + título */}
+        <div className="mt-10 md:hidden">
+          <div className="grid grid-cols-1 gap-3">
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.07 }}
+                className="flex items-center gap-4 bg-cream-50 border border-rose/10 rounded-2xl px-4 py-3"
+              >
+                <div className="relative shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-rose/10 border border-rose/20 flex items-center justify-center">
+                    <step.icon size={17} className="text-rose" />
+                  </div>
+                  <span className="absolute -top-1.5 -right-1.5 bg-rose text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
+                    {index + 1}
+                  </span>
+                </div>
+                <span className="text-sm font-semibold text-charcoal leading-snug">
+                  {step.title}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: layout completo con cards */}
+        <div className="relative mt-16 space-y-5 hidden md:block">
           {/* Línea vertical */}
-          <div className="absolute left-[27px] top-10 bottom-10 w-px bg-gradient-to-b from-rose/40 via-rose/20 to-transparent hidden md:block" />
+          <div className="absolute left-[27px] top-10 bottom-10 w-px bg-gradient-to-b from-rose/40 via-rose/20 to-transparent" />
 
           {steps.map((step, index) => (
             <motion.div
@@ -75,9 +104,8 @@ export default function HowWeWork() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="flex gap-6 md:gap-8 items-start group"
+              className="flex gap-8 items-start group"
             >
-              {/* Ícono */}
               <div className="relative shrink-0">
                 <div className="w-14 h-14 rounded-full bg-rose/10 border border-rose/20 flex items-center justify-center relative z-10 group-hover:bg-rose/20 transition-colors duration-300">
                   <step.icon size={22} className="text-rose" />
@@ -86,8 +114,6 @@ export default function HowWeWork() {
                   {step.number}
                 </span>
               </div>
-
-              {/* Contenido */}
               <div className="card group-hover:shadow-[0_8px_32px_rgba(232,164,164,0.12)] transition-all duration-300 p-6 flex-1">
                 <h3 className="text-xl font-heading font-bold text-charcoal mb-2">
                   {step.title}
