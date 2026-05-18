@@ -30,6 +30,12 @@ export default function SplashScreen() {
             className="object-cover object-center"
           />
 
+          {/* Viñeta rosa inset desde los bordes */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{ boxShadow: 'inset 0 0 60px 20px rgba(201, 169, 166, 0.5)' }}
+          />
+
           {/* Overlay degradado: transparente arriba, oscuro abajo */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" style={{ backgroundSize: '100% 100%', backgroundImage: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 33%, transparent 55%)' }} />
 
