@@ -1,11 +1,11 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 import Logo from './Logo';
 
-const WHATSAPP_URL = 'https://wa.me/5491131491877?text=Hola%20Russ!%20Quiero%20info%20sobre%20sus%20planes';
+const WHATSAPP_URL = 'https://wa.me/5491168124464?text=Hola%20Russ!%20Quiero%20info%20sobre%20sus%20planes';
 
 const navLinks = [
   { name: 'Inicio', href: '#inicio' },
@@ -73,3 +73,4 @@ export default function Navbar() {
     </motion.nav>
   );
 }
+

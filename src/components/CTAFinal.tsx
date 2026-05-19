@@ -1,9 +1,9 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { MessageCircle, ArrowRight } from 'lucide-react';
 
-const WHATSAPP_URL = 'https://wa.me/5491131491877?text=Hola%20Russ!%20Lista%20para%20empezar%20mi%20proceso!';
+const WHATSAPP_URL = 'https://wa.me/5491168124464?text=Hola%20Russ!%20Lista%20para%20empezar%20mi%20proceso!';
 
 export default function CTAFinal() {
   return (
@@ -23,7 +23,7 @@ export default function CTAFinal() {
           </span>
 
           <h2 className="section-title mt-4 mb-4">
-            ¿Lista para empezar{' '}
+            Â¿Lista para empezar{' '}
             <span className="text-gradient">tu proceso?</span>
           </h2>
 
@@ -56,10 +56,11 @@ export default function CTAFinal() {
             transition={{ delay: 0.5 }}
             className="text-charcoal/40 text-sm mt-6"
           >
-            Resultados reales que podés sostener
+            Resultados reales que podÃ©s sostener
           </motion.p>
         </motion.div>
       </div>
     </section>
   );
 }
+

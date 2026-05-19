@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { Target, TrendingUp, Users, Award } from 'lucide-react';
@@ -7,7 +7,7 @@ const benefits = [
   {
     icon: Target,
     title: 'Entrenamiento Personalizado',
-    description: 'Cada plan se diseña según tus objetivos, nivel y limitaciones.',
+    description: 'Cada plan se diseÃ±a segÃºn tus objetivos, nivel y limitaciones.',
   },
   {
     icon: TrendingUp,
@@ -16,13 +16,13 @@ const benefits = [
   },
   {
     icon: Users,
-    title: 'Plan Según Objetivos',
-    description: 'Ya sea bajar de peso, ganar músculo o mejorar tu rendimiento.',
+    title: 'Plan SegÃºn Objetivos',
+    description: 'Ya sea bajar de peso, ganar mÃºsculo o mejorar tu rendimiento.',
   },
   {
     icon: Award,
     title: 'Progreso Medible',
-    description: 'Seguimiento de métricas, fotos y evaluaciones periódicas.',
+    description: 'Seguimiento de mÃ©tricas, fotos y evaluaciones periÃ³dicas.',
   },
 ];
 
@@ -85,19 +85,19 @@ export default function About() {
 
             <div className="space-y-5 text-charcoal/70 text-lg leading-relaxed mb-10">
               <p>
-                Soy Russ, y mi misión es ayudarte a lograr la transformación que venís
+                Soy Russ, y mi misiÃ³n es ayudarte a lograr la transformaciÃ³n que venÃ­s
                 buscando hace tiempo. No prometo milagros, prometo{' '}
                 <span className="text-charcoal font-semibold">disciplina, seguimiento real
                 y resultados comprobables.</span>
               </p>
               <p>
-                Con años de experiencia en entrenamiento personalizado, entendí que cada
-                cuerpo es diferente. Por eso no trabajo con planes genéricos. Cada
-                programa que diseño es único, pensado para vos y tus objetivos específicos.
+                Con aÃ±os de experiencia en entrenamiento personalizado, entendÃ­ que cada
+                cuerpo es diferente. Por eso no trabajo con planes genÃ©ricos. Cada
+                programa que diseÃ±o es Ãºnico, pensado para vos y tus objetivos especÃ­ficos.
               </p>
               <p>
-                Mi método combina entrenamiento efectivo, nutrición orientada a tus metas
-                y el acompañamiento que necesitás para no rendirte.{' '}
+                Mi mÃ©todo combina entrenamiento efectivo, nutriciÃ³n orientada a tus metas
+                y el acompaÃ±amiento que necesitÃ¡s para no rendirte.{' '}
                 <span className="text-rose font-semibold">
                   Estoy con vos en cada paso del camino.
                 </span>
@@ -132,3 +132,4 @@ export default function About() {
     </section>
   );
 }
+

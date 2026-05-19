@@ -1,15 +1,15 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { Dumbbell, Flame, TrendingUp, Globe, CalendarCheck, Heart, MessageCircle } from 'lucide-react';
 
-const WHATSAPP_URL = 'https://wa.me/5491131491877?text=Hola!%20Quiero%20info%20sobre%20sus%20servicios';
+const WHATSAPP_URL = 'https://wa.me/5491168124464?text=Hola!%20Quiero%20info%20sobre%20sus%20servicios';
 
 const services = [
   {
     icon: Dumbbell,
     title: 'Entrenamiento Personal',
-    description: 'Sesiones 1 a 1 con supervisión directa. Máxima atención y ajustes en tiempo real.',
+    description: 'Sesiones 1 a 1 con supervisiÃ³n directa. MÃ¡xima atenciÃ³n y ajustes en tiempo real.',
     popular: false,
   },
   {
@@ -21,7 +21,7 @@ const services = [
   {
     icon: TrendingUp,
     title: 'Hipertrofia / Ganancia Muscular',
-    description: 'Diseño de volumen y fuerza. Técnicas avanzadas para maximizar tu crecimiento.',
+    description: 'DiseÃ±o de volumen y fuerza. TÃ©cnicas avanzadas para maximizar tu crecimiento.',
     popular: false,
   },
   {
@@ -33,13 +33,13 @@ const services = [
   {
     icon: CalendarCheck,
     title: 'Seguimiento Semanal',
-    description: 'Evaluaciones periódicas, ajuste de cargas y corrección de técnica.',
+    description: 'Evaluaciones periÃ³dicas, ajuste de cargas y correcciÃ³n de tÃ©cnica.',
     popular: false,
   },
   {
     icon: Heart,
     title: 'Asesoramiento Integral',
-    description: 'Nutrición, descanso, suplementación y mentalidad. Todo lo que necesitás.',
+    description: 'NutriciÃ³n, descanso, suplementaciÃ³n y mentalidad. Todo lo que necesitÃ¡s.',
     popular: false,
   },
 ];
@@ -64,8 +64,8 @@ export default function Services() {
             Lo que <span className="text-gradient">ofrezco</span>
           </h2>
           <p className="text-charcoal/60 text-lg max-w-2xl mx-auto">
-            Planes diseñados para cada objetivo. Elegí el que mejor se adapte a vos
-            y empezá tu transformación hoy.
+            Planes diseÃ±ados para cada objetivo. ElegÃ­ el que mejor se adapte a vos
+            y empezÃ¡ tu transformaciÃ³n hoy.
           </p>
         </motion.div>
 
@@ -82,7 +82,7 @@ export default function Services() {
               {service.popular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
                   <span className="bg-rose text-white text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider">
-                    Más elegido
+                    MÃ¡s elegido
                   </span>
                 </div>
               )}
@@ -126,3 +126,4 @@ export default function Services() {
     </section>
   );
 }
+

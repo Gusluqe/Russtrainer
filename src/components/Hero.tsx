@@ -1,9 +1,9 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { MessageCircle, Instagram, ChevronDown } from 'lucide-react';
 
-const WHATSAPP_URL = 'https://wa.me/5491131491877?text=Hola%20Russ!%20Quiero%20empezar%20mi%20proceso.%20Me%20interesa%20el%20plan%20online!';
+const WHATSAPP_URL = 'https://wa.me/5491168124464?text=Hola%20Russ!%20Quiero%20empezar%20mi%20proceso.%20Me%20interesa%20el%20plan%20online!';
 const INSTAGRAM_URL = 'https://instagram.com/russ.trainer';
 
 export default function Hero() {
@@ -34,7 +34,7 @@ export default function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-rose" />
               </span>
-              No te adaptás al plan, el plan se adapta a vos
+              No te adaptÃ¡s al plan, el plan se adapta a vos
             </motion.div>
 
             <motion.h1
@@ -62,8 +62,8 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="text-xl text-charcoal/70 mb-8 leading-relaxed"
             >
-              Dejá de seguir rutinas genéricas. Tu cuerpo, tu tiempo, tu vida
-              — un plan personalizado que se adapta a vos, no al revés.
+              DejÃ¡ de seguir rutinas genÃ©ricas. Tu cuerpo, tu tiempo, tu vida
+              â€” un plan personalizado que se adapta a vos, no al revÃ©s.
             </motion.p>
 
             <motion.div
@@ -84,7 +84,7 @@ export default function Hero() {
                   animate={{ x: [0, 4, 0] }}
                   transition={{ repeat: Infinity, duration: 1.5 }}
                 >
-                  →
+                  â†’
                 </motion.span>
               </a>
               <a
@@ -104,7 +104,7 @@ export default function Hero() {
               transition={{ delay: 0.6 }}
               className="text-charcoal/50 text-sm mb-8"
             >
-              Planes personalizados + acompañamiento constante
+              Planes personalizados + acompaÃ±amiento constante
             </motion.p>
 
             <motion.div
@@ -199,3 +199,4 @@ export default function Hero() {
     </section>
   );
 }
+

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -30,7 +30,7 @@ export default function SplashScreen() {
             className="object-cover object-center"
           />
 
-          {/* Viñeta rosa inset desde los bordes */}
+          {/* ViÃ±eta rosa inset desde los bordes */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{ boxShadow: 'inset 0 0 60px 20px rgba(201, 169, 166, 0.5)' }}
@@ -58,3 +58,4 @@ export default function SplashScreen() {
     </AnimatePresence>
   );
 }
+

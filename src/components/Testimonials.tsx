@@ -1,30 +1,30 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { Star, Quote, MessageCircle } from 'lucide-react';
 
-const WHATSAPP_URL = 'https://wa.me/5491131491877?text=Hola!%20Quiero%20empezar%20mi%20proceso';
+const WHATSAPP_URL = 'https://wa.me/5491168124464?text=Hola!%20Quiero%20empezar%20mi%20proceso';
 
 const testimonials = [
   {
     handle: '@rocio.romano.581',
     initial: 'R',
     gradient: 'from-rose to-nude',
-    content: 'Gracias por ayudarme a salir de mi lugar de confort y empezar a moverme por mí para sentirme mejor, no solo físicamente sino también mentalmente. No sos solo entrenadora, sos un sostén para no caer.',
+    content: 'Gracias por ayudarme a salir de mi lugar de confort y empezar a moverme por mÃ­ para sentirme mejor, no solo fÃ­sicamente sino tambiÃ©n mentalmente. No sos solo entrenadora, sos un sostÃ©n para no caer.',
     rating: 5,
   },
   {
     handle: '@martuservin',
     initial: 'M',
     gradient: 'from-nude to-sage',
-    content: 'Se nota el amor que le ponés a lo que hacés, desde el listado que enviás los domingos hasta cómo adaptás cada ejercicio. Gracias por no ser solo una coach de gimnasio, sino alguien que me escucha y me motiva a mejorar cada día.',
+    content: 'Se nota el amor que le ponÃ©s a lo que hacÃ©s, desde el listado que enviÃ¡s los domingos hasta cÃ³mo adaptÃ¡s cada ejercicio. Gracias por no ser solo una coach de gimnasio, sino alguien que me escucha y me motiva a mejorar cada dÃ­a.',
     rating: 5,
   },
   {
     handle: '@kaleidoscopioarte',
     initial: 'K',
     gradient: 'from-sage to-rose',
-    content: 'Lo que destaco es su energía y la forma en que te impulsa a superarte. Gracias a su acompañamiento mejoré mi confianza y constancia. Se nota tu compromiso y dedicación.',
+    content: 'Lo que destaco es su energÃ­a y la forma en que te impulsa a superarte. Gracias a su acompaÃ±amiento mejorÃ© mi confianza y constancia. Se nota tu compromiso y dedicaciÃ³n.',
     rating: 5,
   },
 ];
@@ -104,3 +104,4 @@ export default function Testimonials() {
     </section>
   );
 }
+

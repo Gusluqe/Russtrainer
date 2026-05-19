@@ -1,11 +1,11 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 
 const photos = [
   { src: '/foto3.png', alt: 'Russ en entrenamiento' },
   { src: '/foto4.png', alt: 'Seguimiento personalizado' },
-  { src: '/foto5.png', alt: 'Proceso de transformación' },
+  { src: '/foto5.png', alt: 'Proceso de transformaciÃ³n' },
   { src: '/foto6.png', alt: 'Tu proceso' },
 ];
 
@@ -21,10 +21,10 @@ export default function PhotoGallery() {
           className="text-center mb-10"
         >
           <span className="text-rose font-medium uppercase tracking-widest text-sm">
-            Galería
+            GalerÃ­a
           </span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-charcoal mt-3">
-            El proceso <span className="text-gradient">en imágenes</span>
+            El proceso <span className="text-gradient">en imÃ¡genes</span>
           </h2>
         </motion.div>
 
@@ -51,3 +51,4 @@ export default function PhotoGallery() {
     </section>
   );
 }
+

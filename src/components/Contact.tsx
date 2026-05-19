@@ -1,10 +1,10 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle, Instagram, Send, SendHorizonal, CheckCircle } from 'lucide-react';
 
-const WHATSAPP_URL = 'https://wa.me/5491131491877';
+const WHATSAPP_URL = 'https://wa.me/5491168124464';
 const INSTAGRAM_URL = 'https://instagram.com/russ.trainer';
 
 interface FormData {
@@ -27,12 +27,12 @@ export default function Contact() {
       ``,
       `Nombre: ${formData.name}`,
       `Email: ${formData.email}`,
-      formData.phone ? `Teléfono: ${formData.phone}` : '',
+      formData.phone ? `TelÃ©fono: ${formData.phone}` : '',
       ``,
       `Mensaje: ${formData.message}`,
     ].filter(l => l !== null);
     const text = encodeURIComponent(lines.join('\n'));
-    window.open(`https://wa.me/5491131491877?text=${text}`, '_blank');
+    window.open(`https://wa.me/5491168124464?text=${text}`, '_blank');
     setIsSubmitting(false);
     setIsSubmitted(true);
     setTimeout(() => {
@@ -62,10 +62,10 @@ export default function Contact() {
             Contacto
           </span>
           <h2 className="section-title mt-4 mb-5">
-            ¿Lista para <span className="text-gradient">arrancar?</span>
+            Â¿Lista para <span className="text-gradient">arrancar?</span>
           </h2>
           <p className="text-charcoal/60 text-lg max-w-xl mx-auto">
-            Hablemos y armemos tu plan. Respondé el formulario o contactame directamente.
+            Hablemos y armemos tu plan. RespondÃ© el formulario o contactame directamente.
           </p>
         </motion.div>
 
@@ -120,7 +120,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-charcoal font-medium">Telegram</p>
-                    <p className="text-charcoal/50 text-sm">Próximamente</p>
+                    <p className="text-charcoal/50 text-sm">PrÃ³ximamente</p>
                   </div>
                 </div>
               </div>
@@ -128,15 +128,15 @@ export default function Contact() {
 
             <div className="card p-8">
               <h3 className="text-xl font-heading font-bold text-charcoal mb-4">
-                ¿Por qué elegirme?
+                Â¿Por quÃ© elegirme?
               </h3>
               <ul className="space-y-3">
                 {[
                   'Planes 100% personalizados',
                   'Seguimiento real y constante',
                   'Resultados comprobables',
-                  'Comunicación directa',
-                  'Método probado con +100 clientas',
+                  'ComunicaciÃ³n directa',
+                  'MÃ©todo probado con +100 clientas',
                 ].map((item, index) => (
                   <li key={index} className="flex items-center gap-3 text-charcoal/65 text-sm">
                     <div className="w-5 h-5 rounded-full bg-rose/10 flex items-center justify-center shrink-0">
@@ -190,7 +190,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-charcoal/60 text-sm mb-2 font-medium">Teléfono (opcional)</label>
+                  <label className="block text-charcoal/60 text-sm mb-2 font-medium">TelÃ©fono (opcional)</label>
                   <input
                     type="tel"
                     name="phone"
@@ -231,7 +231,7 @@ export default function Contact() {
                   ) : isSubmitted ? (
                     <span className="flex items-center justify-center gap-2">
                       <CheckCircle size={18} />
-                      ¡Mensaje enviado!
+                      Â¡Mensaje enviado!
                     </span>
                   ) : (
                     <span className="flex items-center justify-center gap-2">
@@ -248,3 +248,4 @@ export default function Contact() {
     </section>
   );
 }
+

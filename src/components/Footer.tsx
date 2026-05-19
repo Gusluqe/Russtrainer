@@ -1,10 +1,10 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { Instagram, MessageCircle, Send } from 'lucide-react';
 import Logo from './Logo';
 
-const WHATSAPP_URL = 'https://wa.me/5491131491877';
+const WHATSAPP_URL = 'https://wa.me/5491168124464';
 const INSTAGRAM_URL = 'https://instagram.com/russ.trainer';
 
 const footerLinks = [
@@ -32,7 +32,7 @@ export default function Footer() {
           >
             <Logo size="md" dark />
             <p className="mt-4 text-white/50 text-sm leading-relaxed">
-              Transformá tu cuerpo y tu vida con entrenamiento personalizado.
+              TransformÃ¡ tu cuerpo y tu vida con entrenamiento personalizado.
               Resultados reales, seguimiento constante.
             </p>
             <div className="flex items-center gap-3 mt-6">
@@ -56,21 +56,21 @@ export default function Footer() {
               </a>
               <span
                 className="p-3 bg-white/5 rounded-full text-white/20 cursor-not-allowed border border-white/5"
-                title="Próximamente en Telegram"
+                title="PrÃ³ximamente en Telegram"
               >
                 <Send size={18} />
               </span>
             </div>
           </motion.div>
 
-          {/* Navegación */}
+          {/* NavegaciÃ³n */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h3 className="text-sm font-heading font-bold text-white mb-4 uppercase tracking-wider">Navegación</h3>
+            <h3 className="text-sm font-heading font-bold text-white mb-4 uppercase tracking-wider">NavegaciÃ³n</h3>
             <ul className="space-y-3">
               {footerLinks.map((link) => (
                 <li key={link.name}>
@@ -143,15 +143,15 @@ export default function Footer() {
             2026 RussTrainer. Todos los derechos reservados.
           </p>
           <div className="flex flex-col sm:flex-row items-center gap-2 text-sm">
-            <p className="text-white/30">Hecho con dedicación y disciplina</p>
-            <span className="hidden sm:block text-white/15">·</span>
+            <p className="text-white/30">Hecho con dedicaciÃ³n y disciplina</p>
+            <span className="hidden sm:block text-white/15">Â·</span>
             <a
               href="https://luquetech.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/40 hover:text-rose transition-colors"
             >
-              ¿Te gustó esta página? 🚀 Creá la tuya en luquetech.com
+              Â¿Te gustÃ³ esta pÃ¡gina? ðŸš€ CreÃ¡ la tuya en luquetech.com
             </a>
           </div>
         </motion.div>
@@ -159,3 +159,4 @@ export default function Footer() {
     </footer>
   );
 }
+

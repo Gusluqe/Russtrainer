@@ -1,10 +1,10 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 
-const WHATSAPP_URL = 'https://wa.me/5491131491877?text=Hola!%20Quiero%20info%20sobre%20RussTrainer';
+const WHATSAPP_URL = 'https://wa.me/5491168124464?text=Hola!%20Quiero%20info%20sobre%20RussTrainer';
 
 export default function WhatsAppButton() {
   const [isVisible, setIsVisible] = useState(false);
@@ -80,3 +80,4 @@ export default function WhatsAppButton() {
     </AnimatePresence>
   );
 }
+

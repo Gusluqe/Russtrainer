@@ -1,35 +1,35 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, MessageCircle } from 'lucide-react';
 
-const WHATSAPP_URL = 'https://wa.me/5491131491877?text=Hola!%20Tengo%20una%20consulta';
+const WHATSAPP_URL = 'https://wa.me/5491168124464?text=Hola!%20Tengo%20una%20consulta';
 
 const faqs = [
   {
-    question: '¿Los planes son realmente personalizados?',
-    answer: 'Sí, 100%. No trabajo con planes genéricos. Cada programa se diseña según tus objetivos específicos, tu nivel de condición física, tiempo disponible y preferencias. Además, se ajusta semanalmente según tu progreso.',
+    question: 'Â¿Los planes son realmente personalizados?',
+    answer: 'SÃ­, 100%. No trabajo con planes genÃ©ricos. Cada programa se diseÃ±a segÃºn tus objetivos especÃ­ficos, tu nivel de condiciÃ³n fÃ­sica, tiempo disponible y preferencias. AdemÃ¡s, se ajusta semanalmente segÃºn tu progreso.',
   },
   {
-    question: '¿Puedo entrenar online si no estoy en Buenos Aires?',
+    question: 'Â¿Puedo entrenar online si no estoy en Buenos Aires?',
     answer: 'Absolutamente. El entrenamiento online funciona igual de bien que el presencial. Usamos videollamadas para las sesiones, WhatsApp para seguimiento diario y una app para registrar tus entrenamientos. La distancia no es un impedimento.',
   },
   {
-    question: '¿Cuánto dura el seguimiento?',
-    answer: 'Los planes son mensuales con renovación. Sin embargo, recomiendo un mínimo de 3 meses para ver resultados significativos. Muchas clientas se quedan más de 6 meses porque los resultados siguen llegando.',
+    question: 'Â¿CuÃ¡nto dura el seguimiento?',
+    answer: 'Los planes son mensuales con renovaciÃ³n. Sin embargo, recomiendo un mÃ­nimo de 3 meses para ver resultados significativos. Muchas clientas se quedan mÃ¡s de 6 meses porque los resultados siguen llegando.',
   },
   {
-    question: '¿Necesito experiencia previa en gym?',
-    answer: 'Para nada. Tengo experiencia entrenando desde principiantes hasta atletas avanzadas. Si nunca tocaste una pesa, empezás desde cero con la técnica correcta. No importa tu punto de partida, importa tu compromiso.',
+    question: 'Â¿Necesito experiencia previa en gym?',
+    answer: 'Para nada. Tengo experiencia entrenando desde principiantes hasta atletas avanzadas. Si nunca tocaste una pesa, empezÃ¡s desde cero con la tÃ©cnica correcta. No importa tu punto de partida, importa tu compromiso.',
   },
   {
-    question: '¿Cómo arranco?',
-    answer: 'Es muy simple: hablame por WhatsApp, contame tus objetivos y disponibilidad. Después hacemos una evaluación inicial (puede ser por videollamada) y en 48 horas ya tenés tu primer plan en mano.',
+    question: 'Â¿CÃ³mo arranco?',
+    answer: 'Es muy simple: hablame por WhatsApp, contame tus objetivos y disponibilidad. DespuÃ©s hacemos una evaluaciÃ³n inicial (puede ser por videollamada) y en 48 horas ya tenÃ©s tu primer plan en mano.',
   },
   {
-    question: '¿La primera semana gratis incluye seguimiento?',
-    answer: 'Sí, incluye un plan de entrenamiento personalizado para esa semana, videos de los ejercicios y seguimiento por WhatsApp. Es para que puedas probar cómo trabajo sin ningún compromiso de tu parte.',
+    question: 'Â¿La primera semana gratis incluye seguimiento?',
+    answer: 'SÃ­, incluye un plan de entrenamiento personalizado para esa semana, videos de los ejercicios y seguimiento por WhatsApp. Es para que puedas probar cÃ³mo trabajo sin ningÃºn compromiso de tu parte.',
   },
 ];
 
@@ -55,7 +55,7 @@ export default function FAQ() {
             Preguntas <span className="text-gradient">frecuentes</span>
           </h2>
           <p className="text-charcoal/60 text-lg">
-            Resolvé tus dudas antes de empezar. Si necesitás más info, hablame directamente.
+            ResolvÃ© tus dudas antes de empezar. Si necesitÃ¡s mÃ¡s info, hablame directamente.
           </p>
         </motion.div>
 
@@ -114,7 +114,7 @@ export default function FAQ() {
           className="text-center"
         >
           <p className="text-charcoal/50 mb-6">
-            ¿Tenés otra pregunta? No te quedés con la duda.
+            Â¿TenÃ©s otra pregunta? No te quedÃ©s con la duda.
           </p>
           <a
             href={WHATSAPP_URL}
@@ -130,3 +130,4 @@ export default function FAQ() {
     </section>
   );
 }
+

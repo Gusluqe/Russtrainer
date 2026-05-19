@@ -1,13 +1,13 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { Gift, MessageCircle, Zap, Shield } from 'lucide-react';
 
-const WHATSAPP_URL = 'https://wa.me/5491131491877?text=Hola!%20Quiero%20acceder%20a%20mi%20primera%20semana%20gratis!';
+const WHATSAPP_URL = 'https://wa.me/5491168124464?text=Hola!%20Quiero%20acceder%20a%20mi%20primera%20semana%20gratis!';
 
 const features = [
   { icon: Zap, text: 'Sin compromiso' },
-  { icon: Shield, text: 'Sin tarjeta de crédito' },
+  { icon: Shield, text: 'Sin tarjeta de crÃ©dito' },
   { icon: Gift, text: 'Plan personalizado' },
 ];
 
@@ -42,7 +42,7 @@ export default function FreeWeek() {
             transition={{ delay: 0.3 }}
             className="section-title mb-5"
           >
-            Probá tu primera{' '}
+            ProbÃ¡ tu primera{' '}
             <span className="text-gradient">semana gratis</span>
           </motion.h2>
 
@@ -53,8 +53,8 @@ export default function FreeWeek() {
             transition={{ delay: 0.4 }}
             className="text-xl text-charcoal/60 max-w-xl mx-auto mb-10"
           >
-            Empezá hoy, conocé el método y comprobá cómo trabajamos.
-            Sin compromiso, sin obligación. Solo vos y tus objetivos.
+            EmpezÃ¡ hoy, conocÃ© el mÃ©todo y comprobÃ¡ cÃ³mo trabajamos.
+            Sin compromiso, sin obligaciÃ³n. Solo vos y tus objetivos.
           </motion.p>
 
           <motion.div
@@ -92,7 +92,7 @@ export default function FreeWeek() {
               className="btn-primary text-lg px-10 py-5 animate-pulse-glow inline-flex"
             >
               <MessageCircle size={22} />
-              Clic acá y hablame por WhatsApp
+              Clic acÃ¡ y hablame por WhatsApp
             </a>
             <p className="text-charcoal/40 text-sm mt-4">
               Respondo en menos de 2 horas
@@ -103,3 +103,4 @@ export default function FreeWeek() {
     </section>
   );
 }
+

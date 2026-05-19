@@ -1,9 +1,9 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { MessageCircle, Target, Rocket, RefreshCw, Heart, ArrowRight } from 'lucide-react';
 
-const WHATSAPP_URL = 'https://wa.me/5491131491877?text=Hola!%20Quiero%20empezar%20mi%20proceso';
+const WHATSAPP_URL = 'https://wa.me/5491168124464?text=Hola!%20Quiero%20empezar%20mi%20proceso';
 
 const steps = [
   {
@@ -16,25 +16,25 @@ const steps = [
     number: '02',
     icon: Target,
     title: 'Tu plan 100% personalizado',
-    description: 'Rutina en Notion, 4 semanas, con videos explicativos, movilidad articular y estiramientos. Adaptado a tu nivel, disponibilidad y si entrenás en casa o gimnasio.',
+    description: 'Rutina en Notion, 4 semanas, con videos explicativos, movilidad articular y estiramientos. Adaptado a tu nivel, disponibilidad y si entrenÃ¡s en casa o gimnasio.',
   },
   {
     number: '03',
     icon: Rocket,
-    title: 'Acompañamiento constante',
-    description: 'Seguimiento diario por WhatsApp. Respuesta rápida, dudas resueltas, ajustes en tiempo real. No vas a estar sola en el proceso.',
+    title: 'AcompaÃ±amiento constante',
+    description: 'Seguimiento diario por WhatsApp. Respuesta rÃ¡pida, dudas resueltas, ajustes en tiempo real. No vas a estar sola en el proceso.',
   },
   {
     number: '04',
     icon: RefreshCw,
     title: 'Ajustes reales',
-    description: 'El plan no es fijo. Evoluciona con vos según tu progreso y tu día a día. Si algo no funciona, lo cambiamos.',
+    description: 'El plan no es fijo. Evoluciona con vos segÃºn tu progreso y tu dÃ­a a dÃ­a. Si algo no funciona, lo cambiamos.',
   },
   {
     number: '05',
     icon: Heart,
-    title: 'Mucho más que entrenamiento',
-    description: 'Guía de hábitos saludables y enfoque integral: cuerpo, mente y bienestar. Porque el objetivo es que te sientas bien, no solo que te veas bien.',
+    title: 'Mucho mÃ¡s que entrenamiento',
+    description: 'GuÃ­a de hÃ¡bitos saludables y enfoque integral: cuerpo, mente y bienestar. Porque el objetivo es que te sientas bien, no solo que te veas bien.',
   },
 ];
 
@@ -59,12 +59,12 @@ export default function HowWeWork() {
             <span className="text-gradient">distinto</span>
           </h2>
           <p className="text-charcoal/60 text-lg max-w-2xl mx-auto">
-            No se trata de seguir una rutina más. Se trata de tener un plan pensado
-            para tu cuerpo, tu momento y tu vida. Acá no vas a estar sola.
+            No se trata de seguir una rutina mÃ¡s. Se trata de tener un plan pensado
+            para tu cuerpo, tu momento y tu vida. AcÃ¡ no vas a estar sola.
           </p>
         </motion.div>
 
-        {/* Mobile: lista compacta — solo ícono + número + título */}
+        {/* Mobile: lista compacta â€” solo Ã­cono + nÃºmero + tÃ­tulo */}
         <div className="mt-10 md:hidden">
           <div className="grid grid-cols-1 gap-3">
             {steps.map((step, index) => (
@@ -94,7 +94,7 @@ export default function HowWeWork() {
 
         {/* Desktop: layout completo con cards */}
         <div className="relative mt-16 space-y-5 hidden md:block">
-          {/* Línea vertical */}
+          {/* LÃ­nea vertical */}
           <div className="absolute left-[27px] top-10 bottom-10 w-px bg-gradient-to-b from-rose/40 via-rose/20 to-transparent" />
 
           {steps.map((step, index) => (
@@ -151,3 +151,4 @@ export default function HowWeWork() {
     </section>
   );
 }
+

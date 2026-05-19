@@ -1,26 +1,26 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { motion, type PanInfo } from 'framer-motion';
 import { Check, MessageCircle, Users, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const WHATSAPP_ONLINE = 'https://wa.me/5491131491877?text=Hola!%20Quiero%20empezar%20con%20el%20Plan%20Online';
-const WHATSAPP_PRESENCIAL = 'https://wa.me/5491131491877?text=Hola!%20Quiero%20consultar%20disponibilidad%20para%20el%20Plan%20Online%20%2B%20Presencial';
+const WHATSAPP_ONLINE = 'https://wa.me/5491168124464?text=Hola!%20Quiero%20empezar%20con%20el%20Plan%20Online';
+const WHATSAPP_PRESENCIAL = 'https://wa.me/5491168124464?text=Hola!%20Quiero%20consultar%20disponibilidad%20para%20el%20Plan%20Online%20%2B%20Presencial';
 
 const onlineFeatures = [
   'Plan de entrenamiento 100% personalizado (4 semanas)',
   'Rutinas en Notion con videos explicativos',
   'Movilidad articular + estiramientos incluidos',
   'Adaptado a tu nivel, objetivos y disponibilidad',
-  'Ajustes del plan según tu progreso',
+  'Ajustes del plan segÃºn tu progreso',
   'Seguimiento diario por WhatsApp',
-  'Videollamada inicial personalizada (15–30 min)',
-  'Guía de hábitos saludables',
+  'Videollamada inicial personalizada (15â€“30 min)',
+  'GuÃ­a de hÃ¡bitos saludables',
 ];
 
 const presencialExtras = [
   '1 clase presencial por semana',
-  'Correcciones de técnica en tiempo real',
+  'Correcciones de tÃ©cnica en tiempo real',
 ];
 
 /* Badge fuera del overflow-hidden para que no se clipee */
@@ -29,7 +29,7 @@ function OnlineCard() {
     <div className="relative">
       <div className="absolute -top-4 left-6 z-10">
         <span className="bg-rose text-white text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider">
-          Más elegido
+          MÃ¡s elegido
         </span>
       </div>
       <div className="relative rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(232,164,164,0.18)] border-2 border-rose/30">
@@ -39,15 +39,15 @@ function OnlineCard() {
             Plan Online
           </h3>
           <p className="text-charcoal/50 text-sm mb-8">
-            Todo lo que necesitás para transformarte desde donde estés.
+            Todo lo que necesitÃ¡s para transformarte desde donde estÃ©s.
           </p>
           <div className="mb-8">
             <div className="flex items-end gap-2 mb-2">
-              <span className="text-4xl font-heading font-bold text-charcoal">30 días</span>
+              <span className="text-4xl font-heading font-bold text-charcoal">30 dÃ­as</span>
               <span className="text-charcoal/40 text-sm mb-1">de proceso</span>
             </div>
             <p className="text-charcoal/40 text-sm">
-              Precio: consultá por WhatsApp — cupos disponibles este mes
+              Precio: consultÃ¡ por WhatsApp â€” cupos disponibles este mes
             </p>
           </div>
           <ul className="space-y-4 mb-10">
@@ -89,15 +89,15 @@ function PresencialCard() {
           Online + Presencial
         </h3>
         <p className="text-charcoal/50 text-sm mb-6">
-          Todo el plan online, más un encuentro semanal en persona.
+          Todo el plan online, mÃ¡s un encuentro semanal en persona.
         </p>
         <div className="mb-6 flex items-end gap-2">
-          <span className="text-3xl font-heading font-bold text-charcoal">30 días</span>
+          <span className="text-3xl font-heading font-bold text-charcoal">30 dÃ­as</span>
           <span className="text-charcoal/40 text-sm mb-1">de proceso</span>
         </div>
         <div className="mb-6">
           <p className="text-charcoal/40 text-xs uppercase tracking-widest mb-3 font-medium">
-            Todo el Plan Online, más:
+            Todo el Plan Online, mÃ¡s:
           </p>
           <ul className="space-y-3">
             {presencialExtras.map((feature) => (
@@ -153,14 +153,14 @@ export default function Plans() {
             Planes
           </span>
           <h2 className="section-title mt-4 mb-5">
-            Elegí cómo querés <span className="text-gradient">empezar</span>
+            ElegÃ­ cÃ³mo querÃ©s <span className="text-gradient">empezar</span>
           </h2>
           <p className="text-charcoal/60 text-lg max-w-xl mx-auto">
-            Resultados reales que podés sostener. Sin importar por dónde empieces.
+            Resultados reales que podÃ©s sostener. Sin importar por dÃ³nde empieces.
           </p>
         </motion.div>
 
-        {/* Desktop: lado a lado — igual que antes */}
+        {/* Desktop: lado a lado â€” igual que antes */}
         <div className="hidden md:grid lg:grid-cols-5 gap-8 items-start">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -183,7 +183,7 @@ export default function Plans() {
           </motion.div>
         </div>
 
-        {/* Mobile: carrusel — ancho 200% explícito para que -50% = exactamente 1 card */}
+        {/* Mobile: carrusel â€” ancho 200% explÃ­cito para que -50% = exactamente 1 card */}
         <div className="md:hidden">
           <div className="overflow-hidden">
             <motion.div
@@ -247,9 +247,10 @@ export default function Plans() {
           transition={{ delay: 0.4 }}
           className="text-center text-charcoal/40 text-sm mt-10 font-serif italic"
         >
-          No importa por dónde empieces. Lo importante es que sea un proceso que puedas sostener.
+          No importa por dÃ³nde empieces. Lo importante es que sea un proceso que puedas sostener.
         </motion.p>
       </div>
     </section>
   );
 }
+

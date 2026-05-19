@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 
@@ -74,3 +74,4 @@ export default function Logo({ className = '', size = 'md', dark = false }: Logo
     </motion.div>
   );
 }
+

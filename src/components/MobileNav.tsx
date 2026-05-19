@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { Home, User, CreditCard, MessageCircle } from 'lucide-react';
 
@@ -6,7 +6,7 @@ const links = [
   { label: 'Inicio',  href: '#inicio',                                                                             icon: Home },
   { label: 'Sobre',   href: '#sobre',                                                                              icon: User },
   { label: 'Planes',  href: '#planes',                                                                             icon: CreditCard },
-  { label: 'WhatsApp', href: 'https://wa.me/5491131491877?text=Hola!%20Quiero%20saber%20m%C3%A1s', icon: MessageCircle },
+  { label: 'WhatsApp', href: 'https://wa.me/5491168124464?text=Hola!%20Quiero%20saber%20m%C3%A1s', icon: MessageCircle },
 ];
 
 export default function MobileNav() {
@@ -29,3 +29,4 @@ export default function MobileNav() {
     </nav>
   );
 }
+
