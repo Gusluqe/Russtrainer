@@ -26,23 +26,42 @@
     background: #F5D5D5;
     color: #2D2D2D;
   }
+
+  /* Scrollbar rosada, finita */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #FCFCF7;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #E8A4A4;
+    border-radius: 8px;
+    border: 2px solid #FCFCF7;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #B85C68;
+  }
 }
 
 @layer components {
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-8 py-4
-           bg-rose text-white font-semibold rounded-full
-           hover:bg-rose-dark transition-all duration-300
-           transform hover:scale-105 hover:shadow-lg hover:shadow-rose/30
-           focus:outline-none focus:ring-2 focus:ring-rose focus:ring-offset-2 focus:ring-offset-cream;
+           bg-rose-deep text-white font-semibold rounded-full
+           hover:bg-rose-deeper transition-all duration-300
+           transform hover:scale-105 hover:shadow-lg hover:shadow-rose-deep/30
+           focus:outline-none focus:ring-2 focus:ring-rose-deep focus:ring-offset-2 focus:ring-offset-cream;
   }
 
   .btn-secondary {
     @apply inline-flex items-center justify-center gap-2 px-8 py-4
-           bg-transparent border-2 border-rose text-rose font-semibold rounded-full
-           hover:bg-rose hover:text-white transition-all duration-300
+           bg-transparent border-2 border-rose-deep text-rose-deep font-semibold rounded-full
+           hover:bg-rose-deep hover:text-white transition-all duration-300
            transform hover:scale-105
-           focus:outline-none focus:ring-2 focus:ring-rose;
+           focus:outline-none focus:ring-2 focus:ring-rose-deep;
   }
 
   .btn-whatsapp {
@@ -65,14 +84,23 @@
     @apply transition-all duration-300 hover:shadow-[0_8px_32px_rgba(232,164,164,0.15)] hover:-translate-y-1;
   }
 
-  .text-gradient {
-    @apply bg-gradient-to-r from-rose to-nude bg-clip-text text-transparent;
+  /* Acento emocional de la marca: serif italic en rosa profundo */
+  .text-accent {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    @apply text-rose-deep;
   }
 
-  .gradient-text {
-    @apply bg-gradient-to-r from-rose to-nude bg-clip-text text-transparent;
-    background-size: 200% auto;
-    animation: shimmer 3s ease infinite;
+  /* Label de sección con ornamentos florales */
+  .kicker {
+    @apply inline-flex items-center gap-3 text-rose-deeper font-medium uppercase tracking-widest text-sm;
+  }
+
+  .kicker::before,
+  .kicker::after {
+    content: '✦';
+    @apply text-rose text-xs;
   }
 }
 
@@ -99,6 +127,15 @@
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-20px); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.8) translateY(0); }
+  50% { opacity: 0.7; transform: scale(1.1) translateY(-10px); }
+}
+
+.animate-twinkle {
+  animation: twinkle 4s ease-in-out infinite;
 }
 
 @keyframes pulse-glow {

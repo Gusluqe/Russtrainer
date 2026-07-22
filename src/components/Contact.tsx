@@ -27,7 +27,7 @@ export default function Contact() {
       ``,
       `Nombre: ${formData.name}`,
       `Email: ${formData.email}`,
-      formData.phone ? `TelÃ©fono: ${formData.phone}` : '',
+      formData.phone ? `Teléfono: ${formData.phone}` : '',
       ``,
       `Mensaje: ${formData.message}`,
     ].filter(l => l !== null);
@@ -62,10 +62,10 @@ export default function Contact() {
             Contacto
           </span>
           <h2 className="section-title mt-4 mb-5">
-            Â¿Lista para <span className="text-gradient">arrancar?</span>
+            ¿Lista para <span className="text-accent">arrancar?</span>
           </h2>
           <p className="text-charcoal/60 text-lg max-w-xl mx-auto">
-            Hablemos y armemos tu plan. RespondÃ© el formulario o contactame directamente.
+            Hablemos y armemos tu plan. Respondé el formulario o contactame directamente.
           </p>
         </motion.div>
 
@@ -95,7 +95,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-charcoal font-medium">WhatsApp</p>
-                    <p className="text-charcoal/50 text-sm">+54 9 11 3149-1877</p>
+                    <p className="text-charcoal/50 text-sm">+54 9 11 6812-4464</p>
                   </div>
                 </a>
 
@@ -120,7 +120,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-charcoal font-medium">Telegram</p>
-                    <p className="text-charcoal/50 text-sm">PrÃ³ximamente</p>
+                    <p className="text-charcoal/50 text-sm">Próximamente</p>
                   </div>
                 </div>
               </div>
@@ -128,15 +128,15 @@ export default function Contact() {
 
             <div className="card p-8">
               <h3 className="text-xl font-heading font-bold text-charcoal mb-4">
-                Â¿Por quÃ© elegirme?
+                ¿Por qué elegirme?
               </h3>
               <ul className="space-y-3">
                 {[
                   'Planes 100% personalizados',
                   'Seguimiento real y constante',
                   'Resultados comprobables',
-                  'ComunicaciÃ³n directa',
-                  'MÃ©todo probado con +100 clientas',
+                  'Comunicación directa',
+                  'Método probado con +100 clientas',
                 ].map((item, index) => (
                   <li key={index} className="flex items-center gap-3 text-charcoal/65 text-sm">
                     <div className="w-5 h-5 rounded-full bg-rose/10 flex items-center justify-center shrink-0">
@@ -190,7 +190,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-charcoal/60 text-sm mb-2 font-medium">TelÃ©fono (opcional)</label>
+                  <label className="block text-charcoal/60 text-sm mb-2 font-medium">Teléfono (opcional)</label>
                   <input
                     type="tel"
                     name="phone"
@@ -231,7 +231,7 @@ export default function Contact() {
                   ) : isSubmitted ? (
                     <span className="flex items-center justify-center gap-2">
                       <CheckCircle size={18} />
-                      Â¡Mensaje enviado!
+                      ¡Mensaje enviado!
                     </span>
                   ) : (
                     <span className="flex items-center justify-center gap-2">

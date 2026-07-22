@@ -4,11 +4,11 @@ import { motion } from 'framer-motion';
 import { Frown, TrendingDown, HelpCircle, Zap, RotateCcw, Quote } from 'lucide-react';
 
 const painPoints = [
-  { icon: Frown,        question: 'Â¿No te sentÃ­s cÃ³moda con tu cuerpo?' },
-  { icon: TrendingDown, question: 'Â¿Te frustrÃ¡s al no ver resultados?' },
-  { icon: HelpCircle,   question: 'Â¿No sabÃ©s quÃ© hacer en el gimnasio?' },
-  { icon: Zap,          question: 'Â¿Te exigÃ­s demasiado y terminÃ¡s abandonando?' },
-  { icon: RotateCcw,    question: 'Â¿EmpezÃ¡s motivada pero no logrÃ¡s sostener el hÃ¡bito?' },
+  { icon: Frown,        question: '¿No te sentís cómoda con tu cuerpo?' },
+  { icon: TrendingDown, question: '¿Te frustrás al no ver resultados?' },
+  { icon: HelpCircle,   question: '¿No sabés qué hacer en el gimnasio?' },
+  { icon: Zap,          question: '¿Te exigís demasiado y terminás abandonando?' },
+  { icon: RotateCcw,    question: '¿Empezás motivada pero no lográs sostener el hábito?' },
 ];
 
 export default function PainPoints() {
@@ -24,11 +24,11 @@ export default function PainPoints() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-rose font-medium uppercase tracking-widest text-sm">
-            Â¿Te identificÃ¡s?
+          <span className="kicker">
+            ¿Te identificás?
           </span>
           <h2 className="section-title mt-4 mb-4">
-            Sabemos cÃ³mo <span className="text-gradient">te sentÃ­s</span>
+            Sabemos cómo <span className="text-accent">te sentís</span>
           </h2>
         </motion.div>
 
@@ -64,10 +64,10 @@ export default function PainPoints() {
             <Quote size={36} className="text-rose/40 mx-auto mb-5" />
             <p className="text-xl md:text-2xl text-charcoal leading-relaxed font-serif italic">
               "No buscan solo cambiar su cuerpo. Buscan sentirse mejor con ellas mismas
-              y dejar de vivir el entrenamiento como una obligaciÃ³n."
+              y dejar de vivir el entrenamiento como una obligación."
             </p>
             <div className="mt-6 w-12 h-0.5 bg-gradient-to-r from-rose to-nude mx-auto" />
-            <p className="text-rose text-sm font-medium mt-4 uppercase tracking-widest">
+            <p className="text-rose-deeper text-sm font-medium mt-4 uppercase tracking-widest">
               Entrenar desde el amor, no desde la exigencia
             </p>
           </div>

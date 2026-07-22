@@ -68,7 +68,7 @@ export default function Logo({ className = '', size = 'md', dark = false }: Logo
       <div className="flex flex-col">
         <span className={`${text} font-heading font-bold tracking-tight leading-none`}>
           <span className={dark ? 'text-white' : 'text-charcoal'}>Russ</span>
-          <span className="text-gradient">Trainer</span>
+          <span className={`italic ${dark ? 'text-rose' : 'text-rose-deep'}`}>Trainer</span>
         </span>
       </div>
     </motion.div>

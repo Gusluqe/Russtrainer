@@ -30,7 +30,7 @@ export default function SplashScreen() {
             className="object-cover object-center"
           />
 
-          {/* ViÃ±eta rosa inset desde los bordes */}
+          {/* Viñeta rosa inset desde los bordes */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{ boxShadow: 'inset 0 0 60px 20px rgba(201, 169, 166, 0.5)' }}

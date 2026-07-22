@@ -23,8 +23,8 @@ export default function CTAFinal() {
           </span>
 
           <h2 className="section-title mt-4 mb-4">
-            Â¿Lista para empezar{' '}
-            <span className="text-gradient">tu proceso?</span>
+            ¿Lista para empezar{' '}
+            <span className="text-accent">tu proceso?</span>
           </h2>
 
           <p className="text-xl text-charcoal/60 mb-10 font-serif italic">
@@ -56,7 +56,7 @@ export default function CTAFinal() {
             transition={{ delay: 0.5 }}
             className="text-charcoal/40 text-sm mt-6"
           >
-            Resultados reales que podÃ©s sostener
+            Resultados reales que podés sostener
           </motion.p>
         </motion.div>
       </div>

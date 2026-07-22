@@ -9,7 +9,7 @@ const services = [
   {
     icon: Dumbbell,
     title: 'Entrenamiento Personal',
-    description: 'Sesiones 1 a 1 con supervisiÃ³n directa. MÃ¡xima atenciÃ³n y ajustes en tiempo real.',
+    description: 'Sesiones 1 a 1 con supervisión directa. Máxima atención y ajustes en tiempo real.',
     popular: false,
   },
   {
@@ -21,7 +21,7 @@ const services = [
   {
     icon: TrendingUp,
     title: 'Hipertrofia / Ganancia Muscular',
-    description: 'DiseÃ±o de volumen y fuerza. TÃ©cnicas avanzadas para maximizar tu crecimiento.',
+    description: 'Diseño de volumen y fuerza. Técnicas avanzadas para maximizar tu crecimiento.',
     popular: false,
   },
   {
@@ -33,13 +33,13 @@ const services = [
   {
     icon: CalendarCheck,
     title: 'Seguimiento Semanal',
-    description: 'Evaluaciones periÃ³dicas, ajuste de cargas y correcciÃ³n de tÃ©cnica.',
+    description: 'Evaluaciones periódicas, ajuste de cargas y corrección de técnica.',
     popular: false,
   },
   {
     icon: Heart,
     title: 'Asesoramiento Integral',
-    description: 'NutriciÃ³n, descanso, suplementaciÃ³n y mentalidad. Todo lo que necesitÃ¡s.',
+    description: 'Nutrición, descanso, suplementación y mentalidad. Todo lo que necesitás.',
     popular: false,
   },
 ];
@@ -61,11 +61,11 @@ export default function Services() {
             Servicios
           </span>
           <h2 className="section-title mt-4 mb-5">
-            Lo que <span className="text-gradient">ofrezco</span>
+            Lo que <span className="text-accent">ofrezco</span>
           </h2>
           <p className="text-charcoal/60 text-lg max-w-2xl mx-auto">
-            Planes diseÃ±ados para cada objetivo. ElegÃ­ el que mejor se adapte a vos
-            y empezÃ¡ tu transformaciÃ³n hoy.
+            Planes diseñados para cada objetivo. Elegí el que mejor se adapte a vos
+            y empezá tu transformación hoy.
           </p>
         </motion.div>
 
@@ -82,7 +82,7 @@ export default function Services() {
               {service.popular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
                   <span className="bg-rose text-white text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider">
-                    MÃ¡s elegido
+                    Más elegido
                   </span>
                 </div>
               )}

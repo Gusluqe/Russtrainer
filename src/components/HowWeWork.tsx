@@ -16,25 +16,25 @@ const steps = [
     number: '02',
     icon: Target,
     title: 'Tu plan 100% personalizado',
-    description: 'Rutina en Notion, 4 semanas, con videos explicativos, movilidad articular y estiramientos. Adaptado a tu nivel, disponibilidad y si entrenÃ¡s en casa o gimnasio.',
+    description: 'Rutina en Notion, 4 semanas, con videos explicativos, movilidad articular y estiramientos. Adaptado a tu nivel, disponibilidad y si entrenás en casa o gimnasio.',
   },
   {
     number: '03',
     icon: Rocket,
-    title: 'AcompaÃ±amiento constante',
-    description: 'Seguimiento diario por WhatsApp. Respuesta rÃ¡pida, dudas resueltas, ajustes en tiempo real. No vas a estar sola en el proceso.',
+    title: 'Acompañamiento constante',
+    description: 'Seguimiento diario por WhatsApp. Respuesta rápida, dudas resueltas, ajustes en tiempo real. No vas a estar sola en el proceso.',
   },
   {
     number: '04',
     icon: RefreshCw,
     title: 'Ajustes reales',
-    description: 'El plan no es fijo. Evoluciona con vos segÃºn tu progreso y tu dÃ­a a dÃ­a. Si algo no funciona, lo cambiamos.',
+    description: 'El plan no es fijo. Evoluciona con vos según tu progreso y tu día a día. Si algo no funciona, lo cambiamos.',
   },
   {
     number: '05',
     icon: Heart,
-    title: 'Mucho mÃ¡s que entrenamiento',
-    description: 'GuÃ­a de hÃ¡bitos saludables y enfoque integral: cuerpo, mente y bienestar. Porque el objetivo es que te sientas bien, no solo que te veas bien.',
+    title: 'Mucho más que entrenamiento',
+    description: 'Guía de hábitos saludables y enfoque integral: cuerpo, mente y bienestar. Porque el objetivo es que te sientas bien, no solo que te veas bien.',
   },
 ];
 
@@ -51,20 +51,20 @@ export default function HowWeWork() {
           transition={{ duration: 0.6 }}
           className="text-center mb-6"
         >
-          <span className="text-rose font-medium uppercase tracking-widest text-sm">
+          <span className="kicker">
             Proceso
           </span>
           <h2 className="section-title mt-4 mb-5">
             Entrenar puede ser{' '}
-            <span className="text-gradient">distinto</span>
+            <span className="text-accent">distinto</span>
           </h2>
           <p className="text-charcoal/60 text-lg max-w-2xl mx-auto">
-            No se trata de seguir una rutina mÃ¡s. Se trata de tener un plan pensado
-            para tu cuerpo, tu momento y tu vida. AcÃ¡ no vas a estar sola.
+            No se trata de seguir una rutina más. Se trata de tener un plan pensado
+            para tu cuerpo, tu momento y tu vida. Acá no vas a estar sola.
           </p>
         </motion.div>
 
-        {/* Mobile: lista compacta â€” solo Ã­cono + nÃºmero + tÃ­tulo */}
+        {/* Mobile: lista compacta — solo ícono + número + título */}
         <div className="mt-10 md:hidden">
           <div className="grid grid-cols-1 gap-3">
             {steps.map((step, index) => (
@@ -80,7 +80,7 @@ export default function HowWeWork() {
                   <div className="w-10 h-10 rounded-full bg-rose/10 border border-rose/20 flex items-center justify-center">
                     <step.icon size={17} className="text-rose" />
                   </div>
-                  <span className="absolute -top-1.5 -right-1.5 bg-rose text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
+                  <span className="absolute -top-1.5 -right-1.5 bg-rose-deep text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
                     {index + 1}
                   </span>
                 </div>
@@ -94,7 +94,7 @@ export default function HowWeWork() {
 
         {/* Desktop: layout completo con cards */}
         <div className="relative mt-16 space-y-5 hidden md:block">
-          {/* LÃ­nea vertical */}
+          {/* Línea vertical */}
           <div className="absolute left-[27px] top-10 bottom-10 w-px bg-gradient-to-b from-rose/40 via-rose/20 to-transparent" />
 
           {steps.map((step, index) => (
@@ -110,7 +110,7 @@ export default function HowWeWork() {
                 <div className="w-14 h-14 rounded-full bg-rose/10 border border-rose/20 flex items-center justify-center relative z-10 group-hover:bg-rose/20 transition-colors duration-300">
                   <step.icon size={22} className="text-rose" />
                 </div>
-                <span className="absolute -top-2 -right-2 bg-rose text-white text-xs font-bold px-2.5 py-0.5 rounded-full z-20">
+                <span className="absolute -top-2 -right-2 bg-rose-deep text-white text-xs font-bold px-2.5 py-0.5 rounded-full z-20">
                   {step.number}
                 </span>
               </div>

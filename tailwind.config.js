@@ -18,8 +18,14 @@ module.exports = {
         rose: {
           DEFAULT: '#E8A4A4',
           dark: '#D48484',
+          deep: '#B85C68',
+          deeper: '#A34D59',
           light: '#F5D5D5',
           muted: '#FCF3F3',
+        },
+        plum: {
+          DEFAULT: '#33222A',
+          light: '#42303A',
         },
         sage: {
           DEFAULT: '#B8C9B5',

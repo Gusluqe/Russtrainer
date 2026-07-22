@@ -10,21 +10,21 @@ const testimonials = [
     handle: '@rocio.romano.581',
     initial: 'R',
     gradient: 'from-rose to-nude',
-    content: 'Gracias por ayudarme a salir de mi lugar de confort y empezar a moverme por mÃ­ para sentirme mejor, no solo fÃ­sicamente sino tambiÃ©n mentalmente. No sos solo entrenadora, sos un sostÃ©n para no caer.',
+    content: 'Gracias por ayudarme a salir de mi lugar de confort y empezar a moverme por mí para sentirme mejor, no solo físicamente sino también mentalmente. No sos solo entrenadora, sos un sostén para no caer.',
     rating: 5,
   },
   {
     handle: '@martuservin',
     initial: 'M',
     gradient: 'from-nude to-sage',
-    content: 'Se nota el amor que le ponÃ©s a lo que hacÃ©s, desde el listado que enviÃ¡s los domingos hasta cÃ³mo adaptÃ¡s cada ejercicio. Gracias por no ser solo una coach de gimnasio, sino alguien que me escucha y me motiva a mejorar cada dÃ­a.',
+    content: 'Se nota el amor que le ponés a lo que hacés, desde el listado que enviás los domingos hasta cómo adaptás cada ejercicio. Gracias por no ser solo una coach de gimnasio, sino alguien que me escucha y me motiva a mejorar cada día.',
     rating: 5,
   },
   {
     handle: '@kaleidoscopioarte',
     initial: 'K',
     gradient: 'from-sage to-rose',
-    content: 'Lo que destaco es su energÃ­a y la forma en que te impulsa a superarte. Gracias a su acompaÃ±amiento mejorÃ© mi confianza y constancia. Se nota tu compromiso y dedicaciÃ³n.',
+    content: 'Lo que destaco es su energía y la forma en que te impulsa a superarte. Gracias a su acompañamiento mejoré mi confianza y constancia. Se nota tu compromiso y dedicación.',
     rating: 5,
   },
 ];
@@ -42,11 +42,11 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-rose font-medium uppercase tracking-widest text-sm">
+          <span className="kicker">
             Testimonios
           </span>
           <h2 className="section-title mt-4 mb-4">
-            Ellas ya empezaron <span className="text-gradient">su proceso</span>
+            Ellas ya empezaron <span className="text-accent">su proceso</span>
           </h2>
           <p className="text-charcoal/60 text-lg max-w-xl mx-auto">
             Historias reales de mujeres que decidieron entrenar distinto.
@@ -74,7 +74,7 @@ export default function Testimonials() {
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold text-charcoal">{t.handle}</h3>
-                  <p className="text-charcoal/40 text-xs">Cliente real</p>
+                  <p className="text-charcoal/40 text-xs">Clienta real</p>
                 </div>
               </div>
 
@@ -92,7 +92,7 @@ export default function Testimonials() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-rose hover:text-rose-dark transition-colors text-sm font-medium"
+                className="inline-flex items-center gap-2 text-rose-deep hover:text-rose-deeper transition-colors text-sm font-medium"
               >
                 <MessageCircle size={14} />
                 Quiero resultados similares

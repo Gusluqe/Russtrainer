@@ -7,7 +7,7 @@ const benefits = [
   {
     icon: Target,
     title: 'Entrenamiento Personalizado',
-    description: 'Cada plan se diseÃ±a segÃºn tus objetivos, nivel y limitaciones.',
+    description: 'Cada plan se diseña según tus objetivos, nivel y limitaciones.',
   },
   {
     icon: TrendingUp,
@@ -16,13 +16,13 @@ const benefits = [
   },
   {
     icon: Users,
-    title: 'Plan SegÃºn Objetivos',
-    description: 'Ya sea bajar de peso, ganar mÃºsculo o mejorar tu rendimiento.',
+    title: 'Plan Según Objetivos',
+    description: 'Ya sea bajar de peso, ganar músculo o mejorar tu rendimiento.',
   },
   {
     icon: Award,
     title: 'Progreso Medible',
-    description: 'Seguimiento de mÃ©tricas, fotos y evaluaciones periÃ³dicas.',
+    description: 'Seguimiento de métricas, fotos y evaluaciones periódicas.',
   },
 ];
 
@@ -47,7 +47,7 @@ export default function About() {
               <div className="absolute -inset-4 bg-gradient-to-br from-rose/15 to-nude/10 rounded-3xl blur-2xl" />
               <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(232,164,164,0.20)]">
                 <img
-                  src="/foto2.png"
+                  src="/foto7.png"
                   alt="Russ entrenando"
                   className="w-full h-full object-cover object-top"
                 />
@@ -62,7 +62,7 @@ export default function About() {
                 className="absolute -bottom-6 -right-6 bg-gradient-to-br from-rose to-nude text-white px-6 py-4 rounded-2xl font-heading font-bold text-2xl shadow-[0_8px_24px_rgba(232,164,164,0.40)]"
               >
                 +100
-                <span className="block text-sm font-sans font-normal opacity-90">Clientes satisfechas</span>
+                <span className="block text-sm font-sans font-normal opacity-90">Clientas felices</span>
               </motion.div>
             </div>
           </motion.div>
@@ -75,30 +75,30 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="order-1 lg:order-2"
           >
-            <span className="text-rose font-medium uppercase tracking-widest text-sm">
+            <span className="kicker">
               Sobre Russ
             </span>
             <h2 className="section-title mt-4 mb-6">
               Tu entrenadora personal{' '}
-              <span className="text-gradient">de confianza</span>
+              <span className="text-accent">de confianza</span>
             </h2>
 
             <div className="space-y-5 text-charcoal/70 text-lg leading-relaxed mb-10">
               <p>
-                Soy Russ, y mi misiÃ³n es ayudarte a lograr la transformaciÃ³n que venÃ­s
+                Soy Russ, y mi misión es ayudarte a lograr la transformación que venís
                 buscando hace tiempo. No prometo milagros, prometo{' '}
                 <span className="text-charcoal font-semibold">disciplina, seguimiento real
                 y resultados comprobables.</span>
               </p>
               <p>
-                Con aÃ±os de experiencia en entrenamiento personalizado, entendÃ­ que cada
-                cuerpo es diferente. Por eso no trabajo con planes genÃ©ricos. Cada
-                programa que diseÃ±o es Ãºnico, pensado para vos y tus objetivos especÃ­ficos.
+                Con años de experiencia en entrenamiento personalizado, entendí que cada
+                cuerpo es diferente. Por eso no trabajo con planes genéricos. Cada
+                programa que diseño es único, pensado para vos y tus objetivos específicos.
               </p>
               <p>
-                Mi mÃ©todo combina entrenamiento efectivo, nutriciÃ³n orientada a tus metas
-                y el acompaÃ±amiento que necesitÃ¡s para no rendirte.{' '}
-                <span className="text-rose font-semibold">
+                Mi método combina entrenamiento efectivo, nutrición orientada a tus metas
+                y el acompañamiento que necesitás para no rendirte.{' '}
+                <span className="text-rose-deep font-semibold">
                   Estoy con vos en cada paso del camino.
                 </span>
               </p>

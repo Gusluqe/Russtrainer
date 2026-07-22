@@ -1,4 +1,4 @@
-import Navbar from '@/components/Navbar';
+﻿import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import PainPoints from '@/components/PainPoints';
 import About from '@/components/About';
@@ -29,3 +29,4 @@ export default function Home() {
     </main>
   );
 }
+

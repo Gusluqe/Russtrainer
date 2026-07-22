@@ -7,7 +7,7 @@ const WHATSAPP_URL = 'https://wa.me/5491168124464?text=Hola!%20Quiero%20acceder%
 
 const features = [
   { icon: Zap, text: 'Sin compromiso' },
-  { icon: Shield, text: 'Sin tarjeta de crÃ©dito' },
+  { icon: Shield, text: 'Sin tarjeta de crédito' },
   { icon: Gift, text: 'Plan personalizado' },
 ];
 
@@ -42,8 +42,8 @@ export default function FreeWeek() {
             transition={{ delay: 0.3 }}
             className="section-title mb-5"
           >
-            ProbÃ¡ tu primera{' '}
-            <span className="text-gradient">semana gratis</span>
+            Probá tu primera{' '}
+            <span className="text-accent">semana gratis</span>
           </motion.h2>
 
           <motion.p
@@ -53,8 +53,8 @@ export default function FreeWeek() {
             transition={{ delay: 0.4 }}
             className="text-xl text-charcoal/60 max-w-xl mx-auto mb-10"
           >
-            EmpezÃ¡ hoy, conocÃ© el mÃ©todo y comprobÃ¡ cÃ³mo trabajamos.
-            Sin compromiso, sin obligaciÃ³n. Solo vos y tus objetivos.
+            Empezá hoy, conocé el método y comprobá cómo trabajamos.
+            Sin compromiso, sin obligación. Solo vos y tus objetivos.
           </motion.p>
 
           <motion.div
@@ -92,7 +92,7 @@ export default function FreeWeek() {
               className="btn-primary text-lg px-10 py-5 animate-pulse-glow inline-flex"
             >
               <MessageCircle size={22} />
-              Clic acÃ¡ y hablame por WhatsApp
+              Clic acá y hablame por WhatsApp
             </a>
             <p className="text-charcoal/40 text-sm mt-4">
               Respondo en menos de 2 horas

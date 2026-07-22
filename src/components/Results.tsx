@@ -6,19 +6,19 @@ import { Users, FileText, Eye, Award, ArrowRight, MessageCircle } from 'lucide-r
 const WHATSAPP_URL = 'https://wa.me/5491168124464?text=Hola!%20Quiero%20ver%20resultados%20reales';
 
 const metrics = [
-  { icon: Users,       value: '+100', label: 'Clientes acompaÃ±adas', color: 'text-rose' },
-  { icon: FileText,    value: '+500', label: 'Planes personalizados', color: 'text-nude' },
-  { icon: Eye,         value: '1a1',  label: 'Seguimiento personalizado', color: 'text-rose' },
+  { icon: Users,       value: '+100', label: 'Clientas acompañadas', color: 'text-rose-deep' },
+  { icon: FileText,    value: '+500', label: 'Planes personalizados', color: 'text-nude-dark' },
+  { icon: Eye,         value: '1a1',  label: 'Seguimiento personalizado', color: 'text-rose-deep' },
   { icon: Award,       value: '100%', label: 'Compromiso con resultados', color: 'text-sage-dark' },
 ];
 
 const transformations = [
-  { name: 'TransformaciÃ³n 1', goal: 'Cambio de composiciÃ³n corporal', time: '3 meses', image: '/foto1.png' },
-  { name: 'TransformaciÃ³n 2', goal: 'PÃ©rdida de peso', time: '4 meses', image: '/foto2.png' },
-  { name: 'TransformaciÃ³n 3', goal: 'Ganancia muscular', time: '5 meses', image: '/foto3.png' },
-  { name: 'TransformaciÃ³n 4', goal: 'DefiniciÃ³n corporal', time: '3 meses', image: '/foto4.png' },
-  { name: 'TransformaciÃ³n 5', goal: 'Cambio de hÃ¡bitos', time: '6 meses', image: '/foto5.png' },
-  { name: 'TransformaciÃ³n 6', goal: 'Rendimiento y salud', time: '4 meses', image: '/foto6.png' },
+  { name: 'Transformación 1', goal: 'Cambio de composición corporal', time: '3 meses', image: '/foto1.png' },
+  { name: 'Transformación 2', goal: 'Pérdida de peso', time: '4 meses', image: '/foto7.png' },
+  { name: 'Transformación 3', goal: 'Ganancia muscular', time: '5 meses', image: '/foto3.png' },
+  { name: 'Transformación 4', goal: 'Definición corporal', time: '3 meses', image: '/foto4.png' },
+  { name: 'Transformación 5', goal: 'Cambio de hábitos', time: '6 meses', image: '/foto5.png' },
+  { name: 'Transformación 6', goal: 'Rendimiento y salud', time: '4 meses', image: '/foto6.png' },
 ];
 
 export default function Results() {
@@ -34,19 +34,19 @@ export default function Results() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-rose font-medium uppercase tracking-widest text-sm">
+          <span className="kicker">
             Resultados
           </span>
           <h2 className="section-title mt-4 mb-5">
-            Transformaciones <span className="text-gradient">reales</span>
+            Transformaciones <span className="text-accent">reales</span>
           </h2>
           <p className="text-charcoal/60 text-lg max-w-2xl mx-auto">
-            Estos son resultados de personas reales que confiaron en el proceso.
-            Tu transformaciÃ³n puede ser la prÃ³xima.
+            Estos son resultados de mujeres reales que confiaron en el proceso.
+            Tu transformación puede ser la próxima.
           </p>
         </motion.div>
 
-        {/* MÃ©tricas */}
+        {/* Métricas */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-20">
           {metrics.map((metric, index) => (
             <motion.div
@@ -71,7 +71,7 @@ export default function Results() {
         {/* Transformaciones */}
         <div className="mb-16">
           <h3 className="text-2xl font-heading font-bold text-charcoal text-center mb-10">
-            Casos de Ã©xito
+            Casos de éxito
           </h3>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -87,13 +87,13 @@ export default function Results() {
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
                     src={item.image}
-                    alt={`TransformaciÃ³n de ${item.name}`}
+                    alt={`Transformación de ${item.name}`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent" />
 
-                  <div className="absolute top-4 right-4 bg-rose text-white font-semibold px-4 py-1.5 rounded-full text-sm">
-                    Ã‰xito
+                  <div className="absolute top-4 right-4 bg-rose-deep text-white font-semibold px-4 py-1.5 rounded-full text-sm">
+                    ✦ Éxito
                   </div>
                 </div>
 
@@ -110,7 +110,7 @@ export default function Results() {
                     </span>
                   </div>
                   <p className="text-charcoal/50 text-sm font-serif italic">
-                    &ldquo;Los resultados hablan por sÃ­ solos.&rdquo;
+                    &ldquo;Los resultados hablan por sí solos.&rdquo;
                   </p>
                 </div>
               </motion.div>
@@ -131,7 +131,7 @@ export default function Results() {
             rel="noopener noreferrer"
             className="btn-primary inline-flex"
           >
-            Quiero mi transformaciÃ³n
+            Quiero mi transformación
             <ArrowRight size={18} />
           </a>
         </motion.div>
