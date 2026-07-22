@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, type PanInfo } from 'framer-motion';
 import { Check, MessageCircle, Users, ChevronLeft, ChevronRight } from 'lucide-react';
 
 type Plan = {
+  id: 'basico' | 'personalizado' | 'presencial';
   name: string;
   price: string;
   tagline: string;
@@ -20,6 +21,7 @@ type Plan = {
 
 const plans: Plan[] = [
   {
+    id: 'basico',
     name: 'Plan Online Básico',
     price: '$20.000',
     tagline: 'Ideal si querés una guía clara y entrenar sola.',
@@ -38,6 +40,7 @@ const plans: Plan[] = [
       'https://wa.me/5491168124464?text=Hola!%20Quiero%20empezar%20con%20el%20Plan%20Online%20B%C3%A1sico',
   },
   {
+    id: 'personalizado',
     name: 'Plan Online Personalizado',
     price: '$35.000',
     tagline: 'Todo lo que necesitás para transformarte desde donde estés.',
@@ -58,6 +61,7 @@ const plans: Plan[] = [
       'https://wa.me/5491168124464?text=Hola!%20Quiero%20empezar%20con%20el%20Plan%20Online%20Personalizado',
   },
   {
+    id: 'presencial',
     name: 'Plan Presencial + Online',
     price: '$80.000',
     tagline: 'Acompañamiento cercano: lo mejor de ambos mundos.',
@@ -167,7 +171,20 @@ function PlanCard({ plan }: { plan: Plan }) {
 
 export default function Plans() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [precios, setPrecios] = useState<Record<string, string> | null>(null);
   const lastIndex = plans.length - 1;
+
+  // Precios editables desde /admin; si la API no responde quedan los de acá
+  useEffect(() => {
+    fetch('/api/precios')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => data && setPrecios(data))
+      .catch(() => {});
+  }, []);
+
+  const planesConPrecio = plans.map((plan) =>
+    precios?.[plan.id] ? { ...plan, price: precios[plan.id] } : plan
+  );
 
   function handleDragEnd(_: unknown, info: PanInfo) {
     if ((info.offset.x < -50 || info.velocity.x < -300) && currentIndex < lastIndex) {
@@ -203,7 +220,7 @@ export default function Plans() {
 
         {/* Desktop: 3 tarjetas lado a lado */}
         <div className="hidden md:grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-          {plans.map((plan, index) => (
+          {planesConPrecio.map((plan, index) => (
             <motion.div
               key={plan.name}
               initial={{ opacity: 0, y: 40 }}
@@ -230,7 +247,7 @@ export default function Plans() {
               dragElastic={0.12}
               onDragEnd={handleDragEnd}
             >
-              {plans.map((plan) => (
+              {planesConPrecio.map((plan) => (
                 <div
                   key={plan.name}
                   className="shrink-0 pt-5 px-1"
