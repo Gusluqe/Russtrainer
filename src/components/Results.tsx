@@ -1,7 +1,7 @@
 ﻿'use client';
 
 import { motion } from 'framer-motion';
-import { Users, FileText, Eye, Award, ArrowRight, MessageCircle } from 'lucide-react';
+import { Users, FileText, Eye, Award, ArrowRight } from 'lucide-react';
 
 const WHATSAPP_URL = 'https://wa.me/5491168124464?text=Hola!%20Quiero%20ver%20resultados%20reales';
 
@@ -10,15 +10,6 @@ const metrics = [
   { icon: FileText,    value: '+500', label: 'Planes personalizados', color: 'text-nude-dark' },
   { icon: Eye,         value: '1a1',  label: 'Seguimiento personalizado', color: 'text-rose-deep' },
   { icon: Award,       value: '100%', label: 'Compromiso con resultados', color: 'text-sage-dark' },
-];
-
-const transformations = [
-  { name: 'Transformación 1', goal: 'Cambio de composición corporal', time: '3 meses', image: '/foto1.png' },
-  { name: 'Transformación 2', goal: 'Pérdida de peso', time: '4 meses', image: '/foto7.png' },
-  { name: 'Transformación 3', goal: 'Ganancia muscular', time: '5 meses', image: '/foto3.png' },
-  { name: 'Transformación 4', goal: 'Definición corporal', time: '3 meses', image: '/foto4.png' },
-  { name: 'Transformación 5', goal: 'Cambio de hábitos', time: '6 meses', image: '/foto5.png' },
-  { name: 'Transformación 6', goal: 'Rendimiento y salud', time: '4 meses', image: '/foto6.png' },
 ];
 
 export default function Results() {
@@ -66,56 +57,6 @@ export default function Results() {
               </div>
             </motion.div>
           ))}
-        </div>
-
-        {/* Transformaciones */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-heading font-bold text-charcoal text-center mb-10">
-            Casos de éxito
-          </h3>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {transformations.map((item, index) => (
-              <motion.div
-                key={item.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="card card-hover overflow-hidden group"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={`Transformación de ${item.name}`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent" />
-
-                  <div className="absolute top-4 right-4 bg-rose-deep text-white font-semibold px-4 py-1.5 rounded-full text-sm">
-                    ✦ Éxito
-                  </div>
-                </div>
-
-                <div className="p-6">
-                  <h4 className="text-lg font-heading font-bold text-charcoal mb-2">
-                    {item.name}
-                  </h4>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="text-xs bg-cream-100 text-charcoal/60 px-3 py-1 rounded-full">
-                      {item.goal}
-                    </span>
-                    <span className="text-xs bg-rose/10 text-rose px-3 py-1 rounded-full">
-                      {item.time}
-                    </span>
-                  </div>
-                  <p className="text-charcoal/50 text-sm font-serif italic">
-                    &ldquo;Los resultados hablan por sí solos.&rdquo;
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </div>
 
         <motion.div

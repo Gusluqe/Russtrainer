@@ -27,6 +27,34 @@ const testimonials = [
     content: 'Lo que destaco es su energía y la forma en que te impulsa a superarte. Gracias a su acompañamiento mejoré mi confianza y constancia. Se nota tu compromiso y dedicación.',
     rating: 5,
   },
+  {
+    handle: '@claudiagutierrezx',
+    initial: 'C',
+    gradient: 'from-rose to-nude',
+    content: 'Entrenar con Russ es sentirme acompañada y motivada. Resuelve todas mis dudas con claridad y corrige mis ejercicios al momento cuando le envío videos. Se nota su dedicación y la pasión que tiene por lo que hace, y eso marca totalmente la diferencia.',
+    rating: 5,
+  },
+  {
+    handle: '@_dkatherine',
+    initial: 'D',
+    gradient: 'from-nude to-sage',
+    content: 'Entrenar contigo no se siente como solo cumplir con los entrenamientos, se siente como una amiga que me ayuda a ser mi mejor versión. No había disfrutado tanto los cambios hasta que comencé a entrenar contigo. ¡Gracias por ser mi coach e inspirarme todos los días!',
+    rating: 5,
+  },
+  {
+    handle: '@elizabethsoto',
+    initial: 'E',
+    gradient: 'from-sage to-rose',
+    content: 'Eres la magia detrás de mi progreso. Más que una entrenadora, es mi mayor motivación. Me enseñas que la fuerza no está solo en los músculos, sino en la mente.',
+    rating: 5,
+  },
+  {
+    handle: '@iarilandriel',
+    initial: 'I',
+    gradient: 'from-rose to-nude',
+    content: 'Desde que entreno contigo mejoró mi autoestima interna, mi fuerza. Ojalá puedas dimensionar la llegada que tenés en cada una de nosotras. Me cambiaste por completo. Agradezco tenerte como entrenadora, y tenerte por muchos años más. Ahora sí, GRACIAS.',
+    rating: 5,
+  },
 ];
 
 export default function Testimonials() {
@@ -53,7 +81,7 @@ export default function Testimonials() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 md:[&>*:last-child]:col-start-2">
           {testimonials.map((t, index) => (
             <motion.div
               key={t.handle}
@@ -72,10 +100,7 @@ export default function Testimonials() {
                 <div className={`w-14 h-14 rounded-full bg-gradient-to-br ${t.gradient} flex items-center justify-center text-white font-bold text-xl shrink-0 shadow-md`}>
                   {t.initial}
                 </div>
-                <div>
-                  <h3 className="text-sm font-semibold text-charcoal">{t.handle}</h3>
-                  <p className="text-charcoal/40 text-xs">Clienta real</p>
-                </div>
+                <h3 className="text-sm font-semibold text-charcoal">{t.handle}</h3>
               </div>
 
               <div className="flex gap-1 mb-4">

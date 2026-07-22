@@ -10,7 +10,7 @@ const WHATSAPP_URL = 'https://wa.me/5491168124464?text=Hola%20Russ!%20Quiero%20i
 const navLinks = [
   { name: 'Inicio', href: '#inicio' },
   { name: 'Servicios', href: '#servicios' },
-  { name: 'Resultados', href: '#resultados' },
+  { name: 'Guía', href: '#guia' },
   { name: 'Planes', href: '#planes' },
   { name: 'Testimonios', href: '#testimonios' },
   { name: 'Contacto', href: '#contacto' },

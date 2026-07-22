@@ -3,8 +3,8 @@ import Hero from '@/components/Hero';
 import PainPoints from '@/components/PainPoints';
 import About from '@/components/About';
 import HowWeWork from '@/components/HowWeWork';
-import Results from '@/components/Results';
 import Testimonials from '@/components/Testimonials';
+import DownloadGuide from '@/components/DownloadGuide';
 import Plans from '@/components/Plans';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
@@ -20,8 +20,8 @@ export default function Home() {
       <PainPoints />
       <About />
       <HowWeWork />
-      <Results />
       <Testimonials />
+      <DownloadGuide />
       <Plans />
       <Footer />
       <WhatsAppButton />
