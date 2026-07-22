@@ -22,7 +22,8 @@ const LOCAL_FILE = path.join(process.cwd(), '.data', 'precios.json');
 
 async function getBlobStore() {
   const { getStore } = await import('@netlify/blobs');
-  return getStore(STORE_NAME);
+  // strong: los cambios desde /admin se ven al instante en la página
+  return getStore({ name: STORE_NAME, consistency: 'strong' });
 }
 
 function sanitize(raw: unknown): Precios {
