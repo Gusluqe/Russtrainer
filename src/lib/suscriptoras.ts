@@ -8,6 +8,7 @@ import path from 'path';
 
 export type Suscriptora = {
   email: string;
+  nombre: string;
   fecha: string; // ISO
 };
 
@@ -35,6 +36,7 @@ function sanitize(raw: unknown): Suscriptora[] {
     .slice(0, MAX_SUSCRIPTORAS)
     .map((s) => ({
       email: s.email.toLowerCase().trim(),
+      nombre: typeof s.nombre === 'string' ? s.nombre.trim().slice(0, 100) : '',
       fecha: typeof s.fecha === 'string' ? s.fecha : new Date().toISOString(),
     }));
 }
@@ -71,16 +73,18 @@ export async function getSuscriptoras(): Promise<Suscriptora[]> {
 }
 
 export async function addSuscriptora(
-  emailRaw: string
+  emailRaw: string,
+  nombreRaw = ''
 ): Promise<'ok' | 'ya-estaba' | 'invalido' | 'lleno'> {
   const email = emailRaw.toLowerCase().trim();
+  const nombre = nombreRaw.trim().slice(0, 100);
   if (!esEmailValido(email)) return 'invalido';
 
   const lista = await leer();
   if (lista.some((s) => s.email === email)) return 'ya-estaba';
   if (lista.length >= MAX_SUSCRIPTORAS) return 'lleno';
 
-  lista.push({ email, fecha: new Date().toISOString() });
+  lista.push({ email, nombre, fecha: new Date().toISOString() });
   await guardar(lista);
   return 'ok';
 }

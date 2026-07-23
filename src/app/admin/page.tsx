@@ -26,7 +26,7 @@ type Precios = {
   presencial: string;
 };
 
-type Suscriptora = { email: string; fecha: string };
+type Suscriptora = { email: string; nombre: string; fecha: string };
 
 type Tab = 'precios' | 'textos' | 'planes' | 'fotos' | 'suscriptoras';
 type PlanId = 'basico' | 'personalizado' | 'presencial';
@@ -823,7 +823,10 @@ export default function AdminPage() {
                       <Campo label="Etiqueta" value={contenido.novedades.kicker} onChange={(v) => upd('novedades', { kicker: v })} />
                       <Campo label="Título" value={contenido.novedades.titulo} onChange={(v) => upd('novedades', { titulo: v })} />
                       <Campo label="Título (parte en rosa)" value={contenido.novedades.tituloAccent} onChange={(v) => upd('novedades', { tituloAccent: v })} />
+                      <Campo label="Frase en cursiva" value={contenido.novedades.frase} onChange={(v) => upd('novedades', { frase: v })} />
                       <Campo label="Texto descriptivo" textarea value={contenido.novedades.subtitulo} onChange={(v) => upd('novedades', { subtitulo: v })} />
+                      <Campo label="Nota chiquita (bajo el botón)" value={contenido.novedades.nota} onChange={(v) => upd('novedades', { nota: v })} />
+                      <Campo label="Texto del botón" value={contenido.novedades.boton} onChange={(v) => upd('novedades', { boton: v })} />
                     </Seccion>
 
                     <Seccion
@@ -1020,7 +1023,14 @@ export default function AdminPage() {
                         >
                           <Mail size={14} className="text-rose-deep/40 shrink-0" />
                           <span className="flex-1 min-w-0 truncate text-sm text-charcoal">
-                            {s.email}
+                            {s.nombre ? (
+                              <>
+                                <span className="font-semibold">{s.nombre}</span>
+                                <span className="text-charcoal/50"> — {s.email}</span>
+                              </>
+                            ) : (
+                              s.email
+                            )}
                           </span>
                           <span className="text-charcoal/35 text-xs shrink-0">
                             {new Date(s.fecha).toLocaleDateString('es-AR')}

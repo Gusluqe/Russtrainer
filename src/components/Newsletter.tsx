@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Heart, Loader2, Mail, Sparkles } from 'lucide-react';
+import { Heart, Loader2, Mail, Sparkles, User } from 'lucide-react';
 import { useContenido } from './ContenidoContext';
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
@@ -10,6 +10,7 @@ type Status = 'idle' | 'loading' | 'success' | 'error';
 export default function Newsletter() {
   const { novedades } = useContenido();
   const [email, setEmail] = useState('');
+  const [nombre, setNombre] = useState('');
   const [status, setStatus] = useState<Status>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -21,7 +22,7 @@ export default function Newsletter() {
       const res = await fetch('/api/suscribir', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email.trim() }),
+        body: JSON.stringify({ email: email.trim(), nombre: nombre.trim() }),
       });
       setStatus(res.ok ? 'success' : 'error');
     } catch {
@@ -45,10 +46,13 @@ export default function Newsletter() {
           <div className="absolute -top-10 -left-10 w-40 h-40 bg-rose/10 rounded-full blur-2xl pointer-events-none" />
 
           <span className="kicker">{novedades.kicker}</span>
-          <h2 className="section-title mt-4 mb-4">
+          <h2 className="section-title mt-4 mb-3">
             {novedades.titulo}{' '}
             <span className="text-accent">{novedades.tituloAccent}</span>
           </h2>
+          <p className="text-rose-deep font-serif italic text-lg mb-4">
+            {novedades.frase}
+          </p>
           <p className="text-charcoal/60 text-lg max-w-xl mx-auto mb-8">
             {novedades.subtitulo}
           </p>
@@ -108,12 +112,30 @@ export default function Newsletter() {
                       setEmail(e.target.value);
                       if (status === 'error') setStatus('idle');
                     }}
-                    placeholder="tumail@ejemplo.com"
+                    placeholder="Email"
                     autoComplete="email"
                     required
                     className={`w-full pl-12 pr-5 py-4 rounded-full bg-cream-50 border-2 text-charcoal
                                placeholder:text-charcoal/30 focus:outline-none transition-colors duration-300
                                ${status === 'error' ? 'border-rose-deep/60' : 'border-rose/25 focus:border-rose-deep'}`}
+                  />
+                </div>
+
+                <div className="relative mt-4">
+                  <User
+                    size={18}
+                    className="absolute left-5 top-1/2 -translate-y-1/2 text-rose-deep/50 pointer-events-none"
+                  />
+                  <input
+                    type="text"
+                    value={nombre}
+                    onChange={(e) => setNombre(e.target.value)}
+                    placeholder="Nombre"
+                    autoComplete="given-name"
+                    maxLength={100}
+                    className="w-full pl-12 pr-5 py-4 rounded-full bg-cream-50 border-2 border-rose/25
+                               text-charcoal placeholder:text-charcoal/30 focus:outline-none
+                               focus:border-rose-deep transition-colors duration-300"
                   />
                 </div>
 
@@ -142,14 +164,14 @@ export default function Newsletter() {
                     </>
                   ) : (
                     <>
-                      Quiero recibir novedades
+                      {novedades.boton}
                       <Sparkles size={18} />
                     </>
                   )}
                 </button>
 
                 <p className="text-charcoal/40 text-xs mt-4">
-                  Nada de spam. Solo cositas lindas, de vez en cuando.
+                  {novedades.nota}
                 </p>
               </motion.form>
             )}

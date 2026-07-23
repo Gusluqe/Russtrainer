@@ -73,7 +73,10 @@ export type Contenido = {
     kicker: string;
     titulo: string;
     tituloAccent: string;
+    frase: string;
     subtitulo: string;
+    nota: string;
+    boton: string;
   };
   footer: {
     descripcion: string;
@@ -258,10 +261,13 @@ export const CONTENIDO_DEFAULT: Contenido = {
   },
   novedades: {
     kicker: 'Novedades',
-    titulo: 'Sumate a mis',
-    tituloAccent: 'novedades',
+    titulo: 'Un espacio para',
+    tituloAccent: 'Mujeres Reales',
+    frase: 'Entrenar no tiene por qué ser complicado.',
     subtitulo:
-      'Dejame tu mail y te escribo cuando haya algo lindo para contarte: tips, aperturas de cupos y regalitos.',
+      'Cada semana comparto consejos prácticos, herramientas y motivación para ayudarte a disfrutar el entrenamiento, crear hábitos duraderos y sentirte cada vez más fuerte.',
+    nota: 'Sin spam. Solo contenido que realmente te aporte valor.',
+    boton: 'Quiero ser parte',
   },
   footer: {
     descripcion:

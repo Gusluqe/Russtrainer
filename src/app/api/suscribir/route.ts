@@ -3,10 +3,12 @@ import { addSuscriptora } from '@/lib/suscriptoras';
 
 export async function POST(request: NextRequest) {
   let email = '';
+  let nombre = '';
   let honeypot = '';
   try {
     const body = await request.json();
     email = String(body?.email ?? '');
+    nombre = String(body?.nombre ?? '');
     honeypot = String(body?.web ?? '');
   } catch {
     return NextResponse.json({ error: 'BAD_REQUEST' }, { status: 400 });
@@ -15,7 +17,7 @@ export async function POST(request: NextRequest) {
   // Campo oculto: si un bot lo completa, respondemos ok sin guardar nada
   if (honeypot) return NextResponse.json({ ok: true });
 
-  const resultado = await addSuscriptora(email);
+  const resultado = await addSuscriptora(email, nombre);
 
   if (resultado === 'invalido') {
     return NextResponse.json({ error: 'EMAIL_INVALID' }, { status: 400 });
