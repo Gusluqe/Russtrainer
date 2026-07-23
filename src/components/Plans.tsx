@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { motion, type PanInfo } from 'framer-motion';
 import { Check, MessageCircle, Users, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useContenido } from './ContenidoContext';
 
 type Plan = {
   id: 'basico' | 'personalizado' | 'presencial';
@@ -19,70 +20,30 @@ type Plan = {
   whatsapp: string;
 };
 
-const plans: Plan[] = [
-  {
-    id: 'basico',
-    name: 'Plan Online Básico',
+// Diseño y links fijos por plan; los textos y fotos se editan desde /admin
+const PLAN_FIJO = {
+  basico: {
     price: '$20.000',
-    tagline: 'Ideal si querés una guía clara y entrenar sola.',
-    image: '/plan-online-basico.webp',
     imagePosition: 'object-top',
-    features: [
-      'Rutina mensual Casa o Gym según tu objetivo (bajar de peso, definir o aumentar masa)',
-      'Videos cortos explicativos de cada ejercicio',
-      'Guía general de pesos según tu nivel',
-      'Movilidad articular y estiramientos básicos',
-      'Acceso al plan por 30 días',
-    ],
-    note: 'Sin seguimiento ni ajustes durante el mes. Yo te doy la estructura y vos la ejecutás.',
-    cta: 'Quiero este plan',
     whatsapp:
       'https://wa.me/5491168124464?text=Hola!%20Quiero%20empezar%20con%20el%20Plan%20Online%20B%C3%A1sico',
   },
-  {
-    id: 'personalizado',
-    name: 'Plan Online Personalizado',
+  personalizado: {
     price: '$35.000',
-    tagline: 'Todo lo que necesitás para transformarte desde donde estés.',
-    image: '/plan-online-personalizado.webp',
     imagePosition: 'object-center',
-    features: [
-      'Planificación mensual 100% personalizada según tu objetivo',
-      'Videos cortos explicativos de cada ejercicio',
-      'Guía de pesos según tu nivel y progreso',
-      'Guía de hábitos saludables: alimentación consciente y amor propio',
-      'Apoyo y seguimiento vía WhatsApp en todo el proceso',
-      'Movilidad articular y estiramientos para prevenir lesiones',
-    ],
     badge: { label: '✦ Más elegido', color: 'bg-rose-deep' },
     highlight: true,
-    cta: 'Quiero empezar',
     whatsapp:
       'https://wa.me/5491168124464?text=Hola!%20Quiero%20empezar%20con%20el%20Plan%20Online%20Personalizado',
   },
-  {
-    id: 'presencial',
-    name: 'Plan Presencial + Online',
+  presencial: {
     price: '$80.000',
-    tagline: 'Acompañamiento cercano: lo mejor de ambos mundos.',
-    image: '/plan-presencial-online.webp',
     imagePosition: 'object-center',
-    features: [
-      'Evaluación inicial presencial',
-      'Rutina personalizada (online)',
-      '4 clases presenciales al mes (1 por semana, 60–75 min)',
-      'Videos explicativos de los ejercicios',
-      'Guía de pesos y progresiones',
-      'Movilidad articular y estiramientos',
-      'Guía de hábitos saludables',
-      'Seguimiento vía WhatsApp',
-    ],
     badge: { label: 'Cupos limitados', icon: true, color: 'bg-nude-dark' },
-    cta: 'Consultar disponibilidad',
     whatsapp:
       'https://wa.me/5491168124464?text=Hola!%20Quiero%20consultar%20disponibilidad%20para%20el%20Plan%20Presencial%20%2B%20Online',
   },
-];
+} as const;
 
 function PlanCard({ plan }: { plan: Plan }) {
   return (
@@ -131,8 +92,8 @@ function PlanCard({ plan }: { plan: Plan }) {
           </div>
 
           <ul className="space-y-3 mb-6">
-            {plan.features.map((feature) => (
-              <li key={feature} className="flex items-start gap-3">
+            {plan.features.map((feature, i) => (
+              <li key={i} className="flex items-start gap-3">
                 <div
                   className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${
                     plan.highlight ? 'bg-rose/15' : 'bg-nude/20'
@@ -170,8 +131,30 @@ function PlanCard({ plan }: { plan: Plan }) {
 }
 
 export default function Plans() {
+  const contenidoPlanes = useContenido().planes;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [precios, setPrecios] = useState<Record<string, string> | null>(null);
+
+  const plans: Plan[] = (['basico', 'personalizado', 'presencial'] as const).map(
+    (id) => {
+      const fijo = PLAN_FIJO[id];
+      const editable = contenidoPlanes[id];
+      return {
+        id,
+        name: editable.nombre,
+        price: fijo.price,
+        tagline: editable.tagline,
+        image: editable.foto,
+        imagePosition: fijo.imagePosition,
+        features: editable.features,
+        note: editable.nota || undefined,
+        badge: 'badge' in fijo ? fijo.badge : undefined,
+        highlight: 'highlight' in fijo ? fijo.highlight : undefined,
+        cta: editable.cta,
+        whatsapp: fijo.whatsapp,
+      };
+    }
+  );
   const lastIndex = plans.length - 1;
 
   // Precios editables desde /admin; si la API no responde quedan los de acá
@@ -208,13 +191,14 @@ export default function Plans() {
           className="text-center mb-16"
         >
           <span className="kicker">
-            Planes
+            {contenidoPlanes.kicker}
           </span>
           <h2 className="section-title mt-4 mb-5">
-            Elegí cómo querés <span className="text-accent">empezar</span>
+            {contenidoPlanes.titulo}{' '}
+            <span className="text-accent">{contenidoPlanes.tituloAccent}</span>
           </h2>
           <p className="text-charcoal/60 text-lg max-w-xl mx-auto">
-            Resultados reales que podés sostener. Sin importar por dónde empieces.
+            {contenidoPlanes.subtitulo}
           </p>
         </motion.div>
 
@@ -222,7 +206,7 @@ export default function Plans() {
         <div className="hidden md:grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
           {planesConPrecio.map((plan, index) => (
             <motion.div
-              key={plan.name}
+              key={plan.id}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -249,7 +233,7 @@ export default function Plans() {
             >
               {planesConPrecio.map((plan) => (
                 <div
-                  key={plan.name}
+                  key={plan.id}
                   className="shrink-0 pt-5 px-1"
                   style={{ width: `${100 / plans.length}%` }}
                 >
@@ -301,7 +285,7 @@ export default function Plans() {
           transition={{ delay: 0.4 }}
           className="text-center text-charcoal/40 text-sm mt-10 font-serif italic"
         >
-          No importa por dónde empieces. Lo importante es que sea un proceso que puedas sostener.
+          {contenidoPlanes.frase}
         </motion.p>
       </div>
     </section>

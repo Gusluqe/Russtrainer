@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Instagram, MessageCircle, Send } from 'lucide-react';
 import Logo from './Logo';
+import { useContenido } from './ContenidoContext';
 
 const WHATSAPP_URL = 'https://wa.me/5491168124464';
 const INSTAGRAM_URL = 'https://instagram.com/russ.trainer';
@@ -15,6 +16,7 @@ const footerLinks = [
 ];
 
 export default function Footer() {
+  const { footer } = useContenido();
   return (
     <footer className="relative bg-plum">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-rose/30 to-transparent" />
@@ -32,11 +34,10 @@ export default function Footer() {
           >
             <Logo size="md" dark />
             <p className="mt-4 text-white/50 text-sm leading-relaxed">
-              Transformá tu cuerpo y tu vida con entrenamiento personalizado.
-              Resultados reales, seguimiento constante.
+              {footer.descripcion}
             </p>
             <p className="mt-3 text-rose/80 text-sm font-serif italic">
-              Entrenamos desde el amor, no desde la exigencia.
+              {footer.frase}
             </p>
             <div className="flex items-center gap-3 mt-6">
               <a

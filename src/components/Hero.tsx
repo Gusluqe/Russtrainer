@@ -2,11 +2,13 @@
 
 import { motion } from 'framer-motion';
 import { MessageCircle, Instagram, ChevronDown } from 'lucide-react';
+import { useContenido } from './ContenidoContext';
 
 const WHATSAPP_URL = 'https://wa.me/5491168124464?text=Hola%20Russ!%20Quiero%20empezar%20mi%20proceso.%20Me%20interesa%20el%20plan%20online!';
 const INSTAGRAM_URL = 'https://instagram.com/russ.trainer';
 
 export default function Hero() {
+  const { hero } = useContenido();
   const scrollToSection = (id: string) => {
     const element = document.querySelector(id);
     if (element) element.scrollIntoView({ behavior: 'smooth' });
@@ -43,7 +45,7 @@ export default function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-rose" />
               </span>
-              No te adaptás al plan, el plan se adapta a vos
+              {hero.badge}
             </motion.div>
 
             <motion.h1
@@ -52,8 +54,8 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="section-title mb-4 leading-tight"
             >
-              Entrenadora personal online{' '}
-              <span className="text-accent">con un plan hecho para vos</span>
+              {hero.titulo}{' '}
+              <span className="text-accent">{hero.tituloAccent}</span>
             </motion.h1>
 
             <motion.p
@@ -62,7 +64,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.35 }}
               className="text-rose-deep font-serif italic text-lg mb-4"
             >
-              Entrenamos desde el amor, no desde la exigencia.
+              {hero.frase}
             </motion.p>
 
             <motion.p
@@ -71,8 +73,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="text-xl text-charcoal/70 mb-8 leading-relaxed"
             >
-              Dejá de seguir rutinas genéricas. Tu cuerpo, tu tiempo, tu vida
-              — un plan personalizado que se adapta a vos, no al revés.
+              {hero.subtitulo}
             </motion.p>
 
             <motion.div
@@ -113,7 +114,7 @@ export default function Hero() {
               transition={{ delay: 0.6 }}
               className="text-charcoal/50 text-sm mb-8"
             >
-              Planes personalizados + acompañamiento constante
+              {hero.nota}
             </motion.p>
 
             <motion.div
@@ -150,7 +151,7 @@ export default function Hero() {
               {/* Foto */}
               <div className="relative rounded-[2rem] overflow-hidden aspect-[3/4] shadow-[0_20px_60px_rgba(232,164,164,0.25)]">
                 <img
-                  src="/foto1.png"
+                  src={hero.foto}
                   alt="Russ, entrenadora personal"
                   className="w-full h-full object-cover object-top"
                 />

@@ -7,3 +7,6 @@ tsconfig.tsbuildinfo
 public/russ/
 codigos-guia.txt
 .data/
+
+# Local Netlify folder
+.netlify

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Gift, Download, Loader2, KeyRound, Sparkles, MessageCircle } from 'lucide-react';
+import { useContenido } from './ContenidoContext';
 
 const WHATSAPP_URL = 'https://wa.me/5491168124464?text=Hola!%20Quiero%20mi%20c%C3%B3digo%20para%20descargar%20la%20gu%C3%ADa';
 
@@ -15,6 +16,7 @@ const ERROR_MESSAGES: Record<string, string> = {
 };
 
 export default function DownloadGuide() {
+  const { guia } = useContenido();
   const [code, setCode] = useState('');
   const [status, setStatus] = useState<Status>('idle');
   const [errorMessage, setErrorMessage] = useState('');
@@ -61,13 +63,12 @@ export default function DownloadGuide() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="kicker">Un regalo para vos</span>
+          <span className="kicker">{guia.kicker}</span>
           <h2 className="section-title mt-4 mb-5">
-            Tu guía, con tu <span className="text-accent">código</span>
+            {guia.titulo} <span className="text-accent">{guia.tituloAccent}</span>
           </h2>
           <p className="text-charcoal/60 text-lg max-w-xl mx-auto">
-            Si Russ te compartió un código, ingresalo acá y descargá tu guía en PDF.
-            Es tuya, para siempre.
+            {guia.subtitulo}
           </p>
         </motion.div>
 

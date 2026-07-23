@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { Target, TrendingUp, Users, Award } from 'lucide-react';
+import { useContenido } from './ContenidoContext';
+import { partesNegrita } from '@/lib/contenidoTipos';
 
 const benefits = [
   {
@@ -27,6 +29,7 @@ const benefits = [
 ];
 
 export default function About() {
+  const { sobre } = useContenido();
   return (
     <section id="sobre" className="relative py-12 md:py-24 lg:py-32 overflow-hidden bg-white">
       <div className="absolute top-0 left-0 w-64 h-64 bg-sage/10 rounded-full blur-3xl pointer-events-none" />
@@ -47,7 +50,7 @@ export default function About() {
               <div className="absolute -inset-4 bg-gradient-to-br from-rose/15 to-nude/10 rounded-3xl blur-2xl" />
               <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(232,164,164,0.20)]">
                 <img
-                  src="/foto7.png"
+                  src={sobre.foto}
                   alt="Russ entrenando"
                   className="w-full h-full object-cover object-top"
                 />
@@ -76,32 +79,27 @@ export default function About() {
             className="order-1 lg:order-2"
           >
             <span className="kicker">
-              Sobre Russ
+              {sobre.kicker}
             </span>
             <h2 className="section-title mt-4 mb-6">
-              Tu entrenadora personal{' '}
-              <span className="text-accent">de confianza</span>
+              {sobre.titulo}{' '}
+              <span className="text-accent">{sobre.tituloAccent}</span>
             </h2>
 
             <div className="space-y-5 text-charcoal/70 text-lg leading-relaxed mb-10">
-              <p>
-                Soy Russ, y mi misión es ayudarte a lograr la transformación que venís
-                buscando hace tiempo. No prometo milagros, prometo{' '}
-                <span className="text-charcoal font-semibold">disciplina, seguimiento real
-                y resultados comprobables.</span>
-              </p>
-              <p>
-                Con años de experiencia en entrenamiento personalizado, entendí que cada
-                cuerpo es diferente. Por eso no trabajo con planes genéricos. Cada
-                programa que diseño es único, pensado para vos y tus objetivos específicos.
-              </p>
-              <p>
-                Mi método combina entrenamiento efectivo, nutrición orientada a tus metas
-                y el acompañamiento que necesitás para no rendirte.{' '}
-                <span className="text-rose-deep font-semibold">
-                  Estoy con vos en cada paso del camino.
-                </span>
-              </p>
+              {sobre.parrafos.map((parrafo, i) => (
+                <p key={i}>
+                  {partesNegrita(parrafo).map((parte, j) =>
+                    parte.negrita ? (
+                      <span key={j} className="text-charcoal font-semibold">
+                        {parte.texto}
+                      </span>
+                    ) : (
+                      <span key={j}>{parte.texto}</span>
+                    )
+                  )}
+                </p>
+              ))}
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">

@@ -2,62 +2,21 @@
 
 import { motion } from 'framer-motion';
 import { Star, Quote, MessageCircle } from 'lucide-react';
+import { useContenido } from './ContenidoContext';
 
 const WHATSAPP_URL = 'https://wa.me/5491168124464?text=Hola!%20Quiero%20empezar%20mi%20proceso';
 
-const testimonials = [
-  {
-    handle: '@rocio.romano.581',
-    initial: 'R',
-    gradient: 'from-rose to-nude',
-    content: 'Gracias por ayudarme a salir de mi lugar de confort y empezar a moverme por mí para sentirme mejor, no solo físicamente sino también mentalmente. No sos solo entrenadora, sos un sostén para no caer.',
-    rating: 5,
-  },
-  {
-    handle: '@martuservin',
-    initial: 'M',
-    gradient: 'from-nude to-sage',
-    content: 'Se nota el amor que le ponés a lo que hacés, desde el listado que enviás los domingos hasta cómo adaptás cada ejercicio. Gracias por no ser solo una coach de gimnasio, sino alguien que me escucha y me motiva a mejorar cada día.',
-    rating: 5,
-  },
-  {
-    handle: '@kaleidoscopioarte',
-    initial: 'K',
-    gradient: 'from-sage to-rose',
-    content: 'Lo que destaco es su energía y la forma en que te impulsa a superarte. Gracias a su acompañamiento mejoré mi confianza y constancia. Se nota tu compromiso y dedicación.',
-    rating: 5,
-  },
-  {
-    handle: '@claudiagutierrezx',
-    initial: 'C',
-    gradient: 'from-rose to-nude',
-    content: 'Entrenar con Russ es sentirme acompañada y motivada. Resuelve todas mis dudas con claridad y corrige mis ejercicios al momento cuando le envío videos. Se nota su dedicación y la pasión que tiene por lo que hace, y eso marca totalmente la diferencia.',
-    rating: 5,
-  },
-  {
-    handle: '@_dkatherine',
-    initial: 'D',
-    gradient: 'from-nude to-sage',
-    content: 'Entrenar contigo no se siente como solo cumplir con los entrenamientos, se siente como una amiga que me ayuda a ser mi mejor versión. No había disfrutado tanto los cambios hasta que comencé a entrenar contigo. ¡Gracias por ser mi coach e inspirarme todos los días!',
-    rating: 5,
-  },
-  {
-    handle: '@elizabethsoto',
-    initial: 'E',
-    gradient: 'from-sage to-rose',
-    content: 'Eres la magia detrás de mi progreso. Más que una entrenadora, es mi mayor motivación. Me enseñas que la fuerza no está solo en los músculos, sino en la mente.',
-    rating: 5,
-  },
-  {
-    handle: '@iarilandriel',
-    initial: 'I',
-    gradient: 'from-rose to-nude',
-    content: 'Desde que entreno contigo mejoró mi autoestima interna, mi fuerza. Ojalá puedas dimensionar la llegada que tenés en cada una de nosotras. Me cambiaste por completo. Agradezco tenerte como entrenadora, y tenerte por muchos años más. Ahora sí, GRACIAS.',
-    rating: 5,
-  },
-];
+const gradients = ['from-rose to-nude', 'from-nude to-sage', 'from-sage to-rose'];
 
 export default function Testimonials() {
+  const contenido = useContenido().testimonios;
+  const testimonials = contenido.lista.map((t, i) => ({
+    handle: t.handle,
+    initial: (t.handle.replace(/^@/, '').charAt(0) || 'R').toUpperCase(),
+    gradient: gradients[i % gradients.length],
+    content: t.texto,
+    rating: 5,
+  }));
   return (
     <section id="testimonios" className="relative py-12 md:py-24 lg:py-32 overflow-hidden bg-white">
       <div className="absolute top-0 left-1/4 w-80 h-80 bg-rose/5 rounded-full blur-3xl pointer-events-none" />
@@ -71,20 +30,20 @@ export default function Testimonials() {
           className="text-center mb-16"
         >
           <span className="kicker">
-            Testimonios
+            {contenido.kicker}
           </span>
           <h2 className="section-title mt-4 mb-4">
-            Ellas ya empezaron <span className="text-accent">su proceso</span>
+            {contenido.titulo} <span className="text-accent">{contenido.tituloAccent}</span>
           </h2>
           <p className="text-charcoal/60 text-lg max-w-xl mx-auto">
-            Historias reales de mujeres que decidieron entrenar distinto.
+            {contenido.subtitulo}
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8 md:[&>*:last-child]:col-start-2">
           {testimonials.map((t, index) => (
             <motion.div
-              key={t.handle}
+              key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

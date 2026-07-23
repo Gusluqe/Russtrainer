@@ -2,43 +2,20 @@
 
 import { motion } from 'framer-motion';
 import { MessageCircle, Target, Rocket, RefreshCw, Heart, ArrowRight } from 'lucide-react';
+import { useContenido } from './ContenidoContext';
 
 const WHATSAPP_URL = 'https://wa.me/5491168124464?text=Hola!%20Quiero%20empezar%20mi%20proceso';
 
-const steps = [
-  {
-    number: '01',
-    icon: MessageCircle,
-    title: 'Empezamos con vos',
-    description: 'Videollamada inicial + encuesta personalizada previa. Entiendo tu historia, tus objetivos y tu punto de partida.',
-  },
-  {
-    number: '02',
-    icon: Target,
-    title: 'Tu plan 100% personalizado',
-    description: 'Rutina en Notion, 4 semanas, con videos explicativos, movilidad articular y estiramientos. Adaptado a tu nivel, disponibilidad y si entrenás en casa o gimnasio.',
-  },
-  {
-    number: '03',
-    icon: Rocket,
-    title: 'Acompañamiento constante',
-    description: 'Seguimiento diario por WhatsApp. Respuesta rápida, dudas resueltas, ajustes en tiempo real. No vas a estar sola en el proceso.',
-  },
-  {
-    number: '04',
-    icon: RefreshCw,
-    title: 'Ajustes reales',
-    description: 'El plan no es fijo. Evoluciona con vos según tu progreso y tu día a día. Si algo no funciona, lo cambiamos.',
-  },
-  {
-    number: '05',
-    icon: Heart,
-    title: 'Mucho más que entrenamiento',
-    description: 'Guía de hábitos saludables y enfoque integral: cuerpo, mente y bienestar. Porque el objetivo es que te sientas bien, no solo que te veas bien.',
-  },
-];
+const icons = [MessageCircle, Target, Rocket, RefreshCw, Heart];
 
 export default function HowWeWork() {
+  const { proceso } = useContenido();
+  const steps = proceso.pasos.map((paso, i) => ({
+    number: String(i + 1).padStart(2, '0'),
+    icon: icons[i % icons.length],
+    title: paso.titulo,
+    description: paso.descripcion,
+  }));
   return (
     <section className="relative py-12 md:py-24 lg:py-32 overflow-hidden bg-white">
       <div className="absolute top-0 right-0 w-80 h-80 bg-rose/5 rounded-full blur-3xl pointer-events-none" />
@@ -52,15 +29,14 @@ export default function HowWeWork() {
           className="text-center mb-6"
         >
           <span className="kicker">
-            Proceso
+            {proceso.kicker}
           </span>
           <h2 className="section-title mt-4 mb-5">
-            Entrenar puede ser{' '}
-            <span className="text-accent">distinto</span>
+            {proceso.titulo}{' '}
+            <span className="text-accent">{proceso.tituloAccent}</span>
           </h2>
           <p className="text-charcoal/60 text-lg max-w-2xl mx-auto">
-            No se trata de seguir una rutina más. Se trata de tener un plan pensado
-            para tu cuerpo, tu momento y tu vida. Acá no vas a estar sola.
+            {proceso.subtitulo}
           </p>
         </motion.div>
 
@@ -135,7 +111,7 @@ export default function HowWeWork() {
           className="text-center mt-14"
         >
           <p className="text-charcoal/50 text-lg font-serif italic mb-8">
-            "No es solo entrenar. Es aprender a sostener un proceso que te haga bien."
+            &ldquo;{proceso.frase}&rdquo;
           </p>
           <a
             href={WHATSAPP_URL}

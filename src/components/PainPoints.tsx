@@ -2,16 +2,16 @@
 
 import { motion } from 'framer-motion';
 import { Frown, TrendingDown, HelpCircle, Zap, RotateCcw, Quote } from 'lucide-react';
+import { useContenido } from './ContenidoContext';
 
-const painPoints = [
-  { icon: Frown,        question: '¿No te sentís cómoda con tu cuerpo?' },
-  { icon: TrendingDown, question: '¿Te frustrás al no ver resultados?' },
-  { icon: HelpCircle,   question: '¿No sabés qué hacer en el gimnasio?' },
-  { icon: Zap,          question: '¿Te exigís demasiado y terminás abandonando?' },
-  { icon: RotateCcw,    question: '¿Empezás motivada pero no lográs sostener el hábito?' },
-];
+const icons = [Frown, TrendingDown, HelpCircle, Zap, RotateCcw];
 
 export default function PainPoints() {
+  const { dolores } = useContenido();
+  const painPoints = dolores.preguntas.map((question, i) => ({
+    icon: icons[i % icons.length],
+    question,
+  }));
   return (
     <section className="relative py-12 md:py-24 lg:py-32 overflow-hidden bg-cream-100">
       <div className="absolute top-0 right-1/4 w-80 h-80 bg-rose/5 rounded-full blur-3xl pointer-events-none" />
@@ -25,10 +25,10 @@ export default function PainPoints() {
           className="text-center mb-16"
         >
           <span className="kicker">
-            ¿Te identificás?
+            {dolores.kicker}
           </span>
           <h2 className="section-title mt-4 mb-4">
-            Sabemos cómo <span className="text-accent">te sentís</span>
+            {dolores.titulo} <span className="text-accent">{dolores.tituloAccent}</span>
           </h2>
         </motion.div>
 
@@ -63,12 +63,11 @@ export default function PainPoints() {
           <div className="bg-rose-muted rounded-3xl p-8 md:p-12 border border-rose/15">
             <Quote size={36} className="text-rose/40 mx-auto mb-5" />
             <p className="text-xl md:text-2xl text-charcoal leading-relaxed font-serif italic">
-              "No buscan solo cambiar su cuerpo. Buscan sentirse mejor con ellas mismas
-              y dejar de vivir el entrenamiento como una obligación."
+              &ldquo;{dolores.cita}&rdquo;
             </p>
             <div className="mt-6 w-12 h-0.5 bg-gradient-to-r from-rose to-nude mx-auto" />
             <p className="text-rose-deeper text-sm font-medium mt-4 uppercase tracking-widest">
-              Entrenar desde el amor, no desde la exigencia
+              {dolores.lema}
             </p>
           </div>
         </motion.div>
