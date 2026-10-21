@@ -6,6 +6,7 @@ import HowWeWork from '@/components/HowWeWork';
 import Testimonials from '@/components/Testimonials';
 import DownloadGuide from '@/components/DownloadGuide';
 import Plans from '@/components/Plans';
+import AppPreview from '@/components/AppPreview';
 import Newsletter from '@/components/Newsletter';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
@@ -32,6 +33,7 @@ export default async function Home() {
         <HowWeWork />
         <Testimonials />
         <DownloadGuide />
+        <AppPreview />
         <Plans />
         <Newsletter />
         <Footer />

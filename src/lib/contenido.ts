@@ -62,9 +62,9 @@ export function sanitizeContenido(raw: unknown): Contenido {
   const c = mergeConDefault(CONTENIDO_DEFAULT, raw);
   c.hero.foto = validarFoto(c.hero.foto, CONTENIDO_DEFAULT.hero.foto);
   c.sobre.foto = validarFoto(c.sobre.foto, CONTENIDO_DEFAULT.sobre.foto);
-  c.planes.basico.foto = validarFoto(c.planes.basico.foto, CONTENIDO_DEFAULT.planes.basico.foto);
-  c.planes.personalizado.foto = validarFoto(c.planes.personalizado.foto, CONTENIDO_DEFAULT.planes.personalizado.foto);
-  c.planes.presencial.foto = validarFoto(c.planes.presencial.foto, CONTENIDO_DEFAULT.planes.presencial.foto);
+  c.planes.videollamada.foto = validarFoto(c.planes.videollamada.foto, CONTENIDO_DEFAULT.planes.videollamada.foto);
+  c.planes.online.foto = validarFoto(c.planes.online.foto, CONTENIDO_DEFAULT.planes.online.foto);
+  c.planes.mixto.foto = validarFoto(c.planes.mixto.foto, CONTENIDO_DEFAULT.planes.mixto.foto);
   // la nota de un plan puede quedar vacía a propósito
   return c;
 }
@@ -104,14 +104,14 @@ export async function setFotoEnContenido(slot: string, url: string): Promise<voi
     case 'sobre':
       contenido.sobre.foto = url;
       break;
-    case 'plan-basico':
-      contenido.planes.basico.foto = url;
+    case 'plan-videollamada':
+      contenido.planes.videollamada.foto = url;
       break;
-    case 'plan-personalizado':
-      contenido.planes.personalizado.foto = url;
+    case 'plan-online':
+      contenido.planes.online.foto = url;
       break;
-    case 'plan-presencial':
-      contenido.planes.presencial.foto = url;
+    case 'plan-mixto':
+      contenido.planes.mixto.foto = url;
       break;
     default:
       return;

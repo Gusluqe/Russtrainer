@@ -90,7 +90,7 @@ export default function HowWeWork() {
                   {step.number}
                 </span>
               </div>
-              <div className="card group-hover:shadow-[0_8px_32px_rgba(232,164,164,0.12)] transition-all duration-300 p-6 flex-1">
+              <div className="card group-hover:shadow-[0_8px_32px_rgba(212,132,143,0.12)] transition-all duration-300 p-6 flex-1">
                 <h3 className="text-xl font-heading font-bold text-charcoal mb-2">
                   {step.title}
                 </h3>

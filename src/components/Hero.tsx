@@ -149,7 +149,7 @@ export default function Hero() {
               <div className="absolute -inset-8 bg-gradient-to-br from-rose/20 via-nude/15 to-rose/10 rounded-full blur-3xl" />
 
               {/* Foto */}
-              <div className="relative rounded-[2rem] overflow-hidden aspect-[3/4] shadow-[0_20px_60px_rgba(232,164,164,0.25)]">
+              <div className="relative rounded-[2rem] overflow-hidden aspect-[3/4] shadow-[0_20px_60px_rgba(212,132,143,0.25)]">
                 <img
                   src={hero.foto}
                   alt="Russ, entrenadora personal"
@@ -163,7 +163,7 @@ export default function Hero() {
                 initial={{ opacity: 0, scale: 0.8, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ delay: 0.9, type: 'spring', stiffness: 200 }}
-                className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-[0_8px_24px_rgba(0,0,0,0.10)] px-4 py-3 flex items-center gap-3 border border-rose/10"
+                className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-[0_8px_24px_rgba(59,42,36,0.10)] px-4 py-3 flex items-center gap-3 border border-rose/10"
               >
                 <div className="w-9 h-9 rounded-full bg-gradient-to-br from-rose to-nude flex items-center justify-center text-white font-bold text-sm shrink-0">
                   R
@@ -179,7 +179,7 @@ export default function Hero() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1.1, type: 'spring' }}
-                className="absolute -top-4 -right-4 bg-gradient-to-br from-rose to-nude text-white px-4 py-3 rounded-2xl font-heading font-bold text-xl shadow-[0_8px_24px_rgba(232,164,164,0.35)]"
+                className="absolute -top-4 -right-4 bg-gradient-to-br from-rose to-nude text-white px-4 py-3 rounded-2xl font-heading font-bold text-xl shadow-[0_8px_24px_rgba(212,132,143,0.35)]"
               >
                 +100
                 <span className="block text-xs font-sans font-normal opacity-90">clientas</span>

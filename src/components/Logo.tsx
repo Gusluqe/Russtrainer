@@ -23,47 +23,15 @@ export default function Logo({ className = '', size = 'md', dark = false }: Logo
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.2 }}
     >
-      <svg
-        width={icon}
-        height={icon}
-        viewBox="0 0 48 48"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="shrink-0"
+      <span
+        aria-hidden="true"
+        className={`shrink-0 grid place-items-center font-heading font-bold border-2 ${
+          dark ? 'border-rose text-rose bg-white/5' : 'border-rose-deep text-rose-deep bg-white/40'
+        }`}
+        style={{ width: icon, height: icon, borderRadius: icon * 0.26, fontSize: icon * 0.52 }}
       >
-        <rect
-          x="4"
-          y="4"
-          width="40"
-          height="40"
-          rx="10"
-          stroke="url(#logoGradient)"
-          strokeWidth="2"
-          fill="none"
-        />
-        <path
-          d="M14 32V16L24 24L34 16V32"
-          stroke="url(#logoGradient)"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-        />
-        <circle cx="24" cy="24" r="3" fill="#E8A4A4" />
-        <defs>
-          <linearGradient
-            id="logoGradient"
-            x1="4"
-            y1="4"
-            x2="44"
-            y2="44"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="#E8A4A4" />
-            <stop offset="1" stopColor="#D4A99A" />
-          </linearGradient>
-        </defs>
-      </svg>
+        R
+      </span>
 
       <div className="flex flex-col">
         <span className={`${text} font-heading font-bold tracking-tight leading-none`}>

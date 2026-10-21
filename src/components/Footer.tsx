@@ -98,7 +98,7 @@ export default function Footer() {
           >
             <h3 className="text-sm font-heading font-bold text-white mb-4 uppercase tracking-wider">Servicios</h3>
             <ul className="space-y-3">
-              {['Plan Online Básico', 'Plan Online Personalizado', 'Plan Presencial + Online', 'Primera semana gratis'].map(s => (
+              {['Plan por Videollamada', 'Plan Online', 'Plan Mixto'].map(s => (
                 <li key={s} className="text-white/50 text-sm">{s}</li>
               ))}
             </ul>

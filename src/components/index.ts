@@ -7,6 +7,7 @@ export { default as HowWeWork } from './HowWeWork';
 export { default as Services } from './Services';
 export { default as FreeWeek } from './FreeWeek';
 export { default as Plans } from './Plans';
+export { default as AppPreview } from './AppPreview';
 export { default as Results } from './Results';
 export { default as Testimonials } from './Testimonials';
 export { default as DownloadGuide } from './DownloadGuide';

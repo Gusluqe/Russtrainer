@@ -6,7 +6,7 @@ import { Check, MessageCircle, Users, ChevronLeft, ChevronRight } from 'lucide-r
 import { useContenido } from './ContenidoContext';
 
 type Plan = {
-  id: 'basico' | 'personalizado' | 'presencial';
+  id: 'videollamada' | 'online' | 'mixto';
   name: string;
   price: string;
   tagline: string;
@@ -22,26 +22,26 @@ type Plan = {
 
 // Diseño y links fijos por plan; los textos y fotos se editan desde /admin
 const PLAN_FIJO = {
-  basico: {
-    price: '$20.000',
-    imagePosition: 'object-top',
-    whatsapp:
-      'https://wa.me/5491168124464?text=Hola!%20Quiero%20empezar%20con%20el%20Plan%20Online%20B%C3%A1sico',
-  },
-  personalizado: {
-    price: '$35.000',
+  videollamada: {
+    price: '$75.000',
     imagePosition: 'object-center',
-    badge: { label: '✦ Más elegido', color: 'bg-rose-deep' },
+    whatsapp:
+      'https://wa.me/5491168124464?text=Hola!%20Quiero%20empezar%20con%20el%20Plan%20por%20Videollamada',
+  },
+  online: {
+    price: '$40.000',
+    imagePosition: 'object-top',
+    badge: { label: 'Más elegido', icon: false, color: 'bg-rose-deep' },
     highlight: true,
     whatsapp:
-      'https://wa.me/5491168124464?text=Hola!%20Quiero%20empezar%20con%20el%20Plan%20Online%20Personalizado',
+      'https://wa.me/5491168124464?text=Hola!%20Quiero%20empezar%20con%20el%20Plan%20Online',
   },
-  presencial: {
-    price: '$80.000',
+  mixto: {
+    price: '$90.000',
     imagePosition: 'object-center',
     badge: { label: 'Cupos limitados', icon: true, color: 'bg-nude-dark' },
     whatsapp:
-      'https://wa.me/5491168124464?text=Hola!%20Quiero%20consultar%20disponibilidad%20para%20el%20Plan%20Presencial%20%2B%20Online',
+      'https://wa.me/5491168124464?text=Hola!%20Quiero%20consultar%20disponibilidad%20para%20el%20Plan%20Mixto%20(presencial%20%2B%20online)',
   },
 } as const;
 
@@ -61,7 +61,7 @@ function PlanCard({ plan }: { plan: Plan }) {
       <div
         className={`relative h-full flex flex-col rounded-3xl overflow-hidden bg-white ${
           plan.highlight
-            ? 'shadow-[0_20px_60px_rgba(232,164,164,0.18)] border-2 border-rose/30'
+            ? 'shadow-[0_20px_60px_rgba(212,132,143,0.18)] border-2 border-rose/30'
             : 'card'
         }`}
       >
@@ -88,7 +88,7 @@ function PlanCard({ plan }: { plan: Plan }) {
             <span className="text-4xl font-heading font-bold text-charcoal">
               {plan.price}
             </span>
-            <span className="text-charcoal/40 text-sm mb-1.5">/ 30 días</span>
+            <span className="text-charcoal/40 text-sm mb-1.5">/ mes</span>
           </div>
 
           <ul className="space-y-3 mb-6">
@@ -118,7 +118,7 @@ function PlanCard({ plan }: { plan: Plan }) {
               href={plan.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${plan.highlight ? 'btn-primary' : 'btn-secondary'} w-full`}
+              className="btn-primary w-full"
             >
               <MessageCircle size={18} />
               {plan.cta}
@@ -131,11 +131,13 @@ function PlanCard({ plan }: { plan: Plan }) {
 }
 
 export default function Plans() {
-  const contenidoPlanes = useContenido().planes;
+  const contenidoTodo = useContenido();
+  const contenidoPlanes = contenidoTodo.planes;
+  const comoEmpezar = contenidoTodo.comoEmpezar;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [precios, setPrecios] = useState<Record<string, string> | null>(null);
 
-  const plans: Plan[] = (['basico', 'personalizado', 'presencial'] as const).map(
+  const plans: Plan[] = (['videollamada', 'online', 'mixto'] as const).map(
     (id) => {
       const fijo = PLAN_FIJO[id];
       const editable = contenidoPlanes[id];
@@ -283,10 +285,49 @@ export default function Plans() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="text-center text-charcoal/40 text-sm mt-10 font-serif italic"
+          className="text-center text-charcoal/50 text-sm mt-10 font-serif italic max-w-2xl mx-auto"
         >
           {contenidoPlanes.frase}
         </motion.p>
+
+        {/* Cómo empezar: igual para los 3 planes */}
+        <div id="como-empezar" className="mt-20 md:mt-24">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <span className="kicker">{comoEmpezar.kicker}</span>
+            <h3 className="section-title !text-3xl md:!text-4xl lg:!text-5xl mt-4 mb-4">
+              {comoEmpezar.titulo}{' '}
+              <span className="text-accent">{comoEmpezar.tituloAccent}</span>
+            </h3>
+            <p className="text-charcoal/60 text-lg max-w-xl mx-auto">{comoEmpezar.subtitulo}</p>
+          </motion.div>
+
+          <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 max-w-6xl mx-auto">
+            {comoEmpezar.pasos.map((paso, i) => (
+              <motion.li
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="card p-6 flex flex-col"
+              >
+                <span className="w-10 h-10 rounded-full bg-rose-deep text-white font-heading font-bold flex items-center justify-center mb-4">
+                  {i + 1}
+                </span>
+                <h4 className="font-heading font-bold text-charcoal text-lg mb-2">{paso.titulo}</h4>
+                <p className="text-charcoal/60 text-sm leading-relaxed">{paso.descripcion}</p>
+              </motion.li>
+            ))}
+          </ol>
+
+          <p className="text-center text-charcoal/60 text-sm mt-8">{comoEmpezar.nota}</p>
+        </div>
       </div>
     </section>
   );

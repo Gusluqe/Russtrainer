@@ -36,7 +36,7 @@ export default function PhotoGallery() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="break-inside-avoid mb-4 group relative rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_32px_rgba(232,164,164,0.20)] transition-all duration-300"
+              className="break-inside-avoid mb-4 group relative rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(59,42,36,0.08)] hover:shadow-[0_8px_32px_rgba(212,132,143,0.20)] transition-all duration-300"
             >
               <img
                 src={photo.src}

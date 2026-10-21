@@ -23,7 +23,7 @@ export default function FreeWeek() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-white rounded-3xl shadow-[0_20px_60px_rgba(232,164,164,0.15)] border border-rose/15 p-8 md:p-16 text-center"
+          className="bg-white rounded-3xl shadow-[0_20px_60px_rgba(212,132,143,0.15)] border border-rose/15 p-8 md:p-16 text-center"
         >
           <motion.div
             initial={{ scale: 0 }}

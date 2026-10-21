@@ -42,7 +42,7 @@ export default function WhatsAppButton() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.3 }}
-                className="hidden sm:block bg-white text-charcoal text-sm px-4 py-2 rounded-xl shadow-[0_4px_16px_rgba(0,0,0,0.12)] whitespace-nowrap font-medium border border-rose/20"
+                className="hidden sm:block bg-white text-charcoal text-sm px-4 py-2 rounded-xl shadow-[0_4px_16px_rgba(59,42,36,0.12)] whitespace-nowrap font-medium border border-rose/20"
               >
                 Tenes dudas? Hablemos
               </motion.div>

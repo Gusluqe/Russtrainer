@@ -5,15 +5,15 @@ import path from 'path';
 // en desarrollo local (sin contexto de Netlify) se usa un JSON en .data/.
 
 export type Precios = {
-  basico: string;
-  personalizado: string;
-  presencial: string;
+  videollamada: string;
+  online: string;
+  mixto: string;
 };
 
 export const PRECIOS_DEFAULT: Precios = {
-  basico: '$20.000',
-  personalizado: '$35.000',
-  presencial: '$80.000',
+  videollamada: '$75.000',
+  online: '$40.000',
+  mixto: '$90.000',
 };
 
 const STORE_NAME = 'russ-config';
@@ -35,9 +35,9 @@ function sanitize(raw: unknown): Precios {
       : PRECIOS_DEFAULT[key];
   };
   return {
-    basico: pick('basico'),
-    personalizado: pick('personalizado'),
-    presencial: pick('presencial'),
+    videollamada: pick('videollamada'),
+    online: pick('online'),
+    mixto: pick('mixto'),
   };
 }
 

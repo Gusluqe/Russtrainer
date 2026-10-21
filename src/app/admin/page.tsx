@@ -21,21 +21,21 @@ import {
 import type { Contenido, PlanContenido } from '@/lib/contenidoTipos';
 
 type Precios = {
-  basico: string;
-  personalizado: string;
-  presencial: string;
+  videollamada: string;
+  online: string;
+  mixto: string;
 };
 
 type Suscriptora = { email: string; nombre: string; fecha: string };
 
 type Tab = 'precios' | 'textos' | 'planes' | 'fotos' | 'suscriptoras';
-type PlanId = 'basico' | 'personalizado' | 'presencial';
-type FotoSlot = 'hero' | 'sobre' | 'plan-basico' | 'plan-personalizado' | 'plan-presencial';
+type PlanId = 'videollamada' | 'online' | 'mixto';
+type FotoSlot = 'hero' | 'sobre' | 'plan-videollamada' | 'plan-online' | 'plan-mixto';
 
 const PLANES: { key: PlanId; nombre: string; detalle: string }[] = [
-  { key: 'basico', nombre: 'Plan Online Básico', detalle: 'Rutina mensual sin seguimiento' },
-  { key: 'personalizado', nombre: 'Plan Online Personalizado', detalle: 'El más elegido ✦' },
-  { key: 'presencial', nombre: 'Plan Presencial + Online', detalle: '4 clases presenciales al mes' },
+  { key: 'videollamada', nombre: 'Plan por Videollamada', detalle: '2 sesiones en vivo por semana' },
+  { key: 'online', nombre: 'Plan Online', detalle: 'Rutina personalizada y seguimiento' },
+  { key: 'mixto', nombre: 'Plan Mixto', detalle: 'Presencial + online · cupos limitados' },
 ];
 
 const TABS: { key: Tab; label: string }[] = [
@@ -49,9 +49,9 @@ const TABS: { key: Tab; label: string }[] = [
 const FOTOS: { slot: FotoSlot; label: string; detalle: string }[] = [
   { slot: 'hero', label: 'Foto de portada', detalle: 'La foto grande de arriba de todo' },
   { slot: 'sobre', label: 'Foto de "Sobre Russ"', detalle: 'La foto al lado de tu historia' },
-  { slot: 'plan-basico', label: 'Foto Plan Online Básico', detalle: 'Tarjeta del plan' },
-  { slot: 'plan-personalizado', label: 'Foto Plan Online Personalizado', detalle: 'Tarjeta del plan' },
-  { slot: 'plan-presencial', label: 'Foto Plan Presencial + Online', detalle: 'Tarjeta del plan' },
+  { slot: 'plan-videollamada', label: 'Foto Plan por Videollamada', detalle: 'Tarjeta del plan' },
+  { slot: 'plan-online', label: 'Foto Plan Online', detalle: 'Tarjeta del plan' },
+  { slot: 'plan-mixto', label: 'Foto Plan Mixto', detalle: 'Tarjeta del plan' },
 ];
 
 const inputCls =
@@ -278,18 +278,18 @@ export default function AdminPage() {
       ? c.hero.foto
       : slot === 'sobre'
         ? c.sobre.foto
-        : slot === 'plan-basico'
-          ? c.planes.basico.foto
-          : slot === 'plan-personalizado'
-            ? c.planes.personalizado.foto
-            : c.planes.presencial.foto;
+        : slot === 'plan-videollamada'
+          ? c.planes.videollamada.foto
+          : slot === 'plan-online'
+            ? c.planes.online.foto
+            : c.planes.mixto.foto;
 
   const setFotoLocal = (slot: FotoSlot, url: string) => {
     if (slot === 'hero') upd('hero', { foto: url });
     else if (slot === 'sobre') upd('sobre', { foto: url });
-    else if (slot === 'plan-basico') updPlan('basico', { foto: url });
-    else if (slot === 'plan-personalizado') updPlan('personalizado', { foto: url });
-    else updPlan('presencial', { foto: url });
+    else if (slot === 'plan-videollamada') updPlan('videollamada', { foto: url });
+    else if (slot === 'plan-online') updPlan('online', { foto: url });
+    else updPlan('mixto', { foto: url });
   };
 
   const subirFoto = async (slot: FotoSlot, file: File) => {
@@ -850,9 +850,9 @@ export default function AdminPage() {
                   <div className="space-y-3">
                     {(
                       [
-                        ['basico', 'Plan Online Básico'],
-                        ['personalizado', 'Plan Online Personalizado'],
-                        ['presencial', 'Plan Presencial + Online'],
+                        ['videollamada', 'Plan por Videollamada'],
+                        ['online', 'Plan Online'],
+                        ['mixto', 'Plan Mixto'],
                       ] as [PlanId, string][]
                     ).map(([id, etiqueta]) => (
                       <Seccion

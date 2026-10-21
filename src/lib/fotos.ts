@@ -7,9 +7,9 @@ import path from 'path';
 export const FOTO_SLOTS = [
   'hero',
   'sobre',
-  'plan-basico',
-  'plan-personalizado',
-  'plan-presencial',
+  'plan-videollamada',
+  'plan-online',
+  'plan-mixto',
 ] as const;
 
 export type FotoSlot = (typeof FOTO_SLOTS)[number];

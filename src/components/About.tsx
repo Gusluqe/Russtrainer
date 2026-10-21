@@ -48,7 +48,7 @@ export default function About() {
           >
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-br from-rose/15 to-nude/10 rounded-3xl blur-2xl" />
-              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(232,164,164,0.20)]">
+              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(212,132,143,0.20)]">
                 <img
                   src={sobre.foto}
                   alt="Russ entrenando"
@@ -62,7 +62,7 @@ export default function About() {
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4, type: 'spring' }}
-                className="absolute -bottom-6 -right-6 bg-gradient-to-br from-rose to-nude text-white px-6 py-4 rounded-2xl font-heading font-bold text-2xl shadow-[0_8px_24px_rgba(232,164,164,0.40)]"
+                className="absolute -bottom-6 -right-6 bg-gradient-to-br from-rose to-nude text-white px-6 py-4 rounded-2xl font-heading font-bold text-2xl shadow-[0_8px_24px_rgba(212,132,143,0.40)]"
               >
                 +100
                 <span className="block text-sm font-sans font-normal opacity-90">Clientas felices</span>

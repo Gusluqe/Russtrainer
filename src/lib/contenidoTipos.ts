@@ -65,9 +65,17 @@ export type Contenido = {
     tituloAccent: string;
     subtitulo: string;
     frase: string;
-    basico: PlanContenido;
-    personalizado: PlanContenido;
-    presencial: PlanContenido;
+    videollamada: PlanContenido;
+    online: PlanContenido;
+    mixto: PlanContenido;
+  };
+  comoEmpezar: {
+    kicker: string;
+    titulo: string;
+    tituloAccent: string;
+    subtitulo: string;
+    pasos: PasoProceso[];
+    nota: string;
   };
   novedades: {
     kicker: string;
@@ -135,7 +143,7 @@ export const CONTENIDO_DEFAULT: Contenido = {
       {
         titulo: 'Tu plan 100% personalizado',
         descripcion:
-          'Rutina en Notion, 4 semanas, con videos explicativos, movilidad articular y estiramientos. Adaptado a tu nivel, disponibilidad y si entrenás en casa o gimnasio.',
+          'Te doy acceso a la app con tu rutina, con videos explicativos, movilidad articular y estiramientos. Adaptada a tu nivel, disponibilidad y si entrenás en casa o gimnasio.',
       },
       {
         titulo: 'Acompañamiento constante',
@@ -209,55 +217,76 @@ export const CONTENIDO_DEFAULT: Contenido = {
     kicker: 'Planes',
     titulo: 'Elegí cómo querés',
     tituloAccent: 'empezar',
-    subtitulo: 'Resultados reales que podés sostener. Sin importar por dónde empieces.',
+    subtitulo:
+      'Tres formas de entrenar conmigo, todas pensadas para vos. Elegí la que mejor se adapte a tu vida.',
     frase:
-      'No importa por dónde empieces. Lo importante es que sea un proceso que puedas sostener.',
-    basico: {
-      nombre: 'Plan Online Básico',
-      tagline: 'Ideal si querés una guía clara y entrenar sola.',
+      'Todos los planes se adaptan a tu objetivo, a tu nivel y a tu rutina. No importa por dónde empieces, lo importante es que sea un proceso que puedas sostener.',
+    videollamada: {
+      nombre: 'Plan por Videollamada',
+      tagline: 'Entrenamos juntas en vivo. Ideal si entrenás en casa.',
       features: [
-        'Rutina mensual Casa o Gym según tu objetivo (bajar de peso, definir o aumentar masa)',
-        'Videos cortos explicativos de cada ejercicio',
-        'Guía general de pesos según tu nivel',
-        'Movilidad articular y estiramientos básicos',
-        'Acceso al plan por 30 días',
+        'Entrenamos en vivo conmigo por videollamada, 2 sesiones por semana',
+        'Plan personalizado según tu objetivo y tu nivel',
+        'Corrección de técnica y acompañamiento en cada ejercicio',
+        'Horarios disponibles por ahora: lunes 7:00 a. m., miércoles 7:00 a. m., miércoles 20:00 hs y viernes 7:00 a. m.',
+        'Si querés entrenar una tercera vez por semana, esa sesión es online, con la rutina que yo te preparo y te envío',
       ],
-      nota: 'Sin seguimiento ni ajustes durante el mes. Yo te doy la estructura y vos la ejecutás.',
+      nota: '',
       cta: 'Quiero este plan',
-      foto: '/plan-online-basico.webp',
+      foto: '/plan-online-personalizado.webp',
     },
-    personalizado: {
-      nombre: 'Plan Online Personalizado',
-      tagline: 'Todo lo que necesitás para transformarte desde donde estés.',
+    online: {
+      nombre: 'Plan Online',
+      tagline: 'Entrená a tu ritmo, con mi guía y mi seguimiento.',
       features: [
-        'Planificación mensual 100% personalizada según tu objetivo',
-        'Videos cortos explicativos de cada ejercicio',
-        'Guía de pesos según tu nivel y progreso',
-        'Guía de hábitos saludables: alimentación consciente y amor propio',
-        'Apoyo y seguimiento vía WhatsApp en todo el proceso',
-        'Movilidad articular y estiramientos para prevenir lesiones',
+        'Rutina 100% personalizada según tu objetivo, tu nivel y el equipo que tengas (en casa o en el gym)',
+        'Entrenás a tu ritmo y sin horarios fijos',
+        'Seguimiento conmigo para resolver tus dudas y ajustar el plan',
+        'Te explico cada ejercicio para que lo hagas con buena técnica',
+        'Accedés a tu rutina en mi app con tu nombre y registrás lo que hacés en cada ejercicio',
       ],
       nota: '',
       cta: 'Quiero empezar',
-      foto: '/plan-online-personalizado.webp',
+      foto: '/plan-online-basico.webp',
     },
-    presencial: {
-      nombre: 'Plan Presencial + Online',
-      tagline: 'Acompañamiento cercano: lo mejor de ambos mundos.',
+    mixto: {
+      nombre: 'Plan Mixto',
+      tagline: 'Presencial + online: lo mejor de los dos mundos.',
       features: [
-        'Evaluación inicial presencial',
-        'Rutina personalizada (online)',
-        '4 clases presenciales al mes (1 por semana, 60–75 min)',
-        'Videos explicativos de los ejercicios',
-        'Guía de pesos y progresiones',
-        'Movilidad articular y estiramientos',
-        'Guía de hábitos saludables',
-        'Seguimiento vía WhatsApp',
+        '1 sesión presencial por semana conmigo',
+        'Las demás sesiones son online, con rutina personalizada',
+        'Seguimiento durante toda la semana',
+        'Disponibilidad limitada: depende de la ubicación, los horarios y el gym',
       ],
       nota: '',
       cta: 'Consultar disponibilidad',
       foto: '/plan-presencial-online.webp',
     },
+  },
+  comoEmpezar: {
+    kicker: 'Cómo empezar',
+    titulo: 'Empezar es',
+    tituloAccent: 'más simple de lo que pensás',
+    subtitulo: 'Es igual para los tres planes.',
+    pasos: [
+      {
+        titulo: 'Realizás el pago',
+        descripcion: 'Elegís tu plan y confirmás tu lugar con el pago.',
+      },
+      {
+        titulo: 'Te envío un formulario',
+        descripcion: 'Para conocerte mejor: tu objetivo, tu nivel, tu rutina y el equipo que tenés.',
+      },
+      {
+        titulo: 'Videollamada corta (opcional)',
+        descripcion: 'Si querés, agendamos una videollamada corta para conocernos y resolver dudas.',
+      },
+      {
+        titulo: 'Recibís tu planificación',
+        descripcion: 'En 24 a 48 horas te entrego tu planificación personalizada.',
+      },
+    ],
+    nota: 'Mi contacto principal es WhatsApp. También me encontrás en Instagram: @russ.trainer',
   },
   novedades: {
     kicker: 'Novedades',

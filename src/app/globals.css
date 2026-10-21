@@ -5,13 +5,13 @@
 @layer base {
   :root {
     --cream: #FCFCF7;
-    --rose: #E8A4A4;
-    --rose-dark: #D48484;
-    --rose-light: #F5D5D5;
+    --rose: #d4848f;
+    --rose-dark: #c47a82;
+    --rose-light: #f4e1e3;
     --sage: #B8C9B5;
-    --charcoal: #2D2D2D;
-    --charcoal-muted: #7A7070;
-    --nude: #D4A99A;
+    --charcoal: #3b2a24;
+    --charcoal-muted: #6e655d;
+    --nude: #b98468;
   }
 
   html {
@@ -23,8 +23,8 @@
   }
 
   ::selection {
-    background: #F5D5D5;
-    color: #2D2D2D;
+    background: #f4e1e3;
+    color: #3b2a24;
   }
 
   /* Scrollbar rosada, finita */
@@ -37,13 +37,13 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #E8A4A4;
+    background: #d4848f;
     border-radius: 8px;
     border: 2px solid #FCFCF7;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #B85C68;
+    background: #a85c68;
   }
 }
 
@@ -77,11 +77,11 @@
   }
 
   .card {
-    @apply bg-white rounded-3xl shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-rose/10;
+    @apply bg-white rounded-3xl shadow-[0_4px_24px_rgba(59,42,36,0.08)] border border-rose/10;
   }
 
   .card-hover {
-    @apply transition-all duration-300 hover:shadow-[0_8px_32px_rgba(232,164,164,0.15)] hover:-translate-y-1;
+    @apply transition-all duration-300 hover:shadow-[0_8px_32px_rgba(212,132,143,0.18)] hover:-translate-y-1;
   }
 
   /* Acento emocional de la marca: serif italic en rosa profundo */
