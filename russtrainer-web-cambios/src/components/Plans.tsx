@@ -1,0 +1,334 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { motion, type PanInfo } from 'framer-motion';
+import { Check, MessageCircle, Users, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useContenido } from './ContenidoContext';
+
+type Plan = {
+  id: 'videollamada' | 'online' | 'mixto';
+  name: string;
+  price: string;
+  tagline: string;
+  image: string;
+  imagePosition: string;
+  features: string[];
+  note?: string;
+  badge?: { label: string; icon?: boolean; color: string };
+  highlight?: boolean;
+  cta: string;
+  whatsapp: string;
+};
+
+// Diseño y links fijos por plan; los textos y fotos se editan desde /admin
+const PLAN_FIJO = {
+  videollamada: {
+    price: '$75.000',
+    imagePosition: 'object-center',
+    whatsapp:
+      'https://wa.me/5491168124464?text=Hola!%20Quiero%20empezar%20con%20el%20Plan%20por%20Videollamada',
+  },
+  online: {
+    price: '$40.000',
+    imagePosition: 'object-top',
+    badge: { label: 'Más elegido', icon: false, color: 'bg-rose-deep' },
+    highlight: true,
+    whatsapp:
+      'https://wa.me/5491168124464?text=Hola!%20Quiero%20empezar%20con%20el%20Plan%20Online',
+  },
+  mixto: {
+    price: '$90.000',
+    imagePosition: 'object-center',
+    badge: { label: 'Cupos limitados', icon: true, color: 'bg-nude-dark' },
+    whatsapp:
+      'https://wa.me/5491168124464?text=Hola!%20Quiero%20consultar%20disponibilidad%20para%20el%20Plan%20Mixto%20(presencial%20%2B%20online)',
+  },
+} as const;
+
+function PlanCard({ plan }: { plan: Plan }) {
+  return (
+    <div className="relative h-full">
+      {plan.badge && (
+        <div className="absolute -top-4 left-6 z-10">
+          <span
+            className={`${plan.badge.color} text-white text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider flex items-center gap-1.5`}
+          >
+            {plan.badge.icon && <Users size={11} />}
+            {plan.badge.label}
+          </span>
+        </div>
+      )}
+      <div
+        className={`relative h-full flex flex-col rounded-3xl overflow-hidden bg-white ${
+          plan.highlight
+            ? 'shadow-[0_20px_60px_rgba(212,132,143,0.18)] border-2 border-rose/30'
+            : 'card'
+        }`}
+      >
+        {plan.highlight && (
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-rose to-nude z-10" />
+        )}
+
+        <div className="relative aspect-[16/10] overflow-hidden">
+          <img
+            src={plan.image}
+            alt={plan.name}
+            className={`w-full h-full object-cover ${plan.imagePosition}`}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent" />
+        </div>
+
+        <div className="flex flex-col flex-1 p-7">
+          <h3 className="text-2xl font-heading font-bold text-charcoal mb-1.5">
+            {plan.name}
+          </h3>
+          <p className="text-charcoal/50 text-sm mb-6">{plan.tagline}</p>
+
+          <div className="mb-6 flex items-end gap-2">
+            <span className="text-4xl font-heading font-bold text-charcoal">
+              {plan.price}
+            </span>
+            <span className="text-charcoal/40 text-sm mb-1.5">/ mes</span>
+          </div>
+
+          <ul className="space-y-3 mb-6">
+            {plan.features.map((feature, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <div
+                  className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${
+                    plan.highlight ? 'bg-rose/15' : 'bg-nude/20'
+                  }`}
+                >
+                  <Check
+                    size={12}
+                    className={plan.highlight ? 'text-rose' : 'text-nude-dark'}
+                  />
+                </div>
+                <span className="text-charcoal/70 text-sm">{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          {plan.note && (
+            <p className="text-charcoal/40 text-xs italic mb-6">{plan.note}</p>
+          )}
+
+          <div className="mt-auto">
+            <a
+              href={plan.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary w-full"
+            >
+              <MessageCircle size={18} />
+              {plan.cta}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function Plans() {
+  const contenidoTodo = useContenido();
+  const contenidoPlanes = contenidoTodo.planes;
+  const comoEmpezar = contenidoTodo.comoEmpezar;
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [precios, setPrecios] = useState<Record<string, string> | null>(null);
+
+  const plans: Plan[] = (['videollamada', 'online', 'mixto'] as const).map(
+    (id) => {
+      const fijo = PLAN_FIJO[id];
+      const editable = contenidoPlanes[id];
+      return {
+        id,
+        name: editable.nombre,
+        price: fijo.price,
+        tagline: editable.tagline,
+        image: editable.foto,
+        imagePosition: fijo.imagePosition,
+        features: editable.features,
+        note: editable.nota || undefined,
+        badge: 'badge' in fijo ? fijo.badge : undefined,
+        highlight: 'highlight' in fijo ? fijo.highlight : undefined,
+        cta: editable.cta,
+        whatsapp: fijo.whatsapp,
+      };
+    }
+  );
+  const lastIndex = plans.length - 1;
+
+  // Precios editables desde /admin; si la API no responde quedan los de acá
+  useEffect(() => {
+    fetch('/api/precios')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => data && setPrecios(data))
+      .catch(() => {});
+  }, []);
+
+  const planesConPrecio = plans.map((plan) =>
+    precios?.[plan.id] ? { ...plan, price: precios[plan.id] } : plan
+  );
+
+  function handleDragEnd(_: unknown, info: PanInfo) {
+    if ((info.offset.x < -50 || info.velocity.x < -300) && currentIndex < lastIndex) {
+      setCurrentIndex(currentIndex + 1);
+    } else if ((info.offset.x > 50 || info.velocity.x > 300) && currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  }
+
+  return (
+    <section id="planes" className="relative py-12 md:py-24 lg:py-32 overflow-hidden bg-white">
+      <div className="absolute top-0 left-0 w-64 h-64 bg-sage/8 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-48 h-48 bg-rose/8 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <span className="kicker">
+            {contenidoPlanes.kicker}
+          </span>
+          <h2 className="section-title mt-4 mb-5">
+            {contenidoPlanes.titulo}{' '}
+            <span className="text-accent">{contenidoPlanes.tituloAccent}</span>
+          </h2>
+          <p className="text-charcoal/60 text-lg max-w-xl mx-auto">
+            {contenidoPlanes.subtitulo}
+          </p>
+        </motion.div>
+
+        {/* Desktop: 3 tarjetas lado a lado */}
+        <div className="hidden md:grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+          {planesConPrecio.map((plan, index) => (
+            <motion.div
+              key={plan.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.12 }}
+              className="relative"
+            >
+              <PlanCard plan={plan} />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Mobile: carrusel — ancho 300% explícito para que cada paso = exactamente 1 card */}
+        <div className="md:hidden">
+          <div className="overflow-hidden">
+            <motion.div
+              className="flex"
+              style={{ width: `${plans.length * 100}%` }}
+              animate={{ x: `-${(currentIndex * 100) / plans.length}%` }}
+              transition={{ type: 'spring', stiffness: 350, damping: 35 }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.12}
+              onDragEnd={handleDragEnd}
+            >
+              {planesConPrecio.map((plan) => (
+                <div
+                  key={plan.id}
+                  className="shrink-0 pt-5 px-1"
+                  style={{ width: `${100 / plans.length}%` }}
+                >
+                  <PlanCard plan={plan} />
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Controles */}
+          <div className="flex items-center justify-center gap-6 mt-8">
+            <button
+              onClick={() => setCurrentIndex(Math.max(0, currentIndex - 1))}
+              disabled={currentIndex === 0}
+              aria-label="Plan anterior"
+              className="w-10 h-10 rounded-full border border-rose/30 flex items-center justify-center disabled:opacity-30 transition-opacity"
+            >
+              <ChevronLeft size={18} className="text-rose" />
+            </button>
+
+            <div className="flex items-center gap-2">
+              {plans.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentIndex(i)}
+                  aria-label={`Ir al plan ${i + 1}`}
+                  className={`rounded-full transition-all duration-300 ${
+                    i === currentIndex ? 'w-6 h-2 bg-rose' : 'w-2 h-2 bg-rose/30'
+                  }`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={() => setCurrentIndex(Math.min(lastIndex, currentIndex + 1))}
+              disabled={currentIndex === lastIndex}
+              aria-label="Plan siguiente"
+              className="w-10 h-10 rounded-full border border-rose/30 flex items-center justify-center disabled:opacity-30 transition-opacity"
+            >
+              <ChevronRight size={18} className="text-rose" />
+            </button>
+          </div>
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="text-center text-charcoal/50 text-sm mt-10 font-serif italic max-w-2xl mx-auto"
+        >
+          {contenidoPlanes.frase}
+        </motion.p>
+
+        {/* Cómo empezar: igual para los 3 planes */}
+        <div id="como-empezar" className="mt-20 md:mt-24">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <span className="kicker">{comoEmpezar.kicker}</span>
+            <h3 className="section-title !text-3xl md:!text-4xl lg:!text-5xl mt-4 mb-4">
+              {comoEmpezar.titulo}{' '}
+              <span className="text-accent">{comoEmpezar.tituloAccent}</span>
+            </h3>
+            <p className="text-charcoal/60 text-lg max-w-xl mx-auto">{comoEmpezar.subtitulo}</p>
+          </motion.div>
+
+          <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 max-w-6xl mx-auto">
+            {comoEmpezar.pasos.map((paso, i) => (
+              <motion.li
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="card p-6 flex flex-col"
+              >
+                <span className="w-10 h-10 rounded-full bg-rose-deep text-white font-heading font-bold flex items-center justify-center mb-4">
+                  {i + 1}
+                </span>
+                <h4 className="font-heading font-bold text-charcoal text-lg mb-2">{paso.titulo}</h4>
+                <p className="text-charcoal/60 text-sm leading-relaxed">{paso.descripcion}</p>
+              </motion.li>
+            ))}
+          </ol>
+
+          <p className="text-center text-charcoal/60 text-sm mt-8">{comoEmpezar.nota}</p>
+        </div>
+      </div>
+    </section>
+  );
+}
