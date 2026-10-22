@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Reveal from './Reveal';
+import Blobs from './Blobs';
 import { WA_EMPEZAR, APP_URL } from '@/lib/enlaces';
 
 const FUNCIONES = [
@@ -18,11 +19,12 @@ export default function AppPreview() {
   const [f, setF] = useState(1);
 
   return (
-    <section id="app" className="bg-cream py-16 lg:py-24 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-[72px]">
+    <section id="app" className="relative bg-cream-100 py-16 lg:py-24 overflow-hidden">
+      <Blobs />
+      <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-20 flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-24">
         {/* Celulares */}
         <Reveal className="shrink-0">
-          <div className="relative w-[330px] h-[460px] sm:w-[470px] sm:h-[640px] max-w-full">
+          <div className="relative w-[330px] h-[460px] sm:w-[470px] sm:h-[640px] lg:w-[560px] lg:h-[760px] max-w-full">
             <div
               className="absolute left-0 top-[7%] w-[53%] rounded-[30px] sm:rounded-[38px] bg-plum p-[7px] sm:p-[9px] -rotate-[5deg] shadow-[0_24px_50px_rgba(59,42,36,0.22)]"
             >
@@ -70,12 +72,12 @@ export default function AppPreview() {
         </Reveal>
 
         {/* Funciones */}
-        <Reveal className="flex-1 min-w-0 max-w-[500px] flex flex-col gap-4 lg:gap-[18px] w-full" delay={0.1}>
-          <span className="text-xs tracking-[.18em] font-bold text-rose-deep text-center lg:text-left">ASÍ SE VE POR DENTRO</span>
-          <h2 className="font-heading font-bold text-charcoal text-[30px] lg:text-[40px] leading-[1.1] text-center lg:text-left">
+        <Reveal className="flex-1 min-w-0 max-w-[560px] flex flex-col gap-4 lg:gap-[18px] w-full" delay={0.1}>
+          <span className="text-xs lg:text-sm tracking-[.18em] font-bold text-[#7d4a38] text-center lg:text-left">ASÍ SE VE POR DENTRO</span>
+          <h2 className="font-heading font-bold text-charcoal text-[30px] lg:text-[52px] leading-[1.1] text-center lg:text-left">
             Tu rutina siempre <span className="text-accent">en tu bolsillo</span>
           </h2>
-          <span className="text-sm text-charcoal-muted text-center lg:text-left">Toca cada función para verla en el celular:</span>
+          <span className="text-sm lg:text-base text-charcoal-muted text-center lg:text-left">Toca cada función para verla en el celular:</span>
 
           {/* Celular: chips + descripción */}
           <div className="lg:hidden flex flex-col gap-3">
@@ -101,18 +103,18 @@ export default function AppPreview() {
               <button
                 key={x.nombre}
                 onClick={() => setF(i)}
-                className={`text-left rounded-[18px] px-[18px] py-3.5 flex flex-col gap-0.5 transition ${
+                className={`text-left rounded-[18px] px-5 py-4 flex flex-col gap-0.5 transition ${
                   f === i ? 'bg-rose-deep text-white shadow-[0_12px_28px_rgba(168,92,104,0.35)]' : 'bg-white text-charcoal shadow-[0_4px_14px_rgba(59,42,36,0.07)]'
                 }`}
               >
-                <b className="text-base">{x.nombre}</b>
-                <span className="text-sm leading-snug opacity-90">{x.desc}</span>
+                <b className="text-base lg:text-xl">{x.nombre}</b>
+                <span className="text-sm lg:text-base leading-snug opacity-90">{x.desc}</span>
               </button>
             ))}
           </div>
 
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 mt-1">
-            <a href={WA_EMPEZAR} target="_blank" rel="noopener noreferrer" className="bg-[#25a85a] text-white font-extrabold px-7 py-4 rounded-full hover:brightness-95 transition">
+            <a href={WA_EMPEZAR} target="_blank" rel="noopener noreferrer" className="bg-[#25a85a] text-white font-extrabold px-7 py-4 lg:px-9 lg:py-5 lg:text-lg rounded-full hover:brightness-95 transition">
               Quiero empezar
             </a>
             <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="text-rose-deep font-bold underline underline-offset-[5px]">

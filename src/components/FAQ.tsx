@@ -15,9 +15,9 @@ export default function FAQ() {
   const [abierta, setAbierta] = useState<number | null>(0);
   return (
     <section id="faq" className="bg-cream-100 py-14 lg:py-20">
-      <div className="max-w-[760px] mx-auto px-4 sm:px-6 flex flex-col gap-7">
+      <div className="max-w-[760px] lg:max-w-[920px] mx-auto px-4 sm:px-6 flex flex-col gap-7">
         <Reveal>
-          <h2 className="text-center font-heading font-bold text-charcoal text-[28px] lg:text-[40px] leading-[1.1]">
+          <h2 className="text-center font-heading font-bold text-charcoal text-[28px] lg:text-[52px] leading-[1.1]">
             Preguntas <span className="text-accent">frecuentes</span>
           </h2>
         </Reveal>
@@ -30,12 +30,12 @@ export default function FAQ() {
                   <button
                     onClick={() => setAbierta(open ? null : i)}
                     aria-expanded={open}
-                    className="w-full flex items-center justify-between gap-4 text-left px-5 lg:px-6 py-4 lg:py-[18px] min-h-[44px]"
+                    className="w-full flex items-center justify-between gap-4 text-left px-5 lg:px-8 py-4 lg:py-6 min-h-[44px]"
                   >
-                    <b className="text-[15px] lg:text-base text-charcoal leading-snug">{x.p}</b>
+                    <b className="text-[15px] lg:text-xl text-charcoal leading-snug">{x.p}</b>
                     <span className="text-rose-deep font-bold text-xl leading-none">{open ? '−' : '+'}</span>
                   </button>
-                  {open && <p className="px-5 lg:px-6 pb-5 text-[14.5px] lg:text-[15px] leading-relaxed text-charcoal-muted">{x.r}</p>}
+                  {open && <p className="px-5 lg:px-8 pb-6 text-[14.5px] lg:text-lg leading-relaxed text-charcoal-muted">{x.r}</p>}
                 </div>
               </Reveal>
             );

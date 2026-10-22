@@ -26,14 +26,14 @@ export default function Navbar({ transparente = false }: { transparente?: boolea
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${fondo}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 h-[68px] lg:h-[76px] flex items-center justify-between gap-4">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-20 h-[68px] lg:h-[88px] flex items-center justify-between gap-4">
         <Link href="/" aria-label="Inicio">
           <Logo size="md" />
         </Link>
 
         <div className="hidden lg:flex items-center gap-9">
           {links.map((l) => (
-            <Link key={l.name} href={l.href} className="text-charcoal font-semibold text-[15px] hover:text-rose-deep transition-colors">
+            <Link key={l.name} href={l.href} className="text-charcoal font-semibold text-[15px] lg:text-[17px] hover:text-rose-deep transition-colors">
               {l.name}
             </Link>
           ))}
@@ -47,7 +47,7 @@ export default function Navbar({ transparente = false }: { transparente?: boolea
             href={WA_EMPEZAR}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden lg:inline-flex bg-rose-deep text-white font-bold text-sm px-6 py-3 rounded-full hover:bg-rose-deeper transition-colors"
+            className="hidden lg:inline-flex bg-rose-deep text-white font-bold text-sm lg:text-base px-7 py-3.5 rounded-full hover:bg-rose-deeper transition-colors"
           >
             Escríbeme
           </a>

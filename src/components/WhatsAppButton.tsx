@@ -12,7 +12,7 @@ export default function WhatsAppButton() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Quiero empezar, escríbeme por WhatsApp"
-        className="hidden lg:flex fixed bottom-7 right-7 z-50 items-center gap-2.5 bg-[#25a85a] text-white font-extrabold px-6 py-4 rounded-full wa-flota"
+        className="hidden lg:flex fixed bottom-7 right-7 z-50 items-center gap-2.5 bg-[#25a85a] text-white font-extrabold px-7 py-4 text-lg rounded-full wa-flota"
       >
         <MessageCircle size={20} />
         Quiero empezar

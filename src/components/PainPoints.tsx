@@ -3,7 +3,7 @@
 import Reveal from './Reveal';
 
 const icono = (d: string[]) => (
-  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#a85c68" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#a85c68" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     {d.map((p, i) => (
       <path key={i} d={p} />
     ))}
@@ -20,10 +20,10 @@ const dolores = [
 export default function PainPoints() {
   return (
     <section className="bg-cream py-16 lg:py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 flex flex-col gap-10">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-20 flex flex-col gap-10">
         <Reveal className="text-center flex flex-col gap-3 items-center">
-          <span className="text-xs tracking-[.18em] font-bold text-rose-deep">¿TE IDENTIFICAS?</span>
-          <h2 className="font-heading font-bold text-charcoal text-[28px] lg:text-[40px] leading-[1.1] max-w-2xl">
+          <span className="text-xs lg:text-sm tracking-[.18em] font-bold text-[#7d4a38]">¿TE IDENTIFICAS?</span>
+          <h2 className="font-heading font-bold text-charcoal text-[28px] lg:text-[52px] leading-[1.1] max-w-3xl">
             ¿Te has sentido frustrada o <span className="text-accent">desmotivada por esto?</span>
           </h2>
         </Reveal>
@@ -31,9 +31,9 @@ export default function PainPoints() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {dolores.map((d, i) => (
             <Reveal key={d.texto} delay={i * 0.08} className="h-full">
-              <div className="h-full bg-white border border-rose/15 rounded-3xl p-6 flex flex-col gap-4 shadow-[0_4px_24px_rgba(59,42,36,0.06)]">
+              <div className="h-full bg-white border border-rose/15 rounded-3xl p-6 lg:p-8 flex flex-col gap-4 lg:gap-5 shadow-[0_4px_24px_rgba(59,42,36,0.06)]">
                 {d.icon}
-                <b className="font-heading text-lg leading-snug text-charcoal">{d.texto}</b>
+                <b className="font-heading text-lg lg:text-2xl leading-snug text-charcoal">{d.texto}</b>
               </div>
             </Reveal>
           ))}
@@ -41,12 +41,12 @@ export default function PainPoints() {
 
         <Reveal>
           <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-5 bg-rose-light rounded-3xl px-6 py-6 lg:px-8 text-center">
-            <span className="font-heading font-bold text-xl lg:text-2xl text-charcoal">Si te pasa algo de esto, no estás sola.</span>
+            <span className="font-heading font-bold text-xl lg:text-3xl text-charcoal">Si te pasa algo de esto, no estás sola.</span>
             <span className="text-rose-deep text-2xl">
               <span className="hidden lg:inline">→</span>
               <span className="lg:hidden">↓</span>
             </span>
-            <a href="/#mujeres-reales" className="bg-rose-deep text-white font-bold px-6 py-3.5 rounded-full hover:bg-rose-deeper transition-colors">
+            <a href="/#mujeres-reales" className="bg-rose-deep text-white font-bold px-6 py-3.5 lg:px-8 lg:py-4 lg:text-lg rounded-full hover:bg-rose-deeper transition-colors">
               Mira lo que puedes hacer
             </a>
           </div>

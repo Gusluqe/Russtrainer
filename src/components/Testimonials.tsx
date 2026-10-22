@@ -16,8 +16,8 @@ export default function Testimonials() {
     <section id="testimonios" className="bg-cream py-14 lg:py-20">
       <div className="flex flex-col gap-9">
         <Reveal className="text-center flex flex-col items-center gap-3 px-4">
-          <span className="text-xs tracking-[.18em] font-bold text-rose-deep">TESTIMONIOS</span>
-          <h2 className="font-heading font-bold text-charcoal text-[28px] lg:text-[40px] leading-[1.1]">
+          <span className="text-xs lg:text-sm tracking-[.18em] font-bold text-[#7d4a38]">TESTIMONIOS</span>
+          <h2 className="font-heading font-bold text-charcoal text-[28px] lg:text-[52px] leading-[1.1]">
             Ellas ya empezaron <span className="text-accent">su proceso</span>
           </h2>
         </Reveal>
@@ -44,11 +44,11 @@ export default function Testimonials() {
             {testimonios.lista.map((t) => (
               <div
                 key={t.handle}
-                className="snap-start shrink-0 w-[290px] lg:w-[420px] bg-white border border-rose/20 rounded-3xl p-6 lg:p-7 flex flex-col gap-4"
+                className="snap-start shrink-0 w-[290px] lg:w-[520px] bg-white border border-rose/20 rounded-3xl p-6 lg:p-9 flex flex-col gap-4"
               >
-                <div className="text-rose text-[15px] tracking-[2px]">★★★★★</div>
-                <p className="font-heading italic text-[15px] lg:text-base leading-[1.65] text-plum-light">{t.texto}</p>
-                <b className="text-rose-deep text-[15px] mt-auto">{t.handle}</b>
+                <div className="text-rose text-[15px] lg:text-lg tracking-[2px]">★★★★★</div>
+                <p className="font-heading italic text-[15px] lg:text-xl leading-[1.65] text-plum-light">{t.texto}</p>
+                <b className="text-rose-deep text-[15px] lg:text-lg mt-auto">{t.handle}</b>
               </div>
             ))}
           </div>
