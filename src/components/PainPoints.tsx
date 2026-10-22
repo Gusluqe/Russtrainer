@@ -1,78 +1,57 @@
-﻿'use client';
+'use client';
 
-import { motion } from 'framer-motion';
-import { Frown, TrendingDown, HelpCircle, Zap, RotateCcw, Quote } from 'lucide-react';
-import { useContenido } from './ContenidoContext';
+import Reveal from './Reveal';
 
-const icons = [Frown, TrendingDown, HelpCircle, Zap, RotateCcw];
+const icono = (d: string[]) => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#a85c68" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {d.map((p, i) => (
+      <path key={i} d={p} />
+    ))}
+  </svg>
+);
+
+const dolores = [
+  { texto: 'No me siento cómoda con mi cuerpo', icon: icono(['M12 20s-7-4.5-8.5-9A4.5 4.5 0 0 1 12 7.5 4.5 4.5 0 0 1 20.5 11C19 15.5 12 20 12 20z', 'M4 4l16 16']) },
+  { texto: 'Me frustra no ver resultados', icon: icono(['M16 10a6 6 0 1 1-12 0 6 6 0 0 1 12 0z', 'M15 15l6 6', 'M8 8l4 4M12 8l-4 4']) },
+  { texto: 'No sé qué hacer en el gimnasio', icon: icono(['M3 9v6M6 7v10M18 7v10M21 9v6M6 12h12']) },
+  { texto: 'Empiezo motivada, pero no logro sostener el hábito', icon: icono(['M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z', 'M12 7v5l3 2']) },
+];
 
 export default function PainPoints() {
-  const { dolores } = useContenido();
-  const painPoints = dolores.preguntas.map((question, i) => ({
-    icon: icons[i % icons.length],
-    question,
-  }));
   return (
-    <section className="relative py-12 md:py-24 lg:py-32 overflow-hidden bg-cream-100">
-      <div className="absolute top-0 right-1/4 w-80 h-80 bg-rose/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="kicker">
-            {dolores.kicker}
-          </span>
-          <h2 className="section-title mt-4 mb-4">
-            {dolores.titulo} <span className="text-accent">{dolores.tituloAccent}</span>
+    <section className="bg-cream py-16 lg:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 flex flex-col gap-10">
+        <Reveal className="text-center flex flex-col gap-3 items-center">
+          <span className="text-xs tracking-[.18em] font-bold text-rose-deep">¿TE IDENTIFICAS?</span>
+          <h2 className="font-heading font-bold text-charcoal text-[28px] lg:text-[40px] leading-[1.1] max-w-2xl">
+            ¿Te has sentido frustrada o <span className="text-accent">desmotivada por esto?</span>
           </h2>
-        </motion.div>
+        </Reveal>
 
-        <div className="flex flex-wrap justify-center gap-5 mb-14">
-          {painPoints.map((point, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="card card-hover p-6 flex items-start gap-4 w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)]"
-            >
-              <div className="p-3 bg-rose/10 rounded-2xl shrink-0">
-                <point.icon size={22} className="text-rose" />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          {dolores.map((d, i) => (
+            <Reveal key={d.texto} delay={i * 0.08} className="h-full">
+              <div className="h-full bg-white border border-rose/15 rounded-3xl p-6 flex flex-col gap-4 shadow-[0_4px_24px_rgba(59,42,36,0.06)]">
+                {d.icon}
+                <b className="font-heading text-lg leading-snug text-charcoal">{d.texto}</b>
               </div>
-              <p className="text-charcoal/80 text-lg leading-snug font-medium">
-                {point.question}
-              </p>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
 
-        {/* Insight */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="max-w-3xl mx-auto text-center"
-        >
-          <div className="bg-rose-muted rounded-3xl p-8 md:p-12 border border-rose/15">
-            <Quote size={36} className="text-rose/40 mx-auto mb-5" />
-            <p className="text-xl md:text-2xl text-charcoal leading-relaxed font-serif italic">
-              &ldquo;{dolores.cita}&rdquo;
-            </p>
-            <div className="mt-6 w-12 h-0.5 bg-gradient-to-r from-rose to-nude mx-auto" />
-            <p className="text-rose-deeper text-sm font-medium mt-4 uppercase tracking-widest">
-              {dolores.lema}
-            </p>
+        <Reveal>
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-5 bg-rose-light rounded-3xl px-6 py-6 lg:px-8 text-center">
+            <span className="font-heading font-bold text-xl lg:text-2xl text-charcoal">Si te pasa algo de esto, no estás sola.</span>
+            <span className="text-rose-deep text-2xl">
+              <span className="hidden lg:inline">→</span>
+              <span className="lg:hidden">↓</span>
+            </span>
+            <a href="/#mujeres-reales" className="bg-rose-deep text-white font-bold px-6 py-3.5 rounded-full hover:bg-rose-deeper transition-colors">
+              Mira lo que puedes hacer
+            </a>
           </div>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );
 }
-

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://russtrainer.com'),
   title: 'RussTrainer | Entrenamiento Personalizado con Resultados Reales',
   description:
-    'Transformá tu cuerpo con entrenamiento personalizado. Planes diseñados para vos, seguimiento real y resultados medibles. Buenos Aires.',
+    'Transforma tu cuerpo con entrenamiento personalizado. Planes diseñados para ti, seguimiento real y resultados medibles. Buenos Aires.',
   keywords: [
     'entrenamiento personalizado',
     'personal trainer',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'RussTrainer | Entrenamiento Personalizado',
     description:
-      'Transformá tu cuerpo con entrenamiento personalizado. Planes diseñados para vos, seguimiento real y resultados medibles.',
+      'Transforma tu cuerpo con entrenamiento personalizado. Planes diseñados para ti, seguimiento real y resultados medibles.',
     url: 'https://russtrainer.com',
     siteName: 'RussTrainer',
     locale: 'es_AR',

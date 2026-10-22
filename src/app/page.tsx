@@ -1,17 +1,16 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import PainPoints from '@/components/PainPoints';
-import About from '@/components/About';
-import HowWeWork from '@/components/HowWeWork';
-import Testimonials from '@/components/Testimonials';
-import DownloadGuide from '@/components/DownloadGuide';
-import Plans from '@/components/Plans';
+import MujeresReales from '@/components/MujeresReales';
 import AppPreview from '@/components/AppPreview';
-import Newsletter from '@/components/Newsletter';
+import EnAccion from '@/components/EnAccion';
+import Plans from '@/components/Plans';
+import ComoEmpezar from '@/components/ComoEmpezar';
+import Testimonials from '@/components/Testimonials';
+import FAQ from '@/components/FAQ';
+import Cierre from '@/components/Cierre';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import MobileNav from '@/components/MobileNav';
-import SplashScreen from '@/components/SplashScreen';
 import { ContenidoProvider } from '@/components/ContenidoContext';
 import { getContenido } from '@/lib/contenido';
 
@@ -24,21 +23,20 @@ export default async function Home() {
 
   return (
     <ContenidoProvider contenido={contenido}>
-      <main className="relative pb-16 lg:pb-0">
-        <SplashScreen />
-        <Navbar />
+      <main className="relative pb-20 lg:pb-0">
+        <Navbar transparente />
         <Hero />
         <PainPoints />
-        <About />
-        <HowWeWork />
-        <Testimonials />
-        <DownloadGuide />
+        <MujeresReales />
         <AppPreview />
+        <EnAccion />
         <Plans />
-        <Newsletter />
+        <ComoEmpezar />
+        <Testimonials />
+        <FAQ />
+        <Cierre />
         <Footer />
         <WhatsAppButton />
-        <MobileNav />
       </main>
     </ContenidoProvider>
   );

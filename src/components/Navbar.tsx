@@ -1,77 +1,58 @@
-﻿'use client';
+'use client';
 
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { MessageCircle } from 'lucide-react';
+import Link from 'next/link';
 import Logo from './Logo';
+import { WA_EMPEZAR } from '@/lib/enlaces';
 
-const WHATSAPP_URL = 'https://wa.me/5491168124464?text=Hola%20Russ!%20Quiero%20info%20sobre%20sus%20planes';
-
-const navLinks = [
-  { name: 'Inicio', href: '#inicio' },
-  { name: 'Servicios', href: '#servicios' },
-  { name: 'Guía', href: '#guia' },
-  { name: 'Tu app', href: '#app' },
-  { name: 'Planes', href: '#planes' },
-  { name: 'Testimonios', href: '#testimonios' },
-  { name: 'Contacto', href: '#contacto' },
+const links = [
+  { name: 'Sobre mí', href: '/sobre-mi' },
+  { name: 'Tu app', href: '/#app' },
+  { name: 'Planes', href: '/#planes' },
+  { name: 'Testimonios', href: '/#testimonios' },
 ];
 
-export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
+export default function Navbar({ transparente = false }: { transparente?: boolean }) {
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 30);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
-  };
+  const fondo = scrolled || !transparente ? 'bg-cream/95 backdrop-blur-sm shadow-sm shadow-rose/5' : 'bg-transparent';
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-sm border-b border-rose/10 py-3 shadow-sm shadow-rose/5'
-          : 'bg-transparent py-5'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${fondo}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 h-[68px] lg:h-[76px] flex items-center justify-between gap-4">
+        <Link href="/" aria-label="Inicio">
           <Logo size="md" />
+        </Link>
 
-          <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => handleNavClick(link.href)}
-                className="text-charcoal/70 hover:text-rose transition-colors duration-300 font-medium text-sm uppercase tracking-wider"
-              >
-                {link.name}
-              </button>
-            ))}
-          </div>
+        <div className="hidden lg:flex items-center gap-9">
+          {links.map((l) => (
+            <Link key={l.name} href={l.href} className="text-charcoal font-semibold text-[15px] hover:text-rose-deep transition-colors">
+              {l.name}
+            </Link>
+          ))}
+        </div>
 
-          <div className="hidden lg:flex items-center gap-4">
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-whatsapp text-sm py-2.5 px-5"
-            >
-              <MessageCircle size={16} />
-              WhatsApp
-            </a>
-          </div>
+        <div className="flex items-center gap-4">
+          <Link href="/sobre-mi" className="lg:hidden text-rose-deep font-bold text-sm">
+            Sobre mí
+          </Link>
+          <a
+            href={WA_EMPEZAR}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden lg:inline-flex bg-rose-deep text-white font-bold text-sm px-6 py-3 rounded-full hover:bg-rose-deeper transition-colors"
+          >
+            Escríbeme
+          </a>
         </div>
       </div>
-    </motion.nav>
+    </nav>
   );
 }
-
